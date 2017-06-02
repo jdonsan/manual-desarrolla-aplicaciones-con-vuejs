@@ -1,7 +1,9 @@
 # Acerca de este libro
 
-## ¿Qué necesitas saber antes de empezar?
+## Antes de empezar
 
 ## Comparte
 
-## Formatos
+## Descarga
+
+## Feedback
