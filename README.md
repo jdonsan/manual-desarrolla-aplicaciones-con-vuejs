@@ -1,3 +1,7 @@
-# My Awesome Book
+# Acerca de este libro
 
-This file file serves as your book's preface, a great place to describe your book's content and ideas.
+## ¿Qué necesitas saber antes de empezar?
+
+## Comparte
+
+## Formatos
