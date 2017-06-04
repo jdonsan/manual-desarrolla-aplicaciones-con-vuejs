@@ -26,6 +26,22 @@ Pero no se encargará de ser una guía sobre:
 
 Estos conceptos, aunque pueden ser referenciados o explicados en algún momento en concreto, no son el objetivo principal y tendrás que tenerlos en cuenta antes de empezar la lectura del manual.
 
+## Estuctura
+
+El manual se encuentra compuesto por 7 bloques. Cada bloque se encargará de explicar, de forma progresiva, uno de los grandes elementos del framework. 
+
+Sí eres nuevo en VueJS, te recomiendo que empieces desde el Capítulo 1 a leer y que prosigas para un aprendizaje adecuado. Sí ya tienes conocimientos previos sobre VueJS, siéntete libre de viajar por el manual como te plazca. 
+
+## Aviso importante
+
+El manual no supone un sustituvivo de la documentación oficial y solo quiere ser un apoyo o un aglutinador de conceptos base que todo desarrollador debería tener para ser competente en dicha herramienta.
+
+El manual nace como una ayuda suplementaria para todas aquellas personas que no tengan un nivel fluído de inglés y quiera leer documentación sobre VueJS en su lengua materna.
+
+Hay que recordar que el manual es una recopilación de post de un blog. Un blog que usa, en muchas ocasiones, lenguaje coloquial y que es un medio para expresar impresiones e inquietudes técnicas mías.
+
+No tomes esta guía como si se tratase de un ensayo académico formal.
+
 ## Comparte
 
 La guía no se ha creado con ningún fín lucrativo. No se esperan aportaciones económicas, ni se cuenta con ningún derecho de autor explícito.
@@ -54,6 +70,6 @@ Te intentaré contestar en la mayor brevedad posible. Lo prometo.
 
 Gracias por leer esta guía y confiar en ella para dar tus primeros pasos en VueJS. Creo que el tiempo dedicado te merecerá la pena por la forma y el mimo con el que este framework ha sido desarrollado. Tu productividad y tu equipo agradecerá que hayas apostado por una tecnología como esta. 
 
-En fin... empecemos :)
+En fin...empecemos :)
 
 
