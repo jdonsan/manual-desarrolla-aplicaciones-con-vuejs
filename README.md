@@ -1,6 +1,6 @@
 # Acerca de este manual
 
-Este manual es una recopilación de posts extraídos del blog 'El Abismo de Null' sobre el desarrollo de aplicaciones hechas en JavaScript con el nuevo framework VueJS.
+Este manual es una recopilación de posts extraídos del blog [El Abismo de Null](https://elabismodenull.wordpress.com/tag/vuejs/) sobre el desarrollo de aplicaciones hechas en JavaScript con el nuevo framework VueJS.
 
 Como podrás ver a lo largo de los capítulos, esta herramienta supone una forma más progresiva de adentraser a aplicaciones que necesiten de un mayor escalado y mantenimiento de módulos.
 
