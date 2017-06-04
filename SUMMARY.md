@@ -1,6 +1,6 @@
 # Summary
 
-* [Acerca de este libro](README.md)
+* [Acerca de este manual](README.md)
 * Bloque 1. Los conceptos básicos
   * [Capítulo 1. The Progressive JavaScript Framework](introduccion.md)
   * [Capítulo 2. Trabajando con templates](templates.md)
