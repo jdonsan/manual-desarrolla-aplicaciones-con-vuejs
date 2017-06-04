@@ -1,20 +1,21 @@
 # Acerca de este manual
 
-Este manual es una recopilación de posts extraídos del blog 'El Abismo de Null' sobre el desarrollo de aplicaciones hechas en JavaScript con el nuevo framework VueJS que, como podrá ver a lo largo de los capítulos, supone una forma más progresiva de adentraser a aplicaciones que necesiten de un mayor escalado y mantenimiento de módulos.
+Este manual es una recopilación de posts extraídos del blog 'El Abismo de Null' sobre el desarrollo de aplicaciones hechas en JavaScript con el nuevo framework VueJS.
 
+Como podrás ver a lo largo de los capítulos, esta herramienta supone una forma más progresiva de adentraser a aplicaciones que necesiten de un mayor escalado y mantenimiento de módulos.
 
 ## Antes de empezar
 
-El manual intenta ser lo más explícito posible en las explicaciones de todos esos conceptos que puedan ser nuevos para el lector. Sin embargo, sí se espera una predisposición de conocimientos previos por tu parte.
+El manual intenta ser lo más explícito posible en las explicaciones de todos esos conceptos que puedan resultarte nuevos. Sin embargo, sí espero una predisposición de conocimientos previos por tu parte.
 
-El manual se encargará de explicar:
+Por ejemplo, el manual se encargará de explicarte todo los conceptos importantes de:
 
-* vue
-* vue-router
-* vue-cli
-* vuex
-* webpack
-* next
+* Vue
+* Vue-Router
+* Vue-Cli
+* Vuex
+* Webpack
+* Next
 
 Pero no se encargará de ser una guía sobre:
 
@@ -33,7 +34,7 @@ Simplemente ha sido creada por un afán por compartir y evangelizar sobre esta g
 
 Si te gusta lo que has leído y crees que puede aportar valor a otras personas, comparte. Cambia, elimina o añade todo aquello que tu creas que aporta y hazla tuya. 
 
-Puedes compartir por cualquier red social, blog o podcasts que creas conveniente
+Puedes compartir por cualquier red social, blog o podcasts que creas conveniente.
 
 ## Descarga
 
@@ -45,11 +46,13 @@ Aunque las 5 formás han sido probadas, puede ser que se me hayan pasado pequelo
 
 Estoy disponible en todo momento para que puedas decirme qué te ha parecido el manual y estoy abierto a cualquier comentario sobre cómo mejorarlo.
 
-Puedes hablar conmigo por twitter o escribiendo algún comentario en mi blog, o escribiendome directamente un correo electrónico. Te ntentaré contestar en la mayor brevedad posible.
+[Puedes hablar conmigo por twitter](https://twitter.com/jdonsan) o [escribirme algún comentario en mi blog](https://elabismodenull.wordpress.com/tag/vuejs/), o [escribirme directamente un correo electrónico](jose.dongil@gmail.com). 
+
+Te intentaré contestar en la mayor brevedad posible. Lo prometo.
 
 ## Agradecimientos
 
-Gracias por leer esta guía y confiar en ella para dar tus primeros pasos en VueJS, creo que el tiempo dedicado te merecerá la pena por la forma y el mimo con el que este framework ha sido desarrollado. Tu productividad y tu equipo agradecerá que hayas apostado por una tecnología como esta. 
+Gracias por leer esta guía y confiar en ella para dar tus primeros pasos en VueJS. Creo que el tiempo dedicado te merecerá la pena por la forma y el mimo con el que este framework ha sido desarrollado. Tu productividad y tu equipo agradecerá que hayas apostado por una tecnología como esta. 
 
 En fin... empecemos :)
 
