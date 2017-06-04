@@ -15,7 +15,7 @@ Por ejemplo, el manual se encargará de explicarte todo los conceptos importante
 * Vue-Cli
 * Vuex
 * Webpack
-* Next
+* Nuxt
 
 Pero no se encargará de ser una guía sobre:
 
