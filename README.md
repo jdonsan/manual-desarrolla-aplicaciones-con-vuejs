@@ -48,7 +48,7 @@ La guía no se ha creado con ningún fín lucrativo. No se esperan aportaciones 
 
 Simplemente ha sido creada por un afán por compartir y evangelizar sobre esta gran herramienta de trabajo.
 
-Si te gusta lo que has leído y crees que puede aportar valor a otras personas, comparte. Cambia, elimina o añade todo aquello que tu creas que aporta y hazla tuya. 
+Si te gusta lo que has leído y crees que puede aportar valor a otras personas, comparte. Cambia, elimina o añade todo aquello que tú creas que aporta y hazla tuya. 
 
 Puedes compartir por cualquier red social, blog o podcasts que creas conveniente.
 
