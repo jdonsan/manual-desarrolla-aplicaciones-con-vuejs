@@ -68,7 +68,9 @@ Te intentaré contestar en la mayor brevedad posible. Lo prometo.
 
 ## Agradecimientos
 
-Gracias por leer esta guía y confiar en ella para dar tus primeros pasos en VueJS. Creo que el tiempo dedicado te merecerá la pena por la forma y el mimo con el que este framework ha sido desarrollado. Tu productividad y tu equipo agradecerá que hayas apostado por una tecnología como esta. 
+Gracias por leer esta guía y confiar en ella para dar tus primeros pasos en VueJS. Creo que el tiempo dedicado te merecerá la pena por la forma y el mimo con el que este framework ha sido desarrollado. 
+
+Tu productividad y tu equipo agradecerá que hayas apostado por una tecnología como esta. 
 
 En fin...empecemos :)
 
