@@ -209,12 +209,13 @@ Lo que hacemos es configurar la plantilla que queremos que renderice VueJS. Buen
 
 * [línea 5]: Aquí he definido un componente. Con VueJS puede extender nuestro HTML con nueva semántica. En este caso un componente que va a hacer de cabecera.
 
-* [línea 6]: Vuelvo a definir otro componente. En este caso, es un componente que cuenta con un input y un button. Lo veremos más tarde. De este elemento, lo más destacable es el atributo @new="addNewGame. Es un nuevo atributo que no se encuentra en el estándar de HTML ¿Qué es entonces? Estos elementos personalizados son lo que en VueJS se entiende como directivas. Son un marcado personalizado que aporta nueva funcionalidad al elemento HTML marcado. En este caso, lo que estamos haciendo es añadir un listener que escucha en el evento add, cada vez que el componente game-addemite un evento add, el elemento padre se encuentra escuchando y ejecuta la función addNewGame. No os preocupéis si no lo entendéis ahora porque lo explicaremos en un post dedicado a la comunicación entre componentes.
+* [línea 6]: Vuelvo a definir otro componente. En este caso, es un componente que cuenta con un `input` y un `button`. Lo veremos más tarde. De este elemento, lo más destacable es el atributo `@new="addNewGame`. Es un nuevo atributo que no se encuentra en el estándar de HTML ¿Qué es entonces? Estos elementos personalizados son lo que en VueJS se entiende como directivas. Son un marcado personalizado que aporta nueva funcionalidad al elemento HTML marcado. En este caso, lo que estamos haciendo es añadir un listener que escucha en el evento `add`, cada vez que el componente `game-addemite` un evento `add`, el elemento padre se encuentra escuchando y ejecuta la función `addNewGame`. No os preocupéis si no lo entendéis ahora porque lo explicaremos en un post dedicado a la comunicación entre componentes.
 
-* [línea 7]: En esta línea hemos añadido otro componente. Este componente  game-list se encarga de pintar por pantalla el listado de videojuegos favoritos. Como vemos, tiene una nueva directiva que no conocíamos de VueJS: v-bind. Esta directiva lo que hace es enlazar una propiedad interna de un componente con un modelo del elemento padre, en este caso el modelo games.
+* [línea 7]: En esta línea hemos añadido otro componente. Este componente  `game-list` se encarga de pintar por pantalla el listado de videojuegos favoritos. Como vemos, tiene una nueva directiva que no conocíamos de VueJS: `v-bind`. Esta directiva lo que hace es enlazar una propiedad interna de un componente con un modelo del elemento padre, en este caso el modelo games.
 
-Vale, parece que la plantilla se puede llegar a entender. 
-Si nos damos cuenta hay dos elementos que hemos usado en la plantilla que no hemos definido en ninguna parte en nuestra primera instancia de VueJS: addNewGamey games. Para definirlos los hacemos de la siguiente manera:
+Vale, parece que la plantilla se puede llegar a entender.
+ 
+Si nos damos cuenta hay dos elementos que hemos usado en la plantilla que no hemos definido en ninguna parte en nuestra primera instancia de VueJS: `addNewGame` y `games`. Para definirlos los hacemos de la siguiente manera:
 
 ```javascript
 const app = new Vue({
@@ -244,7 +245,7 @@ const app = new Vue({
  
 Lo que hemos hecho es meter el método y el modelo en las zonas reservadas para ello. Todos los modelos que una instancia o un componente defina internamente, se tienen que incluir dentro de data y todos los métodos dentro de methods.
 
-Teniendo esto, tenemos el 50% hecho de nuestra "aplicación". Lo siguiente que vamos a ver es la definición de los tres componentes visuales en los que he dividido la interfaz. Empecemos por el componente game-header:
+Teniendo esto, tenemos el 50% hecho de nuestra "aplicación". Lo siguiente que vamos a ver es la definición de los tres componentes visuales en los que he dividido la interfaz. Empecemos por el componente `game-header`:
 
 ```javascript
 Vue.component('game-header', {
@@ -253,9 +254,9 @@ Vue.component('game-header', {
 
 ```
  
-Nada del otro mundo. Lo único que estamos haciendo es registrar un componente de manera global con la etiqueta game-header. De esta forma ya podrá usar en las instancias de Vue. Internamente definimos un 'template' sencillo con el título.
+Nada del otro mundo. Lo único que estamos haciendo es registrar un componente de manera global con la etiqueta `game-header`. De esta forma ya podrá usar en las instancias de Vue. Internamente definimos un `template` sencillo con el título.
 
-El siguiente componente tiene un poco más de chicha. Se trata del componente game-add, el combobox encargado de incluir nuevas películas.
+El siguiente componente tiene un poco más de chicha. Se trata del componente `game-add`, el combobox encargado de incluir nuevos juegos.
 
 ```javascript
 Vue.component('game-add', {
@@ -286,15 +287,15 @@ Miremos un poco en detalle:
 
 * [línea 3]: Volvemos a definir una plantilla HTML con un único elemento raíz.
 
-* **[línea 4]**: El elemento tiene una directiva v-model que nos va a permitir ir obteniendo el valor del input e ir incluyéndolo en la variable titleGame.
+* **[línea 4]**: El elemento tiene una directiva `v-model` que nos va a permitir ir obteniendo el valor del `input` e ir incluyéndolo en la variable `titleGame`.
 
-* **[línea 5]**: El elemento tiene una directiva @click que lo que nos permite es registrar una función cuando se genere el evento clic sobre el botón.
+* **[línea 5]**: El elemento tiene una directiva `@click` que lo que nos permite es registrar una función cuando se genere el evento clic sobre el botón.
 
 * **[línea 8]**: El elemento data se inicializa, en un componente, con una función y no con un objeto. En su post veremos la razón de esto. Si ponemos un objeto, recibiremos un error de VueJS.
 
-* **[línea 14]**: La función se encarga de ver si el input se encuentra vacío y emitir un evento hacia componentes padres con el nuevo título de la película.
+* **[línea 14]**: La función se encarga de ver si el input se encuentra vacío y emitir un evento hacia componentes padres con el nuevo título del juego.
 
-Los siguientes componentes se encargan de pintar el listado de películas. Son el componente game-list y el componente game-item:
+Los siguientes componentes se encargan de pintar el listado de juegos. Son el componente `game-list` y el componente `game-item`:
 
 ```javascript
 Vue.component('game-list', {
@@ -313,10 +314,10 @@ Vue.component('game-item', {
 
 ```
  
-El componente game-list recibe un modelo como propiedad. Se trata del listado de películas a mostrar. En el template vemos la directiva v-for encargado de iterar los juegos e ir pintando diferentes componentes game-item.
+El componente `game-list` recibe un modelo como propiedad. Se trata del listado de juegos a mostrar. En el `template` vemos la directiva `v-for` encargado de iterar los juegos e ir pintando diferentes componentes `game-item`.
 
 El componente `game-item` recibe un modelo y lo pinta.
-El sistema es reactivo, es decir que si yo inserto un nuevo elemento en el array de películas, VueJS es lo suficientemente inteligente para saber que tiene que renderizar los elementos precisos.
+El sistema es reactivo, es decir que si yo inserto un nuevo elemento en el array de juegos, VueJS es lo suficientemente inteligente para saber que tiene que renderizar los elementos precisos.
 
 En el siguiente ejemplo podemos ver todo junto:
 
