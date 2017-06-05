@@ -14,7 +14,7 @@ El post de hoy trata de explicar toda esta sintaxis mediante la explicación los
 
 Como decíamos en la introducción, VueJS cuenta con un motor de plantillas muy parecido al de librerías como HandlebarsJS. Lo que nos permite es crear HTML  + una sintaxis especial que nos permite incluir datos del usuario. Aunque tiene soporte para JSX, se ha optado por un marcado mucho más ligero y entendible por un abanico de desarrolladores mayor. Tanto maquetadores, como fronts, como ciertos perfiles back están muy acostumbrados a este tipo de marcado dinámico.
 
-templateEngineDiagram1.gif
+
 
 Mecanismo interno de un motor de plantillas
 Lo bueno de VueJS es que el cambio de estas plantillas en DOM no se produce de manera directa. Lo que VueJS hace es mantener una copia del DOM cacheada en memoria. Es lo que se suele denominar Virtual DOM y es lo que permite que el rendimiento de este tipo de frameworks no se vea penalizado por la cantidad de cambios que se pueden producir de manera reactiva.
