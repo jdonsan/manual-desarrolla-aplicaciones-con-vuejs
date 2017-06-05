@@ -1,4 +1,4 @@
-# Definiendo componentes en un único fichero 
+# Capítulo 6. Definiendo componentes en un único fichero 
 
 En el post de hoy, nos vamos a centrar en cómo organizar nuestros componentes. Hemos trabajado con ejemplos de código muy sencillos que no contaban con más de dos o tres componentes. El sistema usado puede funcionar en aplicaciones pequeñas, aplicaciones con poca lógica interna o en la creación de un pequeño widget que queramos insertar en otra aplicación.
 

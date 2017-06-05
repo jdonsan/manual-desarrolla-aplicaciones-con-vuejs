@@ -1,4 +1,4 @@
-# Introducción. The Progressive JavaScript Framework
+# Capítulo 1. The Progressive JavaScript Framework
 
 Hoy comienza una nueva serie en El Abismo. Hoy empezamos un nuevo viaje hacia nuevas tierras tecnológica. Hemos hablado largo y tendido en el blog sobre buenas prácticas, patrones, paradigmas y pequeños trucos que nos han ayudado a hacer mejor JavaScript. Creo que es hora de que aprovechemos todo ese conocimiento que hemos ido adquiriendo, y que lo empleemos en conocer mejor nuestras herramientas de trabajo.
 
