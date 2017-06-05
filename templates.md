@@ -19,14 +19,15 @@ Mecanismo interno de un motor de plantillas
 Lo bueno de VueJS es que el cambio de estas plantillas en DOM no se produce de manera directa. Lo que VueJS hace es mantener una copia del DOM cacheada en memoria. Es lo que se suele denominar Virtual DOM y es lo que permite que el rendimiento de este tipo de frameworks no se vea penalizado por la cantidad de cambios que se pueden producir de manera reactiva.
 
 
-Funcionamiento interno del Virtual DOM
-La interpolación
+
+
+## La interpolación
 
 Una interpolación es la posibilidad de cambiar partes de una cadena de texto por variables. Para indicar dónde queremos un comportamiento dinámico de una cadena de texto dentro de VueJS, lo podemos indicar, marcando la variable que queremos interpolar con las dobles llaves (también conocidos como 'bigotes'):
 
 
  
-## Interpolando HTML
+### Interpolando HTML
 
 Este sistema nos sirve para interpolar variables que no contienen HTML. Si necesitásemos que la inserción sea interpretada como HTML tendríamos que indicarlo con la siguiente directiva v-html:
 
@@ -34,7 +35,7 @@ Este sistema nos sirve para interpolar variables que no contienen HTML. Si neces
  
 Este caso puede ser una mala práctica si lo que intentamos es estructurar nuestras vistas por medio de este método. El concepto de componente es el idóneo para reutilizar elementos. Intentemos usar este método solo en casos en los que no es posible otro método y teniendo en cuenta que el HTML incrustado sea controlado 100% por nosotros y no por el usuario, de esta manera podremos evitar ataques por XSS.
 
-## Interpolando atributos
+### Interpolando atributos
 
 VueJS no solo nos deja interpolar textos de nuestros elementos HTML, también nos va a permitir tener control sobre los valores de nuestros atributos. Podríamos querer indicar si un botón tiene que estar habilitado o deshabilitado dependiendo de la lógica de la aplicación:
 
@@ -42,7 +43,7 @@ VueJS no solo nos deja interpolar textos de nuestros elementos HTML, también no
  
 Podríamos tener este comportamiento con cualquier atributo de un elemento HTML.
 
-Interpolando por medio de expresiones
+### Interpolando por medio de expresiones
 
 En VueJS se puede interpolar texto por medio de pequeñas expresiones. Es una posibilidad de incluir un poco de lógica en nuestra plantilla. Podríamos por ejemplo evaluar una expresión para renderizar o no un elemento de esta manera:
 
@@ -112,7 +113,7 @@ El comportamiento sería el mismo que con v-on.
 
 En este post hemos explicado algunas de las directivas que hay, para entender el concepto, pero la API cuenta con todas estas.
 
-Las filtros
+## Las filtros
 
 Cuando interpolamos una variable dentro de nuestro HTML, puede que no se pinte todo lo bonito y claro que a nosotros nos gustaría. No es lo mismo almacenar un valor monetario que mostrarlo por pantalla. Cuando yo juego con 2000 euros. Dentro de mi variable, el valor será 2000 de tipo number, pero cuando lo muestro en pantalla, el valor debería ser 2.000,00 € de tipo string.
 
@@ -132,7 +133,7 @@ Los filtros se comportan como una tubería de transformación por lo que yo pued
  
 En VueJS v1 se contaba dentro del core con una serie de filtros por defecto que en VueJS v2 han quitado para agilizar su tamaño. Para incluir estos filtros podemos insertar la siguiente librería que extiende el framework.
 
-Todo junto
+## Todo junto
 
 Los ejemplos que hemos ido viendo forman parte del ejemplo que hemos desarrollado para este post. Lo que hemos hecho es desarrollar una plantilla en VueJS sobre una vista típica de login. El marcado es el siguiente:
 
@@ -146,7 +147,7 @@ Os dejo también la instancia de VueJS donde se ve la lógica creada para la vis
  
 
  
-Conclusión
+## Conclusión
 
 Parece una tontería, pero saber desarrollar plantillas en VueJS nos ayuda mucho en nuestro camino a comprender el framework. No olvidemos que estamos aprendiendo sobre un framework progresivo y que, quizá, existan desarrolladores que con esto tengan más que suficiente para desarrollar aplicaciones con VueJS y que no necesiten muchas más funcionalidades.
 
@@ -157,10 +158,3 @@ Si a alguno de vosotros al leer el este post sobre plantillas, el sistema de dir
 Por el momento, nos quedamos aquí.
 
 Nos leemos :)
-
-En anteriores post de VueJS en El Abismo:
-
-Introducción
-
-VueJS: The Progressive JavaScript Framework
-VueJS: Los templates
