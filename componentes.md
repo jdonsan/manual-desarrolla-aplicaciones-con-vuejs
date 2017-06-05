@@ -11,7 +11,7 @@ Como en casi todos los casos - quizá a excepción de Polymer - sufre de todo aq
 
 El desarrollo que vamos a hacer es un pequeño 'marketplace' para la venta de cursos online. El usuario va a poder indicar el tiempo en meses que desea tener disponible la plataforma en cada uno de los cursos.
 
-### Creando la instancia
+## Creando la instancia
 
 Para ello lo que vamos a crear es un primer componente llamado course. Para hacer esto, tenemos que registrar un nuevo componente dentro del framework de la siguiente manera:
 
@@ -20,22 +20,28 @@ Para ello lo que vamos a crear es un primer componente llamado course. Para hace
  
 Con esto ya podremos hacer uso de él en cualquier plantilla en el que necesitemos un ítem curso dentro de nuestra app. Hemos incluido unos datos de inicialización del componente. En este caso datos de la cabecera. Cómo puedes apreciar, en un componente, data se define con una función y no con un objeto.
 
-### Incluyendo propiedades
+## Incluyendo propiedades
 
 Un componente no deja de ser una caja negra del cual no sabemos qué HTML se va a renderizar, ni tampoco sabemos como se comporta su estado interno. Este sistema de cajas negras es bastante parecido al comportamiento de una función pura en JavaScript.
 
 Una función, para poder invocarse, debe incluir una serie de parámetros. Estos parámetros son propiedades que nosotros definimos al crear una función. Por ejemplo, puedo tener una función con esta cabecera:
 
+```javascript
 function createCourse(title, subtitle, description) {
     ...
 }
+```
+
 Si yo ahora quiero hacer uso de esta función, simplemente lo haría así:
 
+```javascript
 createCourse(
     'Curso JavaScript', 
     'Curso Avanzado', 
     'Esto es un nuevo curso para aprender'
 );
+```
+
 Dados estos parámetros, yo espero que la función me devuelve lo que me promete: un curso.
 
 Pues en VueJS y su sistema de componentes pasa lo mismo. Dentro de un componentes podemos definir propiedades de entrada. Lo hacemos de la siguiente manera:
@@ -59,7 +65,8 @@ Como vemos, es igual que en el caso de la función.
 Hay que tener en cuenta que las propiedades son datos que se propagan en una sola dirección, es decir de padres a hijos. Si yo modifico una propiedad dentro de un componente hijo, ese cambio no se propagará hacia el padre y por tanto no provocará ningún tipo de reacción por parte del sistema.
 
 Aunque hablaremos más de props en el futuro, aquí tienes más documentación.
-Personalizando eventos
+
+## Personalizando eventos
 
 Hemos visto cómo componente padre consigue comunicar datos a un componente hijo por medio de las propiedades, pero ¿Qué ocurre cuando un hijo necesita informar de ciertos datos o acciones que están ocurriendo en su interior? ¿Cómo sería el return de un componente en VueJS si fuese una función JavaScript?
 
@@ -86,7 +93,8 @@ Ahora, si queremos registrar una función cuando hacemos uso del componente, lo 
 Hemos registrado un evento de tipo @add que ejecutará la función addToCart cada vez que el componente emita un evento add.
 
 Aunque hablaremos más de eventos en el futuro, aquí tienes más documentación.
-Extendiendo el componente
+
+### Extendiendo el componente
 
 Una vez que tenemos esto, hemos conseguido definir tanto propiedades de entrada, como los eventos que emite mi componente. Podríamos decir que tenemos un componente curso base.
 
@@ -107,7 +115,8 @@ Por último,  indicamos aquellos datos que queremos sobreescribir. Nada más. Vu
 Ambos componentes tienen la misma firma, pero internamente se comportan de diferente manera.
 
 En el futuro hablaremos más de mixins. Si necesitas saber más sobre ello, aquí puedes.
-Refactorizando el componente
+
+## Refactorizando el componente
 
 Después de crear dos componentes más específicos, se me viene a la cabeza que ese template que estamos usando en course, presenta una estructura bastante compleja. Sería buena idea que refactorizásemos esa plantilla en trozos más pequeños y especializados que nos permitan centrarnos mejor en el propósito y la responsabilidad de cada uno de ellos.
 
@@ -143,7 +152,7 @@ Todos los componentes cuentan con este atributo components para que registremos 
 
 Personalmente, creo que pocas veces vamos a hacer uso de un registro local, pero que contemos con ello, creo que es una buena decisión de diseño y nos permite encapsular mucho mejor a la par que modularizar componentes.
 
-Creando un componente contenedor
+## Creando un componente contenedor
 
 Una vez que hemos refactorizado nuestro componente course, vamos a crear un nuevo componente que nos permita pintar internamente estos cursos. Dentro de VueJS podemos crear componentes que tengan internamente contenido del cual no tenemos control.
 
@@ -168,20 +177,21 @@ Fijaros también en el detalle de que no estamos indicando ni courseni course-js
 Esto es porque component es una etiqueta de VueJS que en combinación con la directiva :is podemos cargar componentes de manera dinámica. Como yo no se que tipo de curso va haber en mi listado, necesito pintar el componente dependiendo de lo que me dice la variable del modelo course.type.
 
 Para saber más sobre slots, tenemos esta parte de la documentación.
-Todo junto
 
-Para ver todo el ejemplo junto, contamos con estos gist:
+## Todo junto
 
- 
+Para ver todo el ejemplo junto, contamos con este código:
 
- 
  
 
  
  
 
  
-Conclusión
+ 
+
+ 
+## Conclusión
 
 Hemos explicado todo lo que tiene que ver con el corazón de la librería. Controlando y sabiendo cómo funcionan los componentes en VueJS, tendremos mucho recorrido ganado en poder aplicaciones del mundo real.
 
@@ -192,14 +202,3 @@ No te preocupes si el ejemplo te parece bastante enrevesado o sin sentido. Por c
 En próximos posts, seguiremos hablando sobre componentes y seguiremos entendiendo los mejor.
 
 Nos leemos :)
-
-En anteriores post de VueJS en El Abismo:
-
-Introducción
-
-VueJS: The Progressive JavaScript Framework
-VueJS: Trabajando con templates
-VueJS: Enlazando clases y estilos
-Desarrollando con componentes
-
-VueJS: Creando componentes
