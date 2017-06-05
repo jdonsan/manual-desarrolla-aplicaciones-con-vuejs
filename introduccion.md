@@ -139,6 +139,13 @@ Para mostrar un poco de código, vamos a crear un pequeño ejemplo. La idea es c
 Para conseguir esto, lo primero que vamos a hacer es añadir un elemento HTML que haga de contenedor de nuestra aplicación VueJS:
 
 
+
+```
+
+
+```
+
+
  
 De esta manera, conseguimos delimitar el contexto en el que puede actuar nuestra aplicación. Es una buena forma de poder crear tantas aplicaciones VueJS necesitemos en un proyecto o incluso de poder alternar tecnologías.
 
