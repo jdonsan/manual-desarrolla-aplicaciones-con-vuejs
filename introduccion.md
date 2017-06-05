@@ -173,8 +173,20 @@ Lo que le decimos a VueJS es que genere una nueva instancia que tenga como refer
 
 Lo siguiente que vamos a hacer es añadirle una pequeña plantilla con el HTML de nuestra aplicación:
 
- 
 
+```javascript
+const app = new Vue({
+    el: '#app',
+    template: `
+        <div class="view">                              
+            <game-header></game-header>                  
+            <game-add @new="addNewGame"></game-add>     
+            <game-list v-bind:games="games"></game-list>
+        </div>
+    `
+});
+
+```
  
 Lo que hacemos es configurar la plantilla que queremos que renderice VueJS. Bueno, parece que la plantilla tiene bastante magia y que poco tiene que ver con HTML. Tenéis razón hay muchas cosas que VueJS está haciendo aquí. Veamos qué ocurre:
 
@@ -189,8 +201,31 @@ Lo que hacemos es configurar la plantilla que queremos que renderice VueJS. Buen
 Vale, parece que la plantilla se puede llegar a entender. 
 Si nos damos cuenta hay dos elementos que hemos usado en la plantilla que no hemos definido en ninguna parte en nuestra primera instancia de VueJS: addNewGamey games. Para definirlos los hacemos de la siguiente manera:
 
- 
+```javascript
+const app = new Vue({
+    el: '#app',
+    template: `
+        <div class="view">
+            <game-header></game-header>
+            <game-add @new="addNewGame"></game-add>
+            <game-list v-bind:games="games"></game-list>
+        </div>
+    `,
+    data: {
+        games: [
+            { title: 'ME: Andromeda' },
+            { title: 'Fifa 2017' },
+            { title: 'League of Legend' }
+        ]
+    },
+    methods: {
+        addNewGame: function (game) {
+            this.games.push(game);
+        }
+    }
+});
 
+```
  
 Lo que hemos hecho es meter el método y el modelo en las zonas reservadas para ello. Todos los modelos que una instancia o un componente defina internamente, se tienen que incluir dentro de data y todos los métodos dentro de methods.
 
