@@ -39,6 +39,7 @@ Esto nos listará todas las plantillas. En el momento de crear este posts contá
 * **simple**: Es una plantilla sencilla, muy parecida a la de los ejemplos de post anteriores.
 * **webpack**: igual que la de browserify, pero con el empaquetador webpack.
 * **webpack-simple**: igual que browserify-simple, pero con webpack.
+
 Nosotros nos vamos basar en la plantilla de ẁebpack para empezar nuestro proyecto. Para empezar el proyecto ejecutamos el siguiente comando:
 
 ```
@@ -51,16 +52,20 @@ Lo que hará vue-cli es una serie de preguntas para que configuremos ciertos asp
 
 * ? Project name: nos deja elegir un nombre para el proyecto, podemos coger el que hemos indicado por defecto.
 * ? Project description: una descripción que será incluida en el package.json del proyecto.
-? Author: El auto a incluir en el package.json
-? Runtime + Compiler or Runtime-only: nos deja elegir si queremos incluir el compilador dentro de la solución.
-? Install vue-router: Nos incluye un router por defecto en la solución y las dependencias necesarias.
-? Use ESLint to lint your code: Nos permite incluir un linter con la plantilla que deseemos para las reglas genéricas.
-? Setup unit tests with Karma + Mocha: Nos incluye las dependencias de test unitarios si lo deseamos.
+* ? Author: El auto a incluir en el package.json
+* ? Runtime + Compiler or Runtime-only: nos deja elegir si queremos incluir el compilador dentro de la solución.
+* ? Install vue-router: Nos incluye un router por defecto en la solución y las dependencias necesarias.
+* ? Use ESLint to lint your code: Nos permite incluir un linter con la plantilla que deseemos para las reglas genéricas.
+* ? Setup unit tests with Karma + Mocha: Nos incluye las dependencias de test unitarios si lo deseamos.
+
 Cuando hayamos contestado a ellas tendremos nuestra plantilla lista. Para cerciorarnos de que todo fue correctamente, lanzamos los siguientes comandos:
 
+```
 $ cd my-new-app
 $ npm install
 $ npm run dev
+```
+
 Lo que hace esto es navegar hasta la carpeta del proyecto generado, instalar todas las dependencias del proyecto y ejecutar la tarea de npm llamada dev que nos compilar y empaqueta todo, lanza la app en el navegador y se queda escuchando a posibles cambios. Si todo fue bien se abrirá una web simplona.
 
 Y ¿Qué ha hecho por debajo ese init? Pues nos ha generado una estructura en carpetas parecida a esta:
@@ -69,30 +74,31 @@ Captura de pantalla de 2017-05-09 13-22-34.png
 
 Explicamos cada carpeta y fichero a continuación:
 
-build:  en esta carpeta se encuentran todos los scripts encargados de las tareas de construcción de nuestro proyecto en ficheros útiles para el navegador. Se encarga de trabajar con webpacky el resto de loaders (no entro más en webpack, porque además de no tener ni idea ahora mismo, le dedicaremos una serie en este blog en el futuro cuando por fin lo hayamos aprendido, por ahora tendremos que fiarnos de su magia :().
-config: contiene la configuración de entornos de nuestra aplicación.
-src: El código que los desarrolladores tocará. Es todo aquello que se compilará y formará nuestra app. Contiene lo siguiente:
-assets: Aquellos recursos como css, fonts o imágenes.
-components: Todos los componentes que desarrollaremos.
-router: La configuración de rutas y estados por los que puede pasar nuestra aplicación.
-App.vue: Componente padre de nuestra aplicación.
-main.js: Script inicial de nuestra aplicación.
-static: Aquellos recursos estáticos que no tendrán que renderizarse, ni optimizarse. Pueden ser htmlso imágenes o claves.
-test: Toda la suite de test de nuestra aplicación
-.babellrc: Esta plantilla está configurada para que podamos escribir código ES6 con babel. Dentro de este fichero podremos incluir configuraciones de la herramienta.
-.editorconfig: Nos permite configurar nuestro editor de texto.
-.eslintignore: Nos permit eindicar aquellas carpetas o ficheros que no queremos que tenga en cuenta eslint.
-.eslintrc.js: Reglas que queremos que tengan en cuenta eslint en los ficheros que esta observando.
-.gitignore: un fichero que indica las carpetas que no se tienen que versionar dentro de nuestro repositorio de git.
-.postcssrc.js: Configuración de PostCSS.
-index.html: El html inicial de nuestra aplicación.
-package.json: El fichero con la meta información del proyecto (dependencias, nombre, descripción, path del repositorio...).
-README.md: Fichero markdown con la documentación del proyecto.
+* **build**:  en esta carpeta se encuentran todos los scripts encargados de las tareas de construcción de nuestro proyecto en ficheros útiles para el navegador. Se encarga de trabajar con webpack y el resto de loaders (no entro más en webpack, porque además de no tener ni idea ahora mismo, le dedicaremos una serie en este blog en el futuro cuando por fin lo hayamos aprendido, por ahora tendremos que fiarnos de su magia :().
+* **config**: contiene la configuración de entornos de nuestra aplicación.
+* **src**: El código que los desarrolladores tocará. Es todo aquello que se compilará y formará nuestra app. Contiene lo siguiente:
+ * **assets**: Aquellos recursos como css, fonts o imágenes.
+ * **components**: Todos los componentes que desarrollaremos.
+ * **router**: La configuración de rutas y estados por los que puede pasar nuestra aplicación.
+ * **App.vue**: Componente padre de nuestra aplicación.
+ * **main.js**: Script inicial de nuestra aplicación.
+* **static**: Aquellos recursos estáticos que no tendrán que renderizarse, ni optimizarse. Pueden ser htmls o imágenes o claves.
+* **test**: Toda la suite de test de nuestra aplicación
+* **.babellrc**: Esta plantilla está configurada para que podamos escribir código ES6 con babel. Dentro de este fichero podremos incluir configuraciones de la herramienta.
+* **.editorconfig**: Nos permite configurar nuestro editor de texto.
+* **.eslintignore**: Nos permite indicar aquellas carpetas o ficheros que no queremos que tenga en cuenta eslint.
+* **.eslintrc.js**: Reglas que queremos que tengan en cuenta eslint en los ficheros que está observando.
+* .gitignore: un fichero que indica las carpetas que no se tienen que versionar dentro de nuestro repositorio de git.
+* **.postcssrc.js**: Configuración de PostCSS.
+* **index.html**: El html inicial de nuestra aplicación.
+* **package.json**: El fichero con la meta información del proyecto (dependencias, nombre, descripción, path del repositorio...).
+* **README.md**: Fichero markdown con la documentación del proyecto.
+
 Esta estructura es orientativa y podremos cambiar aquello que no se adecue a nuestro gusto. Esta estructura es una entre muchas posibles. Lo bueno de usar esta plantilla o alguna similar es que, si mañana empezamos en otro proyecto que ya usaba VueJS, la fricción será menor.
 
-Formas de escribir el componente
+## Formas de escribir el componente
 
-Una vez que tenemos esto, podemoes empezar a desarrollar componentes. Si vamos a la carpeta @/src/components/ tendremos los componentes. Los componentes terminan con la extensión .vue.  En este caso de la plantilla, encontraréis un componente llamado Hello.vue donde se encuentra todo lo necesario sobre el. Tanto el html, como su css, como su js, se encuentra aquí.
+Una vez que tenemos esto, podemos empezar a desarrollar componentes. Si vamos a la carpeta @/src/components/ tendremos los componentes. Los componentes terminan con la extensión .vue.  En este caso de la plantilla, encontraréis un componente llamado Hello.vue donde se encuentra todo lo necesario sobre el. Tanto el html, como su css, como su js, se encuentra aquí.
 
 Es lo que VueJS llamada como componente en un único fichero. El fichero internamente tiene una forma como la siguiente:
 
@@ -118,7 +124,7 @@ Captura de pantalla de 2017-05-09 15-35-16.png
 
 Puede ser un buen método si quieres que varios perfiles trabajen en tus componentes. De esta forma un maquetador, o alguien que trabaje en estilos no tiene ni porque saber que existe VueJS en su proyecto ya que el css está libre de nada que tenga que ver con ello.
 
-Conclusión
+## Conclusión
 
 El post de hoy es corto, pero conciso. La forma en cómo organizas tu código es clave a la hora de desarrollar mejor. Saber dónde se encuentra cada cosa hará que ganemos en agilidad y mantenimiento. Aislar los componentes de esta forma puede ayudarnos mucho en el futuro.
 
@@ -129,16 +135,3 @@ A partir de ahora, los ejemplos de la serie estarán escritos en este sistema de
 Dejaremos por ahora los componente y nos adentraremos durante unas semanas en el uso de vue-router. Otra de las piezas importantes si hemos decidido hacer nuestra próxima SPA con VueJS. Por ahora, esto es todo amigos.
 
 Nos leemos :)
-
-En anteriores post de VueJS en El Abismo:
-
-Introducción
-
-VueJS: The Progressive JavaScript Framework
-VueJS: Trabajando con templates
-VueJS: Enlazando clases y estilos
-Desarrollando con componentes
-
-VueJS: Creando componentes
-VueJS: El ciclo de vida de un componente
-VueJS: Definiendo componentes en un único fichero
