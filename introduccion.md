@@ -8,9 +8,7 @@ Como antes de poder incluir cualquier herramienta en producción, hay que probar
 
 No sé cuanto durará esta serie, así que lo mejor es que nos pongamos al lío y dediquemos nuestro tiempo a entenderla y a saber cómo se usa. ¿Te apetece unirte? ¿Estás con ganas de aprender la enésima librería de JavaScript? ¿Sí? Pues sigamos:
 
-Leer más…
-
-¿Qué es VueJS?
+## ¿Qué es VueJS?
 
 Vue (pronunciado como viu) es la nueva herramienta JavaScript creada por Evan You, miembro bastante conocido en la comunidad por participar en el desarrollo de Meteor y por ser desarrollador de Google durante varios años.
 
@@ -23,46 +21,67 @@ El core principal permite el desarrollo de componentes de UI por medio de JavaSc
 
 Presume de ser una librería bastante rápida que consigue renderizar en mejores tiempos que ReactJS. Estos son los tiempos que podemos encontrar en su documentación:
 
-Vue	React
-23ms	63ms	Fastest
-42ms	81ms	Median
-51ms	94ms	Average
-73ms	164ms	95th Perc.
-343ms	453ms	Slowest
+| Vue |	React | |
+|-----|-------|-|
+|23ms|	63ms |	Fastest|
+|42ms |	81ms |	Median|
+|51ms |	94ms |	Average|
+|73ms | 164ms |	95th Perc.|
+|343ms|	453ms|	Slowest|
+
 Como curiosidad: VueJS tiene un tamaño de 74.9 KB (la versión al hacerse el post es la v2.2.6).
 
-¿Qué caracteriza a VueJS?
+## ¿Qué caracteriza a VueJS?
 
 Pero ¿qué define a VueJS? ¿Qué lo diferencia o lo asemeja al resto de alternativas? ¿Por qué se está poniendo tan de moda? Intentemos explicar algunas de sus características para que vosotros mismos veáis si el framework tiene la potencia que nos dicen:
 
-Proporciona componentes visuales de forma reactiva. Piezas de UI bien encapsulados que exponen una API con propiedades de entrada y emisión de eventos. Los componentes reaccionan ante eventos masivos sin que el rendimiento se vea perjudicado.
-Cuenta con conceptos de directivas, filtros y componentes bien diferenciados. Iremos definiendo y explicando estos elementos a lo largo de la serie.
+* Proporciona componentes visuales de forma reactiva. Piezas de UI bien encapsulados que exponen una API con propiedades de entrada y emisión de eventos. Los componentes reaccionan ante eventos masivos sin que el rendimiento se vea perjudicado.
+
+* Cuenta con conceptos de directivas, filtros y componentes bien diferenciados. Iremos definiendo y explicando estos elementos a lo largo de la serie.
 La API es pequeña y fácil de usar. Nos tendremos que fiar por ahora si ellos lo dicen :)
-Utiliza Virtual DOM. Como las operaciones más costosas en JavaScript suelen ser las que operan con la API del DOM, y VueJS por su naturaleza reactiva se encontrará todo el rato haciendo cambios en el DOM, cuenta con una copia cacheada que se encarga de ir cambiando aquellas partes que son necesarias cambiar.
-Externaliza el ruteo y la gestión de estado en otras librerías.
-Renderiza `templates` aunque soporta JSX. JSX es el lenguaje que usa React para renderizar la estructura de un componente. Es una especie de HTML + JS + vitaminas que nos permite, en teoría, escribir plantillas HTML con mayor potencia. VueJS da soporte a JSX, pero entiende que es mejor usar plantillas puras en HTML por su legibilidad, por su menor fricción para que maquetadores puedan trabajar con estos templates y por la posibilidad de usar herramientas de terceros que trabajen con estos templates más estándar.
-Permite focalizar CSS para un componente específico. Lo que nos permitirá crear contextos específicos para nuestros componentes. Todo esto sin perder potencia en cuanto a las reglas de CSS a utilizar. Podremos usar todas las reglas CSS3 con las que se cuentan.
+
+* Utiliza Virtual DOM. Como las operaciones más costosas en JavaScript suelen ser las que operan con la API del DOM, y VueJS por su naturaleza reactiva se encontrará todo el rato haciendo cambios en el DOM, cuenta con una copia cacheada que se encarga de ir cambiando aquellas partes que son necesarias cambiar.
+
+* Externaliza el ruteo y la gestión de estado en otras librerías.
+
+* Renderiza `templates` aunque soporta JSX. JSX es el lenguaje que usa React para renderizar la estructura de un componente. Es una especie de HTML + JS + vitaminas que nos permite, en teoría, escribir plantillas HTML con mayor potencia. VueJS da soporte a JSX, pero entiende que es mejor usar plantillas puras en HTML por su legibilidad, por su menor fricción para que maquetadores puedan trabajar con estos templates y por la posibilidad de usar herramientas de terceros que trabajen con estos templates más estándar.
+
+* Permite focalizar CSS para un componente específico. Lo que nos permitirá crear contextos específicos para nuestros componentes. Todo esto sin perder potencia en cuanto a las reglas de CSS a utilizar. Podremos usar todas las reglas CSS3 con las que se cuentan.
 Cuenta con un sistema de efectos de transición y animación.
-Permite renderizar componentes para entornos nativos (Android e iOS). Es un soporte por ahora algo inmaduro y en entornos de desarrollo, pero existe una herramienta creada por Alibaba llamada Weex que nos permitiría escribir componentes para Android o iOS con VueJS si lo necesitáramos.
-Sigue un flujo one-way data-binding para la comunicación entre componentes.
-Sigue un flujo doble-way data-binding para la comunicación de modelos dentro de un componente aislado.
-Tiene soporte para TypeScript. Cuenta con decoradores y tipos definidos de manera oficial y son descargados junto con la librería.
-Tiene soporte para ES6. Las herramientas y generadores vienen con Webpack o Browserify de serie por lo que tenemos en todo momento un Babel transpilando a ES5 si queremos escribir código ES6.
-Tiene soporte a partir de Internet Explorer 9. Según el proyecto en el que estemos esto puede ser una ventaja o no. Personalmente cuanto más alto el número de la versión de IE mejor porque menos pesará la librería, pero seguro que tendréis clientes que os pongan ciertas restricciones. Es mejor tenerlo en cuenta.
-Permite renderizar las vistas en servidor. Los SPA y los sistemas de renderizado de componentes en JavaScript tienen el problema de que muchas veces son difíciles de utilizar por robots como los de Google, por lo tanto el SEO de nuestra Web o aplicación puede verse perjudicado. VueJS permite mecanismos para que los componentes puedan ser renderizados en tiempo de servidor.
+
+* Permite renderizar componentes para entornos nativos (Android e iOS). Es un soporte por ahora algo inmaduro y en entornos de desarrollo, pero existe una herramienta creada por Alibaba llamada Weex que nos permitiría escribir componentes para Android o iOS con VueJS si lo necesitáramos.
+
+* Sigue un flujo one-way data-binding para la comunicación entre componentes.
+
+* Sigue un flujo doble-way data-binding para la comunicación de modelos dentro de un componente aislado.
+
+* Tiene soporte para TypeScript. Cuenta con decoradores y tipos definidos de manera oficial y son descargados junto con la librería.
+
+* Tiene soporte para ES6. Las herramientas y generadores vienen con Webpack o Browserify de serie por lo que tenemos en todo momento un Babel transpilando a ES5 si queremos escribir código ES6.
+
+* Tiene soporte a partir de Internet Explorer 9. Según el proyecto en el que estemos esto puede ser una ventaja o no. Personalmente cuanto más alto el número de la versión de IE mejor porque menos pesará la librería, pero seguro que tendréis clientes que os pongan ciertas restricciones. Es mejor tenerlo en cuenta.
+
+* Permite renderizar las vistas en servidor. Los SPA y los sistemas de renderizado de componentes en JavaScript tienen el problema de que muchas veces son difíciles de utilizar por robots como los de Google, por lo tanto el SEO de nuestra Web o aplicación puede verse perjudicado. VueJS permite mecanismos para que los componentes puedan ser renderizados en tiempo de servidor.
 Es extensible. Vue se puede extender mediante plugins.
-¿Cómo empezamos?
+
+## ¿Cómo empezamos?
 
 Para empezar, lo único que tendremos que hacer es incluir la dependencia de VueJS a nuestro proyecto. Dependiendo de nuestras necesidades, podremos hacer esto de varias maneras. Yo me voy a quedar con la forma habitual de añadir dependencias a un proyecto de NodeJS.
 
 Lo primero que hacemos es ejecutar los siguientes comandos en el terminal:
 
+```
 $ mkdir example-vue
 $ cd example-vue
 $ npm init
+```
+
 Esto nos genera una nueva carpeta para el proyecto y nos inicia un paquete de NodeJS. Una vez que tengamos esto, añadiremos VueJS como dependencia de la siguiente manera:
 
+```
 $ npm install vue --save
+```
+
 De esta forma, ya tendremos todo lo necesario para trabajar en nuestro primer ejemplo. Lo que esta dependencia nos descarga son diferentes VueJS dependiendo del entorno que necesitemos.
 
 Lo que hacemos ahora es añadir un fichero index.html en la raíz e incluimos tanto la librería de Vue, como nuestro fichero JS, donde desarrollaremos este primer ejemplo:
