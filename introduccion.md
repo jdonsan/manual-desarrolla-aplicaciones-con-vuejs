@@ -16,9 +16,7 @@ Evan You define su herramienta [como un framework progresivo](http://slides.com/
 
 Es un sistema de modularización bastante parecido al de ReactJS. Facebook desarrolló un core para poder trabajar con vistas, pero a partir de ahí se han ido creando toda una serie de librerías (tanto por parte de Facebook como de la comunidad) que permite trabajar de una manera eficiente en un SPA. Aquí todas las piezas importantes se enmarcan dentro del proyecto de [VueJS](https://github.com/vuejs "Repositorios de VueJS") creado por Evan You.
 
-
 > A lo largo de estos primeros capítulos nos centraremos en el estudio del core del framework, por ahora dejaremos de lado a [vue-router](https://github.com/vuejs/vue-router "Repositorio de vue-router") y a [vuex](https://github.com/vuejs/vuex "Repositorio de vuex"), aunque en algún momento llegaremos hasta ellos.
-
 
 El core principal permite el desarrollo de componentes de UI por medio de JavaScript. La librería se enmarca dentro las arquitecturas de componentes (que tan de moda están) con una gestión interna de modelos basada en el patrón [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel "Wikipedia del patrón MVVM"). Esto quiere decir que los componentes, internamente, tienen mecanismos de doble data-binding para manipular el estado de la aplicación.
 
