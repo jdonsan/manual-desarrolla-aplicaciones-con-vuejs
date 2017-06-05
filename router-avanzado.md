@@ -1,4 +1,4 @@
-# Capítulo 9. Conceptos avanzados de vue-router
+# Capítulo 9. Conceptos avanzados
 
 Con lo aprendido hasta ahora sobre vue-router, podríamos cubrir gran parte de la funcionalidad necesaria para un buen número de aplicaciones.
 

@@ -14,7 +14,7 @@
   * [Capítulo 8. Interceptores de navegación](interceptores.md)
   * [Capítulo 9. Conceptos avanzados](router-avanzado.md)
 * Bloque 4. La gestión de estados con vuex
-  * [Capítulo 10. Introducción a vuex](vuex.md)
+  * [Capítulo 10. Introducción](vuex.md)
   * [Capítulo 11. Los estados y getters](getters.md)
   * [Capítulo 12. Las mutaciones y acciones en vuex](mutaciones.md)
   * [Capítulo 13. Los módulos](módulos.md)
