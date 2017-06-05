@@ -125,8 +125,9 @@ Los dos generarían el mismo HTML:
  
 En el caso de registrar un evento, tenemos algo parecido. No hace falta que indiquemos v-on sino que podemos indicarlo por medio de una arroba @ de esta manera:
 
- 
-
+```html
+<form class="login" @submit.prevent="onLogin">
+```
  
 El comportamiento sería el mismo que con v-on.
 
@@ -142,13 +143,15 @@ Para evitar esto, se han inventado los filtros. Un filtro modifica una variable 
 
 Este sería un caso donde convertimos el texto de la variable en mayúsculas:
 
- 
-
+```html
+<h1>Bienvenido {{ user.name | uppercase }}</h1>
+```
  
 Los filtros se comportan como una tubería de transformación por lo que yo puedo concatenar todos los filtros que necesite de esta manera:
 
- 
-
+```html
+<h1>Bienvenido {{ user.name | filter1 | filter2 | filterN }}</h1>
+```
  
 En VueJS v1 se contaba dentro del core con una serie de filtros por defecto que en VueJS v2 han quitado para agilizar su tamaño. Para incluir estos filtros podemos insertar la siguiente librería que extiende el framework.
 
@@ -156,16 +159,91 @@ En VueJS v1 se contaba dentro del core con una serie de filtros por defecto que 
 
 Los ejemplos que hemos ido viendo forman parte del ejemplo que hemos desarrollado para este post. Lo que hemos hecho es desarrollar una plantilla en VueJS sobre una vista típica de login. El marcado es el siguiente:
 
- 
+```html
+<!DOCTYPE html>
+<html lang="en">
 
- 
+<head>
+    <meta charset="UTF-8">
+    <title>Example templates</title>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <h1>Bienvenido {{ user.name | uppercase }}</h1>
+
+        <div class="login-errors-container" v-if="errors.length !== 0">
+            <ol class="login-errors">
+                <li v-for="error in errors"> {{ error }}</li>
+            </ol>
+        </div>
+
+        <form class="login" v-on:submit.prevent="onLogin">
+            <div class="login-field">
+                <label for="username">Nombre de usuario</label>
+                <input id="username" type="text" v-model="user.name" />
+            </div>
+
+            <div class="login-field">
+                <label for="password">Contraseña</label>
+                <input id="password" type="password" v-model="user.password" />
+            </div>
+
+            <div class="login-field">
+                <button type="submit" v-bind:disabled="isFormEmpty">Entrar</button>
+            </div>
+        </form>
+
+        <a v-bind:href="urlPasswordChange" target="_blank">
+            ¿Has olvidado tu contraseña?
+        </a>
+    </div>
+
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
+```
+
 Creo que con lo visto en el post, todos los elemento se explican y no es necesario que profundicemos.
 
 Os dejo también la instancia de VueJS donde se ve la lógica creada para la vista:
 
- 
+```javascript
+const app = new Vue({
+    el: '#app',
+    data: {
+        user: { name: null, password: null }, 
+        urlPasswordChange: 'http://localhost:8080',
+        errors: []
+    },
+    computed: {
+         isFormEmpty: function () {
+             return !(this.user.name && this.user.password);
+         }
+    },
+    methods: {
+        onLogin: function () {
+            this.errors = [];
 
- 
+            if (this.user.name.length < 6) {
+                this.errors.push('El nombre de usuario tiene que tener al menos 6 caracteres');
+            }
+
+            if (this.user.password.length < 6) {
+                this.errors.push('La contraseña tiene que tener al menos 6 caracteres');
+            }
+        }
+    },
+    filters: {
+        uppercase: function (data) {
+            return data && data.toUpperCase();
+        }
+    }
+});
+```
+
 ## Conclusión
 
 Parece una tontería, pero saber desarrollar plantillas en VueJS nos ayuda mucho en nuestro camino a comprender el framework. No olvidemos que estamos aprendiendo sobre un framework progresivo y que, quizá, existan desarrolladores que con esto tengan más que suficiente para desarrollar aplicaciones con VueJS y que no necesiten muchas más funcionalidades.
