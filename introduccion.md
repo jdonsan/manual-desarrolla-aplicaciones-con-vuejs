@@ -95,13 +95,13 @@ La librería tiene una gestión de errores súper descriptiva por lo que os reco
 
 Antes de que pasemos al código, me gustaría recomendaros un par de herramientas que nos pueden ser muy útiles para trabajar con VueJS.
 
-## Depurando el código
+### Depurando el código
 
 Casi todos los frameworks importantes cuentan con una herramienta específica para poder depurar y analizar ciertos aspectos de nuestras aplicaciones. VueJS no iba a ser menos y cuenta con un plugin para Firefox y Chrome que se integra con el resto de herramientas de desarrollo de ambos navegadores.
 
 He podido probar la herramienta de Chrome y me ha sorprendido lo fácil que es de usar. En la versión con la que he podido trastear, es posible inspeccionar los componentes que se encuentran en nuestro HTML. Esta inspección nos permite ver los modelos que se encuentran enlazados y la posibilidad de depurar esta información.
 
-screenshot.png
+![Plugin de vue para el developers tools de chrome](/images/introduccion/screenshot.png)
 
 Otro de los apartados está dedicado a la posibilidad de gestionar el estado de nuestra aplicación por medio de 'vuex'. La funcionalidad nos permite ver las transiciones en las que se mueve nuestra aplicación como si de un vídeo que se pueda rebobinar se tratase.
 
@@ -109,7 +109,7 @@ La otra funcionalidad que incluye es la posibilidad de detectar todos los evento
 
 El plugin es mantenido por la propia comunidad de VueJS, por lo que, por ahora, su actualización se da por descontado.
 
-## Gestionando un proyecto real
+### Gestionando un proyecto real
 
 La forma en la que hemos instalado la primera dependencia de VueJS es algo rudimentaria. Cuando empezamos un proyecto, suele ser buena idea empezar desde un código base, una plantilla que contenga aquella parte de flujo de trabajo, necesario para trabajar en una plataforma en concreto.
 
@@ -123,19 +123,21 @@ Para instalarlo como dependencia global, solo tendremos que lanzar el siguiente 
 $ npm install -g vue-cli
 ```
 
-## Desarrollando más rápido
+### Desarrollando más rápido
 
 Los nuevos editores de texto permiten incluir pequeños plugins para añadir funcionalidad extra. En Visual Studio Code contamos con unos cuantos plugins que nos pueden ayudar a desarrollar más rápido. Dos de los más usados son:
 
-Syntax Highlight for VueJS: plugin para remarcar todas aquella sintaxis y palabras reservadas a VueJS. Este plugin nos permite localizar elemento de una forma más rápida y cómoda.
-Vue 2 Snippets: plugin que contiene pequeños 'snippets' para que añadir nuestro código VueJS sea más rápido. De esta forma nos ayuda también como 'intellisense'.
-Primer ejemplo
+* **Syntax Highlight for VueJS**: plugin para remarcar todas aquella sintaxis y palabras reservadas a VueJS. Este plugin nos permite localizar elemento de una forma más rápida y cómoda.
+
+* **Vue 2 Snippets**: plugin que contiene pequeños 'snippets' para que añadir nuestro código VueJS sea más rápido. De esta forma nos ayuda también como 'intellisense'.
+
+
+##Primer ejemplo
 
 Para mostrar un poco de código, vamos a crear un pequeño ejemplo. La idea es crear una pequeña aplicación que nos permita añadir nuevos juegos a mi listado de juegos favoritos - sí, lo siento, no deja de ser el 'TODO LIST' de toda la vida :).
 
 Para conseguir esto, lo primero que vamos a hacer es añadir un elemento HTML que haga de contenedor de nuestra aplicación VueJS:
 
- 
 
  
 De esta manera, conseguimos delimitar el contexto en el que puede actuar nuestra aplicación. Es una buena forma de poder crear tantas aplicaciones VueJS necesitemos en un proyecto o incluso de poder alternar tecnologías.
