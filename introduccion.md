@@ -140,19 +140,34 @@ Para conseguir esto, lo primero que vamos a hacer es añadir un elemento HTML qu
 
 
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS Example</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
 ```
-
-
-```
-
 
  
 De esta manera, conseguimos delimitar el contexto en el que puede actuar nuestra aplicación. Es una buena forma de poder crear tantas aplicaciones VueJS necesitemos en un proyecto o incluso de poder alternar tecnologías.
 
 Lo siguiente que hacemos es crear una instancia de nuestra aplicación VueJS en nuestro fichero app.js:
 
- 
+```javascript
+const app = new Vue({
+    el: '#app'
+});
 
+```
  
 Lo que le decimos a VueJS es que genere una nueva instancia que tenga como referencia al elemento HTML que tenga como identificador único la palabra reservada app.
 
