@@ -43,32 +43,33 @@ La API es pequeña y fácil de usar. Nos tendremos que fiar por ahora si ellos l
 
 * **Utiliza Virtual DOM**. Como las operaciones más costosas en JavaScript suelen ser las que operan con la API del DOM, y VueJS por su naturaleza reactiva se encontrará todo el rato haciendo cambios en el DOM, cuenta con una copia cacheada que se encarga de ir cambiando aquellas partes que son necesarias cambiar.
 
-* **Externaliza el ruteo y la gestión de estado** en otras librerías.
+* **Externaliza [el ruteo](https://router.vuejs.org/en/ "Documentación de vue-router") y [la gestión de estado](https://vuex.vuejs.org/en/ "Documentación oficial de vuex")** en otras librerías.
 
-* **Renderiza `templates` aunque soporta JSX**. JSX es el lenguaje que usa React para renderizar la estructura de un componente. Es una especie de HTML + JS + vitaminas que nos permite, en teoría, escribir plantillas HTML con mayor potencia. VueJS da soporte a JSX, pero entiende que es mejor usar plantillas puras en HTML por su legibilidad, por su menor fricción para que maquetadores puedan trabajar con estos templates y por la posibilidad de usar herramientas de terceros que trabajen con estos templates más estándar.
+* **Renderiza `templates` aunque [soporta JSX](https://vuejs.org/v2/guide/render-function.html#JSX "Documentación sobre el soporte de JSX en Vue")**. JSX es el lenguaje que usa React para renderizar la estructura de un componente. Es una especie de HTML + JS + vitaminas que nos permite, en teoría, escribir plantillas HTML con mayor potencia. VueJS da soporte a JSX, pero entiende que es mejor usar plantillas puras en HTML por su legibilidad, por su menor fricción para que maquetadores puedan trabajar con estos templates y por la posibilidad de usar herramientas de terceros que trabajen con estos templates más estándar.
 
 * **Permite focalizar CSS para un componente específico**. Lo que nos permitirá crear contextos específicos para nuestros componentes. Todo esto sin perder potencia en cuanto a las reglas de CSS a utilizar. Podremos usar todas las reglas CSS3 con las que se cuentan.
-Cuenta con un sistema de efectos de transición y animación.
 
-* **Permite renderizar componentes para entornos nativos** (Android e iOS). Es un soporte por ahora algo inmaduro y en entornos de desarrollo, pero existe una herramienta creada por Alibaba llamada Weex que nos permitiría escribir componentes para Android o iOS con VueJS si lo necesitáramos.
+* **Cuenta con un sistema de [efectos de transición](https://vuejs.org/v2/guide/transitions.html "Documentación de transiciones en Vue")** y animación.
 
-* **Sigue un flujo one-way data-binding** para la comunicación entre componentes.
+* **Permite renderizar componentes para entornos nativos** (Android e iOS). Es un soporte por ahora algo inmaduro y en entornos de desarrollo, pero existe una herramienta creada por Alibaba llamada [Weex](https://weex.apache.org/ "Web oficial de Weex") que nos permitiría escribir componentes para Android o iOS con VueJS si lo necesitáramos.
 
-* S**igue un flujo doble-way data-binding** para la comunicación de modelos dentro de un componente aislado.
+* **Sigue un [flujo one-way data-binding](https://vuejs.org/images/props-events.png "Imagen del flujo de vue")** para la comunicación entre componentes.
 
-* **Tiene soporte para TypeScript**. Cuenta con decoradores y tipos definidos de manera oficial y son descargados junto con la librería.
+* **Sigue un flujo doble-way data-binding** para la comunicación de modelos dentro de un componente aislado.
+
+* **Tiene [soporte para TypeScript](https://vuejs.org/v2/guide/typescript.html "Documentación de Typecscript con vue")**. Cuenta con decoradores y tipos definidos de manera oficial y son descargados junto con la librería.
 
 * **Tiene soporte para ES6**. Las herramientas y generadores vienen con Webpack o Browserify de serie por lo que tenemos en todo momento un Babel transpilando a ES5 si queremos escribir código ES6.
 
 * **Tiene soporte a partir de Internet Explorer 9**. Según el proyecto en el que estemos esto puede ser una ventaja o no. Personalmente cuanto más alto el número de la versión de IE mejor porque menos pesará la librería, pero seguro que tendréis clientes que os pongan ciertas restricciones. Es mejor tenerlo en cuenta.
 
-* **Permite renderizar las vistas en servidor.** Los SPA y los sistemas de renderizado de componentes en JavaScript tienen el problema de que muchas veces son difíciles de utilizar por robots como los de Google, por lo tanto el SEO de nuestra Web o aplicación puede verse perjudicado. VueJS permite mecanismos para que los componentes puedan ser renderizados en tiempo de servidor.
+* **Permite [renderizar las vistas en servidor](https://vuejs.org/v2/guide/ssr.html "Documentación de renderizado en servidor de vue").** Los SPA y los sistemas de renderizado de componentes en JavaScript tienen el problema de que muchas veces son difíciles de utilizar por robots como los de Google, por lo tanto el SEO de nuestra Web o aplicación puede verse perjudicado. VueJS permite mecanismos para que los componentes puedan ser renderizados en tiempo de servidor.
 
-* **Es extensible**. Vue se puede extender mediante plugins.
+* **Es extensible**. Vue [se puede extender mediante plugins.](https://vuejs.org/v2/guide/plugins.html "Documentación de creación de plugins en vue")
 
 ## ¿Cómo empezamos?
 
-Para empezar, lo único que tendremos que hacer es incluir la dependencia de VueJS a nuestro proyecto. Dependiendo de nuestras necesidades, podremos hacer esto de varias maneras. Yo me voy a quedar con la forma habitual de añadir dependencias a un proyecto de NodeJS.
+Para empezar, lo único que tendremos que hacer es incluir la dependencia de VueJS a nuestro proyecto. Dependiendo de nuestras necesidades, [podremos hacer esto de varias maneras](https://vuejs.org/v2/guide/installation.html "Diferentes instalaciones de vue"). Yo me voy a quedar con la forma habitual de añadir dependencias a un proyecto de NodeJS.
 
 Lo primero que hacemos es ejecutar los siguientes comandos en el terminal:
 
@@ -127,7 +128,7 @@ El plugin es mantenido por la propia comunidad de VueJS, por lo que, por ahora, 
 
 La forma en la que hemos instalado la primera dependencia de VueJS es algo rudimentaria. Cuando empezamos un proyecto, suele ser buena idea empezar desde un código base, una plantilla que contenga aquella parte de flujo de trabajo, necesario para trabajar en una plataforma en concreto.
 
-Como en el caso de Angular, la gente de VueJS nos proporciona una herramienta de terminal muy útil para nuestro día a día: vue-cli. Esta herramienta nos permitirá generar plantillas de nuestro proyecto, generar componentes e incluso personalizar plantillas a nuestro gusto.
+Como en el caso de Angular, la gente de VueJS nos proporciona una herramienta de terminal muy útil para nuestro día a día: [vue-cli](https://github.com/vuejs/vue-cli "Repositorio de vue-cli"). Esta herramienta nos permitirá generar plantillas de nuestro proyecto, generar componentes e incluso personalizar plantillas a nuestro gusto.
 
 vue-cli no solo nos ayudará a empezar rápidamente en un proyecto, sino que además, nos ayudará a entender cómo estructurar nuestro código y a seguir una serie de buenas prácticas debemos tener en cuenta si queremos que nuestro proyecto escale.
 
@@ -139,11 +140,11 @@ $ npm install -g vue-cli
 
 ### Desarrollando más rápido
 
-Los nuevos editores de texto permiten incluir pequeños plugins para añadir funcionalidad extra. En Visual Studio Code contamos con unos cuantos plugins que nos pueden ayudar a desarrollar más rápido. Dos de los más usados son:
+Los nuevos editores de texto permiten incluir pequeños plugins para añadir funcionalidad extra. En [Visual Studio Code](https://code.visualstudio.com/ "Web oficial de Visual Studio Code") contamos con unos cuantos plugins que nos pueden ayudar a desarrollar más rápido. Dos de los más usados son:
 
 * **Syntax Highlight for VueJS**: plugin para remarcar todas aquella sintaxis y palabras reservadas a VueJS. Este plugin nos permite localizar elemento de una forma más rápida y cómoda.
 
-* **Vue 2 Snippets**: plugin que contiene pequeños 'snippets' para que añadir nuestro código VueJS sea más rápido. De esta forma nos ayuda también como 'intellisense'.
+* **Vue 2 Snippets**: plugin que contiene pequeños '[snippets](https://es.wikipedia.org/wiki/Snippet "Definición de snippet en wikipedia")' para que añadir nuestro código VueJS sea más rápido. De esta forma nos ayuda también como '[intellisense](https://es.wikipedia.org/wiki/IntelliSense "Definición de Intellisense en wikipedia")'.
 
 
 ##Primer ejemplo
