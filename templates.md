@@ -15,25 +15,21 @@ El post de hoy trata de explicar toda esta sintaxis mediante la explicación los
 Como decíamos en la introducción, VueJS cuenta con un motor de plantillas muy parecido al de librerías como HandlebarsJS. Lo que nos permite es crear HTML  + una sintaxis especial que nos permite incluir datos del usuario. Aunque tiene soporte para JSX, se ha optado por un marcado mucho más ligero y entendible por un abanico de desarrolladores mayor. Tanto maquetadores, como fronts, como ciertos perfiles back están muy acostumbrados a este tipo de marcado dinámico.
 
 
-
 Mecanismo interno de un motor de plantillas
 Lo bueno de VueJS es que el cambio de estas plantillas en DOM no se produce de manera directa. Lo que VueJS hace es mantener una copia del DOM cacheada en memoria. Es lo que se suele denominar Virtual DOM y es lo que permite que el rendimiento de este tipo de frameworks no se vea penalizado por la cantidad de cambios que se pueden producir de manera reactiva.
 
-virtual_dom_diff.png
 
 Funcionamiento interno del Virtual DOM
 La interpolación
 
 Una interpolación es la posibilidad de cambiar partes de una cadena de texto por variables. Para indicar dónde queremos un comportamiento dinámico de una cadena de texto dentro de VueJS, lo podemos indicar, marcando la variable que queremos interpolar con las dobles llaves (también conocidos como 'bigotes'):
 
- 
 
  
 ## Interpolando HTML
 
 Este sistema nos sirve para interpolar variables que no contienen HTML. Si necesitásemos que la inserción sea interpretada como HTML tendríamos que indicarlo con la siguiente directiva v-html:
 
- 
 
  
 Este caso puede ser una mala práctica si lo que intentamos es estructurar nuestras vistas por medio de este método. El concepto de componente es el idóneo para reutilizar elementos. Intentemos usar este método solo en casos en los que no es posible otro método y teniendo en cuenta que el HTML incrustado sea controlado 100% por nosotros y no por el usuario, de esta manera podremos evitar ataques por XSS.
@@ -42,7 +38,6 @@ Este caso puede ser una mala práctica si lo que intentamos es estructurar nuest
 
 VueJS no solo nos deja interpolar textos de nuestros elementos HTML, también nos va a permitir tener control sobre los valores de nuestros atributos. Podríamos querer indicar si un botón tiene que estar habilitado o deshabilitado dependiendo de la lógica de la aplicación:
 
- 
 
  
 Podríamos tener este comportamiento con cualquier atributo de un elemento HTML.
@@ -51,15 +46,18 @@ Interpolando por medio de expresiones
 
 En VueJS se puede interpolar texto por medio de pequeñas expresiones. Es una posibilidad de incluir un poco de lógica en nuestra plantilla. Podríamos por ejemplo evaluar una expresión para renderizar o no un elemento de esta manera:
 
- 
+
 
  
 Esto renderizaría el elemento dependiendo de si evalúe a true o a false. Aunque contemos con la posibilidad, es buena práctica que todas estas evaluaciones nos las llevemos a nuestra parte JavaScript. De esta manera separamos correctamente lo que tiene que ver con la vista de lo que tiene que ver con la lógica. Seguimos respetando los niveles de responsabilidad.
 
 Si no tenéis mas remedio que usar una expresión de este estilo, hay que tener en cuenta que ni los flujos ni las iteraciones de JavaScript funcionan en ellos. La siguiente interpolación de una expresión daría un error:
 
+```
 {{ if (ok) { return message } }}
-Las directivas
+```
+
+## Las directivas
 
 Las directivas son atributos personalizados por VueJS que permiten extender el comportamiento por defecto de un elemento HTML en concreto. Para diferenciar un atributo personalizado de los estándar, VueJS añade un prefijo v- a todas sus directivas.
 
