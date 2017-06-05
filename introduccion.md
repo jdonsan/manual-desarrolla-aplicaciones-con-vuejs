@@ -35,34 +35,35 @@ Como curiosidad: VueJS tiene un tamaño de 74.9 KB (la versión al hacerse el po
 
 Pero ¿qué define a VueJS? ¿Qué lo diferencia o lo asemeja al resto de alternativas? ¿Por qué se está poniendo tan de moda? Intentemos explicar algunas de sus características para que vosotros mismos veáis si el framework tiene la potencia que nos dicen:
 
-* Proporciona componentes visuales de forma reactiva. Piezas de UI bien encapsulados que exponen una API con propiedades de entrada y emisión de eventos. Los componentes reaccionan ante eventos masivos sin que el rendimiento se vea perjudicado.
+* **Proporciona componentes visuales de forma reactiva**. Piezas de UI bien encapsulados que exponen una API con propiedades de entrada y emisión de eventos. Los componentes reaccionan ante eventos masivos sin que el rendimiento se vea perjudicado.
 
-* Cuenta con conceptos de directivas, filtros y componentes bien diferenciados. Iremos definiendo y explicando estos elementos a lo largo de la serie.
+* **Cuenta con conceptos de directivas, filtros y componentes bien diferenciados**. Iremos definiendo y explicando estos elementos a lo largo de la serie.
 La API es pequeña y fácil de usar. Nos tendremos que fiar por ahora si ellos lo dicen :)
 
-* Utiliza Virtual DOM. Como las operaciones más costosas en JavaScript suelen ser las que operan con la API del DOM, y VueJS por su naturaleza reactiva se encontrará todo el rato haciendo cambios en el DOM, cuenta con una copia cacheada que se encarga de ir cambiando aquellas partes que son necesarias cambiar.
+* **Utiliza Virtual DOM**. Como las operaciones más costosas en JavaScript suelen ser las que operan con la API del DOM, y VueJS por su naturaleza reactiva se encontrará todo el rato haciendo cambios en el DOM, cuenta con una copia cacheada que se encarga de ir cambiando aquellas partes que son necesarias cambiar.
 
-* Externaliza el ruteo y la gestión de estado en otras librerías.
+* **Externaliza el ruteo y la gestión de estado** en otras librerías.
 
-* Renderiza `templates` aunque soporta JSX. JSX es el lenguaje que usa React para renderizar la estructura de un componente. Es una especie de HTML + JS + vitaminas que nos permite, en teoría, escribir plantillas HTML con mayor potencia. VueJS da soporte a JSX, pero entiende que es mejor usar plantillas puras en HTML por su legibilidad, por su menor fricción para que maquetadores puedan trabajar con estos templates y por la posibilidad de usar herramientas de terceros que trabajen con estos templates más estándar.
+* **Renderiza `templates` aunque soporta JSX**. JSX es el lenguaje que usa React para renderizar la estructura de un componente. Es una especie de HTML + JS + vitaminas que nos permite, en teoría, escribir plantillas HTML con mayor potencia. VueJS da soporte a JSX, pero entiende que es mejor usar plantillas puras en HTML por su legibilidad, por su menor fricción para que maquetadores puedan trabajar con estos templates y por la posibilidad de usar herramientas de terceros que trabajen con estos templates más estándar.
 
-* Permite focalizar CSS para un componente específico. Lo que nos permitirá crear contextos específicos para nuestros componentes. Todo esto sin perder potencia en cuanto a las reglas de CSS a utilizar. Podremos usar todas las reglas CSS3 con las que se cuentan.
+* **Permite focalizar CSS para un componente específico**. Lo que nos permitirá crear contextos específicos para nuestros componentes. Todo esto sin perder potencia en cuanto a las reglas de CSS a utilizar. Podremos usar todas las reglas CSS3 con las que se cuentan.
 Cuenta con un sistema de efectos de transición y animación.
 
-* Permite renderizar componentes para entornos nativos (Android e iOS). Es un soporte por ahora algo inmaduro y en entornos de desarrollo, pero existe una herramienta creada por Alibaba llamada Weex que nos permitiría escribir componentes para Android o iOS con VueJS si lo necesitáramos.
+* **Permite renderizar componentes para entornos nativos** (Android e iOS). Es un soporte por ahora algo inmaduro y en entornos de desarrollo, pero existe una herramienta creada por Alibaba llamada Weex que nos permitiría escribir componentes para Android o iOS con VueJS si lo necesitáramos.
 
-* Sigue un flujo one-way data-binding para la comunicación entre componentes.
+* **Sigue un flujo one-way data-binding** para la comunicación entre componentes.
 
-* Sigue un flujo doble-way data-binding para la comunicación de modelos dentro de un componente aislado.
+* S**igue un flujo doble-way data-binding** para la comunicación de modelos dentro de un componente aislado.
 
-* Tiene soporte para TypeScript. Cuenta con decoradores y tipos definidos de manera oficial y son descargados junto con la librería.
+* **Tiene soporte para TypeScript**. Cuenta con decoradores y tipos definidos de manera oficial y son descargados junto con la librería.
 
-* Tiene soporte para ES6. Las herramientas y generadores vienen con Webpack o Browserify de serie por lo que tenemos en todo momento un Babel transpilando a ES5 si queremos escribir código ES6.
+* **Tiene soporte para ES6**. Las herramientas y generadores vienen con Webpack o Browserify de serie por lo que tenemos en todo momento un Babel transpilando a ES5 si queremos escribir código ES6.
 
-* Tiene soporte a partir de Internet Explorer 9. Según el proyecto en el que estemos esto puede ser una ventaja o no. Personalmente cuanto más alto el número de la versión de IE mejor porque menos pesará la librería, pero seguro que tendréis clientes que os pongan ciertas restricciones. Es mejor tenerlo en cuenta.
+* **Tiene soporte a partir de Internet Explorer 9**. Según el proyecto en el que estemos esto puede ser una ventaja o no. Personalmente cuanto más alto el número de la versión de IE mejor porque menos pesará la librería, pero seguro que tendréis clientes que os pongan ciertas restricciones. Es mejor tenerlo en cuenta.
 
-* Permite renderizar las vistas en servidor. Los SPA y los sistemas de renderizado de componentes en JavaScript tienen el problema de que muchas veces son difíciles de utilizar por robots como los de Google, por lo tanto el SEO de nuestra Web o aplicación puede verse perjudicado. VueJS permite mecanismos para que los componentes puedan ser renderizados en tiempo de servidor.
-Es extensible. Vue se puede extender mediante plugins.
+* **Permite renderizar las vistas en servidor.** Los SPA y los sistemas de renderizado de componentes en JavaScript tienen el problema de que muchas veces son difíciles de utilizar por robots como los de Google, por lo tanto el SEO de nuestra Web o aplicación puede verse perjudicado. VueJS permite mecanismos para que los componentes puedan ser renderizados en tiempo de servidor.
+
+* **Es extensible**. Vue se puede extender mediante plugins.
 
 ## ¿Cómo empezamos?
 
@@ -86,8 +87,20 @@ De esta forma, ya tendremos todo lo necesario para trabajar en nuestro primer ej
 
 Lo que hacemos ahora es añadir un fichero index.html en la raíz e incluimos tanto la librería de Vue, como nuestro fichero JS, donde desarrollaremos este primer ejemplo:
 
- 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VueJS Example</title>
+</head>
+<body>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
 
+```
  
 Si os dais cuenta, hemos añadido la librería VueJS de desarrollo y no la minificada. Esto es así porque la librería de desarrollo nos lanzará un montón de advertencias y errores que nos ayudarán a aprender y trabajar con VueJS.
 
