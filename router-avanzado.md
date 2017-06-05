@@ -8,31 +8,35 @@ El posts de hoy está dedicado a estudiar todos aquellos conceptos avanzados de 
 
 Para conseguir esto, nos centraremos en el anidamiento de rutas, el paso de propiedades a un ComponentView, la inclusión de meta información y el cambio de comportamiento del scroll de nuestra web. Vayamos con ello:
 
-Leer más…
 
-Anidar rutas
+## Anidar rutas
 
 Durante esta serie, hemos hecho ejemplos con rutas bastantes simples. Los sistemas de navegación de los ejemplos siempre han sido de una ruta a otra, pero ¿qué ocurre cuando dentro de nuestro sistema existe una navegación entre subrutas?
 
 Imaginemos por un momento, que tenemos que desarrollar una aplicación bancaria y que estamos implementando la funcionalidad de transferencias entre cuentas. Nuestra aplicación podría contar, por ejemplo, con un proceso dividido en 3 pantallas:
 
-Una pantalla para la configurar los datos de la transferencia: En esta pantalla, el usuario indica el importe y el destinatario al que realizar la transferencia.
-Una pantalla para mostrar el detalle de la transferencia: Que nos puede ser muy útil para mostrar el estado actual la cuenta, el día que se hará la transferencia y el cálculo de las comisiones que conlleva la operación.
-Y una pantalla de confirmación de la transferencia realizada: Que se le muestra al usuario cuando toda la operación de transferencia fue correctamente.
+* Una pantalla para la configurar los datos de la transferencia: En esta pantalla, el usuario indica el importe y el destinatario al que realizar la transferencia.
+* Una pantalla para mostrar el detalle de la transferencia: Que nos puede ser muy útil para mostrar el estado actual la cuenta, el día que se hará la transferencia y el cálculo de las comisiones que conlleva la operación.
+* Y una pantalla de confirmación de la transferencia realizada: Que se le muestra al usuario cuando toda la operación de transferencia fue correctamente.
+
 Para realizar esto, podríamos diseñar 3 vistas que se corresponderían con estas rutas:
 
+```
 /transfer/config
 /transfer/detail
 /transfer/confirm
+```
+
 Como vemos, la propia funcionalidad, me lleva a tener un subenrutado o anidamiento de rutas.
 
 Estos procesos suelen conllevar una interfaz parecida en cada vista  para favorecer la navegación al usuario. Por ejemplo, las 3 vistas van a compartir unas cabeceras y un componente de navegación que nos indique en qué paso de la realización de la transferencia nos encontramos.
 
 Para desarrollar esto, podemos hacerlo de 3 maneras diferentes:
 
-Creando un HTML diferente para cada una de las vistas.
-Extrayendo todo el HTML común y creando componentes que se utilizasen en las 3 vistas.
-Creando una 'layout' que contenga toda la parte común a las 3 vistas e ir rellenando de manera dinámica la diferencia entre vistas.
+1. Creando un HTML diferente para cada una de las vistas.
+2. Extrayendo todo el HTML común y creando componentes que se utilizasen en las 3 vistas.
+3. Creando una 'layout' que contenga toda la parte común a las 3 vistas e ir rellenando de manera dinámica la diferencia entre vistas.
+
 La opción 1 la descartamos porque no respeta los principios de reutilización. Si necesito hacer un cambio en cualquier momento, tengo que cambiar 3 vistas.
 
 La opción 2 es bastante buena, pero no llega a ser lo suficientemente reutilizable; Sí, estamos reutilizando componentes comunes, pero aún hay partes que pueden cambiar en el tiempo y que me hagan trabajar más de la cuenta, manteniendo código idéntico.
@@ -58,7 +62,7 @@ Este anidamiento puede ser todo lo profundo que queramos, simplemente tenemos qu
 
 El anidamiento suele utilizarse también para crear la layout principal de nuestra aplicación. Como todas las vistas contarán con el header, el menú y el footer, lo que se hace es crear un componente AppView que contiene estos elementos y un componente router-view donde se renderizará la parte de la vista más específica.
 
-Pasar propiedades a un ComponentView
+## Pasar propiedades a un ComponentView
 
 Aunque un ComponentView es un componente muy especifico dentro de nuestra aplicación, y es bastante improbable que pueda ser reutilizado por estar tan acoplado con el negocio, es buena idea usar las mismas buenas prácticas que usamos en componentes más específicos.
 
@@ -108,7 +112,7 @@ Esta información es inyectada a los componentes dentro de $route.matched y es a
  
 Si la ruta no es pública, ni el usuario tiene autorización en el sistema, se devuelve al usuario a la pantalla de login. Esto se ejecutará para todas las rutas a las que naveguemos.
 
-Poner nuestro sistema de rutas en modo History de HTML5
+## Poner nuestro sistema de rutas en modo History de HTML5
 
 Un SPA suele contar con un sistema de rutas precedido por una almohadilla. De esta forma, el navegador sabe que no tiene que resolver la ruta contra un servidor, ni hace una recarga de la página, sino que intenta solucionar la ruta a nivel interno de navegador. De esta manera, la librería de rutas intercepta el nuevo valor y actúa según su configuración.
 
@@ -139,9 +143,12 @@ Esta regla nos redirige a index.html cada vez que no encuentra la ruta especific
 
 Si usamos un NGINX, lo deberíamos hacer así:
 
+```
 location / { 
     try_files $uri $uri/ /index.html; 
 }
+```
+
 Si queremos que el propio NodeJS nos gestione esto, contamos con un middleware de Express que nos permite configurar este redireccionamiento a nivel de servidor: connect-history-api-fallback.
 
 El problema que seguimos teniendo con esto es que si la ruta no existe, se nos seguirá redirigiendo a index.html no dando información al usuario de que esa ruta no existe. Para solucionar esto, podemos registrar una ruta genérica en vue-router que siempre se ejecutará cuando ninguna otra regla haya conseguido relacionarse:
@@ -151,7 +158,7 @@ El problema que seguimos teniendo con esto es que si la ruta no existe, se nos s
  
 Para cualquier ruta (wildcard *), mostramos el componente NotFoundView. De esta forma siempre damos una información adecuada al usuario.
 
-Cambiar el comportamiento del scroll
+## Cambiar el comportamiento del scroll
 
 Otro 'daño colateral' de usar el modo histórico de HTML5 y no el comportamiento de URLs por defecto de un SPA, es que podemos gestionar en qué parte del scroll queremos colocar nuestra nueva vista; Cuando naveguemos podemos preferir que la nueva vista siempre se sitúe en su parte superior o que mantenga el scroll de la ruta de la que procedemos.
 
@@ -169,8 +176,9 @@ En el ejemplo de arriba, hemos indicado que scroll siempre se sitúe en la parte
  
 Esta función tiene acceso a los datos de la meta información de una ruta, por lo que el comportamiento del scroll es tan configurable como nosotros necesitemos.
 
-Nota: Esta funcionalidad, como decíamos, solo funciona con el modo 'history' activo.
-Todo junto
+> Nota: Esta funcionalidad, como decíamos, solo funciona con el modo 'history' activo.
+
+## Todo junto
 
 Ahora vamos a juntar todos estos conocimiento y a hacer un pequeño ejemplo. Vamos a implementar del todo la funcionalidad de transferencias de apartados anteriores.
 
@@ -188,7 +196,7 @@ Lo siguiente es desarrollar los componentes y la configuración de rutas:
  
 Si vemos el ejemplo con detalle, veremos que se incluye la funcionalidad de history mode HTML5, el anidamiento de rutas, el paso de parámetros como propiedad y el control del scroll.
 
-Conclusión
+## Conclusión
 
 A lo largo de estos 3 últimos posts hemos hecho un repaso a todo lo que puede aportarnos una librería como vue-router. No es una librería innovadora, ni lo necesita ser, simplemente es una opción que se integra perfectamente con el ecosistema de vue para la gestión de rutas.
 
@@ -197,21 +205,3 @@ Terminado este capítulo, entraremos en una nueva fase de la serie donde estudia
 Por ahora la experiencia está mereciendo la pena y lo aprendido es coherente con lo que muchos fronts han demandado a lo largo de los años a un framework JavaScript.
 
 Nos leemos :)
-
-En anteriores post de VueJS en El Abismo:
-
-Introducción
-
-VueJS: The Progressive JavaScript Framework
-VueJS: Trabajando con templates
-VueJS: Enlazando clases y estilos
-Desarrollando con componentes
-
-VueJS: Creando componentes
-VueJS: El ciclo de vida de un componente
-VueJS: Definiendo componentes en un único fichero
-Las rutas en nuestro SPA
-
-VueJS: Introduciendo rutas en nuestra aplicación
-VueJS: Interceptores de navegación entre rutas
-VueJS: Conceptos avanzados de vue-router
