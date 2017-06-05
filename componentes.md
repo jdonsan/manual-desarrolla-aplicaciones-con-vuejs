@@ -6,13 +6,12 @@ VueJS no iba a ser menos y basa su funcionamiento en el aislamiento de estados y
 
 Como en casi todos los casos - quizá a excepción de Polymer - sufre de todo aquello bueno y malo de estas soluciones. Para explicar cómo trabajar con componentes en VueJS lo mejor será desarrollar un ejemplo. En este ejemplo vamos a explicar qué son las propiedades, qué son los eventos personalizados y qué son 'slots'. ¿Empezamos?
 
-Leer más…
 
-El ejemplo
+## El ejemplo
 
 El desarrollo que vamos a hacer es un pequeño 'marketplace' para la venta de cursos online. El usuario va a poder indicar el tiempo en meses que desea tener disponible la plataforma en cada uno de los cursos.
 
-Creando la instancia
+### Creando la instancia
 
 Para ello lo que vamos a crear es un primer componente llamado course. Para hacer esto, tenemos que registrar un nuevo componente dentro del framework de la siguiente manera:
 
@@ -21,7 +20,7 @@ Para ello lo que vamos a crear es un primer componente llamado course. Para hace
  
 Con esto ya podremos hacer uso de él en cualquier plantilla en el que necesitemos un ítem curso dentro de nuestra app. Hemos incluido unos datos de inicialización del componente. En este caso datos de la cabecera. Cómo puedes apreciar, en un componente, data se define con una función y no con un objeto.
 
-Incluyendo propiedades
+### Incluyendo propiedades
 
 Un componente no deja de ser una caja negra del cual no sabemos qué HTML se va a renderizar, ni tampoco sabemos como se comporta su estado interno. Este sistema de cajas negras es bastante parecido al comportamiento de una función pura en JavaScript.
 
