@@ -231,27 +231,72 @@ Lo que hemos hecho es meter el método y el modelo en las zonas reservadas para 
 
 Teniendo esto, tenemos el 50% hecho de nuestra "aplicación". Lo siguiente que vamos a ver es la definición de los tres componentes visuales en los que he dividido la interfaz. Empecemos por el componente game-header:
 
- 
+```javascript
+Vue.component('game-header', {
+    template: '<h1>Video Games</h1>'
+});
 
+```
  
 Nada del otro mundo. Lo único que estamos haciendo es registrar un componente de manera global con la etiqueta game-header. De esta forma ya podrá usar en las instancias de Vue. Internamente definimos un 'template' sencillo con el título.
 
 El siguiente componente tiene un poco más de chicha. Se trata del componente game-add, el combobox encargado de incluir nuevas películas.
 
- 
+```javascript
+Vue.component('game-add', {
+    template: `
+        <div>
+            <input type="text" v-model="titleGame" />
+            <button @click="emitNewGame">Añadir</button>
+        </div> 
+    `,
+    data: function () {
+        return {
+            titleGame: null
+        }
+    },
+    methods: {
+        emitNewGame: function () {
+            if (this.titleGame) {
+                this.$emit('new', { title: this.titleGame });
+                this.titleGame = null;
+            }
+        }
+    },
+});
 
+```
  
 Miremos un poco en detalle:
 
-[línea 3]: Volvemos a definir una plantilla HTML con un único elemento raíz.
-[línea 4]: El elemento tiene una directiva v-model que nos va a permitir ir obteniendo el valor del input e ir incluyéndolo en la variable titleGame.
-[línea 5]: El elemento tiene una directiva @click que lo que nos permite es registrar una función cuando se genere el evento clic sobre el botón.
-[línea 8]: El elemento data se inicializa, en un componente, con una función y no con un objeto. En su post veremos la razón de esto. Si ponemos un objeto, recibiremos un error de VueJS.
-[línea 14]: La función se encarga de ver si el input se encuentra vacío y emitir un evento hacia componentes padres con el nuevo título de la película.
+* [línea 3]: Volvemos a definir una plantilla HTML con un único elemento raíz.
+
+* [línea 4]: El elemento tiene una directiva v-model que nos va a permitir ir obteniendo el valor del input e ir incluyéndolo en la variable titleGame.
+
+* [línea 5]: El elemento tiene una directiva @click que lo que nos permite es registrar una función cuando se genere el evento clic sobre el botón.
+
+* [línea 8]: El elemento data se inicializa, en un componente, con una función y no con un objeto. En su post veremos la razón de esto. Si ponemos un objeto, recibiremos un error de VueJS.
+
+* [línea 14]: La función se encarga de ver si el input se encuentra vacío y emitir un evento hacia componentes padres con el nuevo título de la película.
+
 Los siguientes componentes se encargan de pintar el listado de películas. Son el componente game-list y el componente game-item:
 
- 
+```javascript
+Vue.component('game-list', {
+    props: ['games'],
+    template: `
+        <ol>
+            <game-item v-for="item in games" :game="item" :key="item.id"></game-item>
+        </ol>
+    `
+});
 
+Vue.component('game-item', {
+    props: ['game'],
+    template: '<li>{{ game.title }}</li>'
+});
+
+```
  
 El componente game-list recibe un modelo como propiedad. Se trata del listado de películas a mostrar. En el template vemos la directiva v-for encargado de iterar los juegos e ir pintando diferentes componentes game-item.
 El componente game-item recibe un modelo y lo pinta.
@@ -259,9 +304,73 @@ El sistema es reactivo, es decir que si yo inserto un nuevo elemento en el array
 
 En el siguiente Gist podemos ver todo junto:
 
- 
+```javascript
+Vue.component('game-add', {
+    template: `
+        <div>
+            <input type="text" v-model="titleGame" />
+            <button @click="emitNewGame">Añadir</button>
+        </div> 
+    `,
+    data: function () {
+        return {
+            titleGame: null
+        }
+    },
+    methods: {
+        emitNewGame: function () {
+            if (this.titleGame) {
+                this.$emit('new', { title: this.titleGame });
+                this.titleGame = null;
+            }
+        }
+    },
+});
 
- 
+Vue.component('game-list', {
+    props: ['games'],
+    template: `
+        <ol>
+            <game-item v-for="item in games" :game="item" :key="item.id"></game-item>
+        </ol>
+    `
+});
+
+Vue.component('game-item', {
+    props: ['game'],
+    template: '<li>{{ game.title }}</li>'
+});
+
+Vue.component('game-header', {
+    template: '<h1>Video Games</h1>'
+});
+
+const app = new Vue({
+    el: '#app',
+    template: `
+        <div class="view">
+            <game-header></game-header>
+            <game-add @new="addNewGame"></game-add>
+            <game-list v-bind:games="games"></game-list>
+        </div>
+    `,
+    data: {
+        message: 'Video Games',
+        games: [
+            { title: 'ME: Andromeda' },
+            { title: 'Fifa 2017' },
+            { title: 'League of Legend' }
+        ]
+    },
+    methods: {
+        addNewGame: function (game) {
+            this.games.push(game);
+        }
+    }
+});
+
+```
+
 ## Conclusión
 
 Nos queda mucho camino por recorrer, pero parece que la filosofía de VueJS tiene sentido. Hay un equipo de personas muy competentes del mundo JavaScript que han sabido extraer de las herramientas que han usado en el pasado, todas las características buenas y  las han desarrollado aquí.
