@@ -10,14 +10,15 @@ No sé cuanto durará esta serie, así que lo mejor es que nos pongamos al lío 
 
 ## ¿Qué es VueJS?
 
-Vue (pronunciado como viu) es la nueva herramienta JavaScript creada por Evan You, miembro bastante conocido en la comunidad por participar en el desarrollo de Meteor y por ser desarrollador de Google durante varios años.
+Vue (pronunciado como viu) es la nueva herramienta JavaScript creada por [Evan You](https://www.linkedin.com/in/evanyou/ "Currículum de Evan You"), miembro bastante conocido en la comunidad por participar en el desarrollo de [Meteor](https://www.meteor.com/ "Web oficcial de meteor") y por ser desarrollador de Google durante varios años.
 
-Evan You define su herramienta como un framework progresivo. Progresivo porque el frameworks se encuentra dividido en diferentes librerías bien acotadas que tienen una responsabilidad específica. De esta manera, el desarrollador va incluyendo los diferentes módulos según las necesidades del contexto en el que se encuentre. No es necesario incluir toda la funcionalidad desde el principio como en el caso de frameworks como Angular.
+Evan You define su herramienta [como un framework progresivo](http://slides.com/evanyou/progressive-javascript#/ "Slides de Evan You hablando sobre framework progresivo"). Progresivo porque el frameworks se encuentra dividido en diferentes librerías bien acotadas que tienen una responsabilidad específica. De esta manera, el desarrollador va incluyendo los diferentes módulos según las necesidades del contexto en el que se encuentre. No es necesario incluir toda la funcionalidad desde el principio como en el caso de frameworks como [Angular](https://github.com/angular/angular "Repositorio de Angular").
 
-Es un sistema de modularización bastante parecido al de ReactJS. Facebook desarrolló un core para poder trabajar con vistas, pero a partir de ahí se han ido creando toda una serie de librerías (tanto por parte de Facebook como de la comunidad) que permite trabajar de una manera eficiente en un SPA. Aquí todas las piezas importantes se enmarcan dentro del proyecto de VueJS creado por Evan You.
+Es un sistema de modularización bastante parecido al de ReactJS. Facebook desarrolló un core para poder trabajar con vistas, pero a partir de ahí se han ido creando toda una serie de librerías (tanto por parte de Facebook como de la comunidad) que permite trabajar de una manera eficiente en un SPA. Aquí todas las piezas importantes se enmarcan dentro del proyecto de [VueJS](https://github.com/vuejs "Repositorios de VueJS") creado por Evan You.
 
-A lo largo de estos primeros posts nos centraremos en el estudio del core del framework, por ahora dejaremos de lado a vue-router y a vuex, aunque en algún momento llegaremos hasta ellos.
-El core principal permite el desarrollo de componentes de UI por medio de JavaScript. La librería se enmarca dentro las arquitecturas de componentes (que tan de moda están) con una gestión interna de modelos basada en el patrón MVVM. Esto quiere decir que los componentes, internamente, tienen mecanismos de doble data-binding para manipular el estado de la aplicación.
+> A lo largo de estos primeros posts nos centraremos en el estudio del core del framework, por ahora dejaremos de lado a [vue-router](https://github.com/vuejs/vue-router "Repositorio de vue-router") y a [vuex](https://github.com/vuejs/vuex "Repositorio de vuex"), aunque en algún momento llegaremos hasta ellos.
+
+El core principal permite el desarrollo de componentes de UI por medio de JavaScript. La librería se enmarca dentro las arquitecturas de componentes (que tan de moda están) con una gestión interna de modelos basada en el patrón [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel "Wikipedia del patrón MVVM"). Esto quiere decir que los componentes, internamente, tienen mecanismos de doble data-binding para manipular el estado de la aplicación.
 
 Presume de ser una librería bastante rápida que consigue renderizar en mejores tiempos que ReactJS. Estos son los tiempos que podemos encontrar en su documentación:
 
