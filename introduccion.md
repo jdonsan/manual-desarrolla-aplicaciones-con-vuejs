@@ -110,7 +110,7 @@ Antes de que pasemos al código, me gustaría recomendaros un par de herramienta
 
 ### Depurando el código
 
-Casi todos los frameworks importantes cuentan con una herramienta específica para poder depurar y analizar ciertos aspectos de nuestras aplicaciones. VueJS no iba a ser menos y cuenta con un plugin para Firefox y Chrome que se integra con el resto de herramientas de desarrollo de ambos navegadores.
+Casi todos los frameworks importantes cuentan con una herramienta específica para poder depurar y analizar ciertos aspectos de nuestras aplicaciones. VueJS no iba a ser menos y (cuenta con un plugin para Firefox y Chrome)[https://github.com/vuejs/vue-devtools] que se integra con el resto de herramientas de desarrollo de ambos navegadores.
 
 He podido probar la herramienta de Chrome y me ha sorprendido lo fácil que es de usar. En la versión con la que he podido trastear, es posible inspeccionar los componentes que se encuentran en nuestro HTML. Esta inspección nos permite ver los modelos que se encuentran enlazados y la posibilidad de depurar esta información.
 
@@ -284,13 +284,13 @@ Miremos un poco en detalle:
 
 * [línea 3]: Volvemos a definir una plantilla HTML con un único elemento raíz.
 
-* [línea 4]: El elemento tiene una directiva v-model que nos va a permitir ir obteniendo el valor del input e ir incluyéndolo en la variable titleGame.
+* **[línea 4]**: El elemento tiene una directiva v-model que nos va a permitir ir obteniendo el valor del input e ir incluyéndolo en la variable titleGame.
 
-* [línea 5]: El elemento tiene una directiva @click que lo que nos permite es registrar una función cuando se genere el evento clic sobre el botón.
+* **[línea 5]**: El elemento tiene una directiva @click que lo que nos permite es registrar una función cuando se genere el evento clic sobre el botón.
 
-* [línea 8]: El elemento data se inicializa, en un componente, con una función y no con un objeto. En su post veremos la razón de esto. Si ponemos un objeto, recibiremos un error de VueJS.
+* **[línea 8]**: El elemento data se inicializa, en un componente, con una función y no con un objeto. En su post veremos la razón de esto. Si ponemos un objeto, recibiremos un error de VueJS.
 
-* [línea 14]: La función se encarga de ver si el input se encuentra vacío y emitir un evento hacia componentes padres con el nuevo título de la película.
+* **[línea 14]**: La función se encarga de ver si el input se encuentra vacío y emitir un evento hacia componentes padres con el nuevo título de la película.
 
 Los siguientes componentes se encargan de pintar el listado de películas. Son el componente game-list y el componente game-item:
 
@@ -312,10 +312,11 @@ Vue.component('game-item', {
 ```
  
 El componente game-list recibe un modelo como propiedad. Se trata del listado de películas a mostrar. En el template vemos la directiva v-for encargado de iterar los juegos e ir pintando diferentes componentes game-item.
-El componente game-item recibe un modelo y lo pinta.
+
+El componente `game-item` recibe un modelo y lo pinta.
 El sistema es reactivo, es decir que si yo inserto un nuevo elemento en el array de películas, VueJS es lo suficientemente inteligente para saber que tiene que renderizar los elementos precisos.
 
-En el siguiente Gist podemos ver todo junto:
+En el siguiente ejemplo podemos ver todo junto:
 
 ```javascript
 Vue.component('game-add', {
