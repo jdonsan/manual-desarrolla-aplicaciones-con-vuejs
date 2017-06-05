@@ -95,7 +95,7 @@ La librería tiene una gestión de errores súper descriptiva por lo que os reco
 
 Antes de que pasemos al código, me gustaría recomendaros un par de herramientas que nos pueden ser muy útiles para trabajar con VueJS.
 
-Depurando el código
+## Depurando el código
 
 Casi todos los frameworks importantes cuentan con una herramienta específica para poder depurar y analizar ciertos aspectos de nuestras aplicaciones. VueJS no iba a ser menos y cuenta con un plugin para Firefox y Chrome que se integra con el resto de herramientas de desarrollo de ambos navegadores.
 
@@ -109,7 +109,7 @@ La otra funcionalidad que incluye es la posibilidad de detectar todos los evento
 
 El plugin es mantenido por la propia comunidad de VueJS, por lo que, por ahora, su actualización se da por descontado.
 
-Gestionando un proyecto real
+## Gestionando un proyecto real
 
 La forma en la que hemos instalado la primera dependencia de VueJS es algo rudimentaria. Cuando empezamos un proyecto, suele ser buena idea empezar desde un código base, una plantilla que contenga aquella parte de flujo de trabajo, necesario para trabajar en una plataforma en concreto.
 
@@ -119,8 +119,11 @@ vue-cli no solo nos ayudará a empezar rápidamente en un proyecto, sino que ade
 
 Para instalarlo como dependencia global, solo tendremos que lanzar el siguiente comando:
 
+```
 $ npm install -g vue-cli
-Desarrollando más rápido
+```
+
+## Desarrollando más rápido
 
 Los nuevos editores de texto permiten incluir pequeños plugins para añadir funcionalidad extra. En Visual Studio Code contamos con unos cuantos plugins que nos pueden ayudar a desarrollar más rápido. Dos de los más usados son:
 
@@ -151,11 +154,16 @@ Lo siguiente que vamos a hacer es añadirle una pequeña plantilla con el HTML d
  
 Lo que hacemos es configurar la plantilla que queremos que renderice VueJS. Bueno, parece que la plantilla tiene bastante magia y que poco tiene que ver con HTML. Tenéis razón hay muchas cosas que VueJS está haciendo aquí. Veamos qué ocurre:
 
-[línea 4]: Defino toda la plantilla dentro de un elemento div. Todo componente o instancia tiene que encontrarse dentro de un elemento raíz. VueJS nos devuelve un error de no ser así y renderizará mal el HTML.
-[línea 5]: Aquí he definido un componente. Con VueJS puede extender nuestro HTML con nueva semántica. En este caso un componente que va a hacer de cabecera.
-[línea 6]: Vuelvo a definir otro componente. En este caso, es un componente que cuenta con un input y un button. Lo veremos más tarde. De este elemento, lo más destacable es el atributo @new="addNewGame. Es un nuevo atributo que no se encuentra en el estándar de HTML ¿Qué es entonces? Estos elementos personalizados son lo que en VueJS se entiende como directivas. Son un marcado personalizado que aporta nueva funcionalidad al elemento HTML marcado. En este caso, lo que estamos haciendo es añadir un listener que escucha en el evento add, cada vez que el componente game-addemite un evento add, el elemento padre se encuentra escuchando y ejecuta la función addNewGame. No os preocupéis si no lo entendéis ahora porque lo explicaremos en un post dedicado a la comunicación entre componentes.
-[línea 7]: En esta línea hemos añadido otro componente. Este componente  game-list se encarga de pintar por pantalla el listado de videojuegos favoritos. Como vemos, tiene una nueva directiva que no conocíamos de VueJS: v-bind. Esta directiva lo que hace es enlazar una propiedad interna de un componente con un modelo del elemento padre, en este caso el modelo games.
-Vale, parece que la plantilla se puede llegar a entender. Si nos damos cuenta hay dos elementos que hemos usado en la plantilla que no hemos definido en ninguna parte en nuestra primera instancia de VueJS: addNewGamey games. Para definirlos los hacemos de la siguiente manera:
+* [línea 4]: Defino toda la plantilla dentro de un elemento div. Todo componente o instancia tiene que encontrarse dentro de un elemento raíz. VueJS nos devuelve un error de no ser así y renderizará mal el HTML.
+
+* [línea 5]: Aquí he definido un componente. Con VueJS puede extender nuestro HTML con nueva semántica. En este caso un componente que va a hacer de cabecera.
+
+* [línea 6]: Vuelvo a definir otro componente. En este caso, es un componente que cuenta con un input y un button. Lo veremos más tarde. De este elemento, lo más destacable es el atributo @new="addNewGame. Es un nuevo atributo que no se encuentra en el estándar de HTML ¿Qué es entonces? Estos elementos personalizados son lo que en VueJS se entiende como directivas. Son un marcado personalizado que aporta nueva funcionalidad al elemento HTML marcado. En este caso, lo que estamos haciendo es añadir un listener que escucha en el evento add, cada vez que el componente game-addemite un evento add, el elemento padre se encuentra escuchando y ejecuta la función addNewGame. No os preocupéis si no lo entendéis ahora porque lo explicaremos en un post dedicado a la comunicación entre componentes.
+
+* [línea 7]: En esta línea hemos añadido otro componente. Este componente  game-list se encarga de pintar por pantalla el listado de videojuegos favoritos. Como vemos, tiene una nueva directiva que no conocíamos de VueJS: v-bind. Esta directiva lo que hace es enlazar una propiedad interna de un componente con un modelo del elemento padre, en este caso el modelo games.
+
+Vale, parece que la plantilla se puede llegar a entender. 
+Si nos damos cuenta hay dos elementos que hemos usado en la plantilla que no hemos definido en ninguna parte en nuestra primera instancia de VueJS: addNewGamey games. Para definirlos los hacemos de la siguiente manera:
 
  
 
@@ -195,10 +203,12 @@ En el siguiente Gist podemos ver todo junto:
  
 
  
-Conclusión
+## Conclusión
 
 Nos queda mucho camino por recorrer, pero parece que la filosofía de VueJS tiene sentido. Hay un equipo de personas muy competentes del mundo JavaScript que han sabido extraer de las herramientas que han usado en el pasado, todas las características buenas y  las han desarrollado aquí.
 
-El ejemplo es simple, pero si nos puede dar una idea de lo intuitivo y fácil que puede llegar a ser. Si vienes de utilizar frameworks y librerías orientadas a componentes no te costará el cambio. Si vienes de un mundo más artesano que hace uso de jQuery y/o Handlebars, el aprendizaje progresivo que propone, y el sistema de plugins, te puede ayudar e incluso a sonar muy parecido. Y... si eres nuevo en el mundo JavaScript... bienvenido, cualquier sitio es bueno para empezar.
+El ejemplo es simple, pero si nos puede dar una idea de lo intuitivo y fácil que puede llegar a ser. Si vienes de utilizar frameworks y librerías orientadas a componentes no te costará el cambio. 
+
+Si vienes de un mundo más artesano que hace uso de jQuery y/o Handlebars, el aprendizaje progresivo que propone, y el sistema de plugins, te puede ayudar e incluso a sonar muy parecido. Y... si eres nuevo en el mundo JavaScript... bienvenido, cualquier sitio es bueno para empezar.
 
 Nos leemos :)
