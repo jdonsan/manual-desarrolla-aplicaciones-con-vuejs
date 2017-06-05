@@ -6,9 +6,7 @@ Cuando queremos hacer aplicaciones más grandes, el sistema utilizado (todos los
 
 Lo que haremos, será explicar cómo empezar un proyecto VueJS a partir de las plantillas establecidas por la comunidad como estándar, y a partir de ahí, empezar a explicar las formas en las que podremos organizar las diferentes partes de nuestro código.
 
-Leer más…
-
-Creando un proyecto con vue-cli
+## Creando un proyecto con `vue-cli`
 
 Cuando hemos decidido dar el paso de realizar nuestro próximo proyecto con VueJS, tendremos que tener claro si nos queremos meter en el ecosistema de esta plataforma. Hacer un SPA va mucho más allá de crear componentes, y casarnos con VueJS sin conocerlo bien, puede traer consecuencias.
 
@@ -16,31 +14,43 @@ Si hemos decidido que es el camino a seguir, VueJS no nos deja solos, sino que n
 
 Para instalar la herramienta, necesitamos tener instalado NodeJS y NPM. Lo siguiente es ejecutar el siguiente comando en el terminal:
 
+```
 $ npm install -g vue-cli
+```
+
 Esto lo que hace es instalar la herramienta de vue-cli de manera global en el sistema para que hagamos uso de ella.  Para saber si la herramienta se ha instalado correctamente, ejecutaremos el siguiente comando:
 
+```
 $ vue -V
+```
+
 Esto nos dirá la versión de vue-cli que tenemos instalada. En mi caso la 2.8.1.
 
 Lo siguiente es hacer uso de ella. Vayamos desde el terminal a aquella carpeta donde queremos que se encuentre nuestro nuevo proyecto de VueJS. Lo siguiente es comprobar las plantillas que nos ofrece la herramienta. Para ello ejecutamos el siguiente comando:
 
+```
 $ vue list
+```
+
 Esto nos listará todas las plantillas. En el momento de crear este posts contábamos con 5 maneras:
 
-browserify: nos genera una plantilla con todo lo necesario para que el empaquetado de nuestra SPA se haga con browserify.
-browserify-simple: es parecida a la anterior. Empaqueta con browserify, pero la estructura en carpetas será más simple. Nos será útil para crear prototipos.
-simple: Es una plantilla sencilla, muy parecida a la de los ejemplos de post anteriores.
-webpack: igual que la de browserify, pero con el empaquetador webpack.
-webpack-simple: igual que browserify-simple, pero con webpack.
+* **browserify**: nos genera una plantilla con todo lo necesario para que el empaquetado de nuestra SPA se haga con browserify.
+* **browserify-simple**: es parecida a la anterior. Empaqueta con browserify, pero la estructura en carpetas será más simple. Nos será útil para crear prototipos.
+* **simple**: Es una plantilla sencilla, muy parecida a la de los ejemplos de post anteriores.
+* **webpack**: igual que la de browserify, pero con el empaquetador webpack.
+* **webpack-simple**: igual que browserify-simple, pero con webpack.
 Nosotros nos vamos basar en la plantilla de ẁebpack para empezar nuestro proyecto. Para empezar el proyecto ejecutamos el siguiente comando:
 
+```
 $ vue init webpack my-new-app
+```
+
 Lo que este comando hace es generar una aplicación llamada my-new-app con la plantilla de webpack.
 
 Lo que hará vue-cli es una serie de preguntas para que configuremos ciertos aspectos a nuestro gusto. En el momento de creación del post, eran las siguientes:
 
-? Project name: nos deja elegir un nombre para el proyecto, podemos coger el que hemos indicado por defecto.
-? Project description: una descripción que será incluida en el package.json del proyecto.
+* ? Project name: nos deja elegir un nombre para el proyecto, podemos coger el que hemos indicado por defecto.
+* ? Project description: una descripción que será incluida en el package.json del proyecto.
 ? Author: El auto a incluir en el package.json
 ? Runtime + Compiler or Runtime-only: nos deja elegir si queremos incluir el compilador dentro de la solución.
 ? Install vue-router: Nos incluye un router por defecto en la solución y las dependencias necesarias.
