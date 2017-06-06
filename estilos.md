@@ -10,18 +10,18 @@ El post de hoy vamos a dedicarlo a explicar cómo podemos incluir o quitar clase
 
 ## Enlazando clases
 
-Para enlazar una variable a una clase, hacemos uso de la directiva v-bind:class o su alternativa corta :class. Con esta declaración, podemos guardar el nombre de clases en variables y jugar con ello a nuestro antojo de manera reactiva.
+Para enlazar una variable a una clase, hacemos uso de la directiva `v-bind:class` o su alternativa corta `:class`. Con esta declaración, podemos guardar el nombre de clases en variables y jugar con ello a nuestro antojo de manera reactiva.
 
 Por ejemplo, yo podría hacer esto:
 
  
 
  
-De esta manera, he enlazado la variable winner de mi modelo player1 a la directiva :class. Lo que VueJS va a intentar es coger el contenido de winner y lo va a insertar como una clase.
+De esta manera, he enlazado la variable winner de mi modelo player1 a la directiva `:class`. Lo que VueJS va a intentar es coger el contenido de winner y lo va a insertar como una clase.
 
 Esto nos da poca versatilidad porque nos hace acoplarnos demasiado a una sola variable y no nos permite incluir más en un elemento. Sin embargo, VueJS acepta otras formas de enlazar modelos para conseguir funcionamientos más flexibles.
 
-Dentro de la directiva v-bind:class podemos enlazar tanto un objeto como un array. Veamos qué nos aporta cada caso:
+Dentro de la directiva `v-bind:class` podemos enlazar tanto un objeto como un array. Veamos qué nos aporta cada caso:
 
 ### Enlazando un objeto
 
@@ -30,7 +30,7 @@ Podemos enlazar un objeto en un elemento para indicar si una clase se tiene que 
  
 
  
-Cuando la variable player1.winner contenga un true la clase winner se renderizará. Cuando contenga false no se incluirá.  De esta manera puedo poner el toggle de las funciones que quiera. Este objeto, me lo puedo llevar a mi parte JavaScript y jugar con el cómo necesite.
+Cuando la variable `player1.winner` contenga un `true` la clase winner se renderizará. Cuando contenga false no se incluirá.  De esta manera puedo poner el toggle de las funciones que quiera. Este objeto, me lo puedo llevar a mi parte JavaScript y jugar con él como necesite.
 
 ### Enlazando un array
 
@@ -39,12 +39,12 @@ Puede darse el caso también, que no solo necesite hacer un toggle de clases. Pu
  
 
  
-En este caso lo que quiero es que el elemento div tenga la clase box y lo que contenga internamente la variable winner . Con esto se puede jugar bastante y crear híbridos como el siguiente:
+En este caso lo que quiero es que el elemento `div` tenga la clase `box` y lo que contenga internamente la variable `winner`. Con esto se puede jugar bastante y crear híbridos como el siguiente:
 
  
 
  
-En este caso, hago que winner se incluya o no dependiendo del valor de player1.winner.
+En este caso, hago que winner se incluya o no dependiendo del valor de `player1.winner`.
 
 Al igual que pasaba con los objetos, esta estructura de datos puede ser almacenada en JS y ser enlazada directamente.
 
@@ -71,7 +71,7 @@ VueJS primero coloca las clases que tenía definido en su plantillas interna y l
 
 ## Enlazando estilos
 
-También podemos enlazar estilos directamente en un elemento. En vez de usar la directiva v-bind:class, tenemos que usar la directiva v-bind:style. Haríamos esto:
+También podemos enlazar estilos directamente en un elemento. En vez de usar la directiva `v-bind:class`, tenemos que usar la directiva v-bind:style. Haríamos esto:
 
  
 
@@ -89,7 +89,7 @@ Me detengo menos en esta directiva porque creo que es mala práctica incluir est
 
 ### A tener en cuenta
 
-Cuando incluimos un elemento CSS que suele llevar prefijos debido a que no está estandarizado todavía (imaginemos en transform por ejemplo), no debemos precuparnos, pues VueJS lo tiene en cuenta y el mismo añadirá todos los prefijos necesarios
+Cuando incluímos un elemento CSS que suele llevar prefijos debido a que no está estandarizado todavía (imaginemos en transform por ejemplo), no debemos preocuparnos, pues VueJS lo tiene en cuenta y el mismo añadirá todos los prefijos necesarios
 
 ## Todo junto
 
@@ -109,7 +109,7 @@ Estas son las clases que dan forma a nuestros cuatro pokemons y las que vamos a 
  
 El código anterior define un componente pokemon con diferentes divs para simular la anatomía 'estilo lego' de un pokemon.
 
-La instancia de VueJS define una aplicación que simula la batalla. Lo que hacemos es definir dos jugadores (líneas 14 y 15), un listado de pokemons (líneas de la 16 a la 20) y una tabla de resultados posibles donde x​ e y indican quien ganaría entre los pokemons seleccionados por ambos jugadores (líneas 22 a la 26).
+La instancia de VueJS define una aplicación que simula la batalla. Lo que hacemos es definir dos jugadores (líneas 14 y 15), un listado de pokemons (líneas de la 16 a la 20) y una tabla de resultados posibles donde x​ e y indican quién ganaría entre los pokemons seleccionados por ambos jugadores (líneas 22 a la 26).
 
 Hemos definido dos métodos para simular el combate. El método fight obtiene el id de ambos jugadores y busca la posición en la tabla de resultados. Dependiendo del resultado dado, se indica el jugador que ha ganado. El método `resetWinner` nos permite reiniciar la partida para empezar una nueva.
 
