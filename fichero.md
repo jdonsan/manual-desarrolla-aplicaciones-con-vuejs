@@ -10,7 +10,7 @@ Lo que haremos, será explicar cómo empezar un proyecto VueJS a partir de las p
 
 Cuando hemos decidido dar el paso de realizar nuestro próximo proyecto con VueJS, tendremos que tener claro si nos queremos meter en el ecosistema de esta plataforma. Hacer un SPA va mucho más allá de crear componentes, y casarnos con VueJS sin conocerlo bien, puede traer consecuencias.
 
-Si hemos decidido que es el camino a seguir, VueJS no nos deja solos, sino que nos sigue ayudando en nuestra comprensión progresiva del framework. Lo mejor que podemos hacer para empezar un proyecto es hacer uso de su herramienta vue-cli. Esta herramienta es una interfaz de linea de comandos que nos va a permitir generar un proyecto con todo aquello necesario para empezar con VueJS.
+Si hemos decidido que es el camino a seguir, VueJS no nos deja solos, sino que nos sigue ayudando en nuestra comprensión progresiva del framework. Lo mejor que podemos hacer para empezar un proyecto es hacer uso de su herramienta `vue-cli`. Esta herramienta es una interfaz de línea de comandos que nos va a permitir generar un proyecto con todo aquello necesario para empezar con VueJS.
 
 Para instalar la herramienta, necesitamos tener instalado NodeJS y NPM. Lo siguiente es ejecutar el siguiente comando en el terminal:
 
@@ -18,13 +18,13 @@ Para instalar la herramienta, necesitamos tener instalado NodeJS y NPM. Lo sigui
 $ npm install -g vue-cli
 ```
 
-Esto lo que hace es instalar la herramienta de vue-cli de manera global en el sistema para que hagamos uso de ella.  Para saber si la herramienta se ha instalado correctamente, ejecutaremos el siguiente comando:
+Esto lo que hace es instalar la herramienta de `vue-cli` de manera global en el sistema para que hagamos uso de ella.  Para saber si la herramienta se ha instalado correctamente, ejecutaremos el siguiente comando:
 
 ```
 $ vue -V
 ```
 
-Esto nos dirá la versión de vue-cli que tenemos instalada. En mi caso la 2.8.1.
+Esto nos dirá la versión de `vue-cli` que tenemos instalada. En mi caso la 2.8.1.
 
 Lo siguiente es hacer uso de ella. Vayamos desde el terminal a aquella carpeta donde queremos que se encuentre nuestro nuevo proyecto de VueJS. Lo siguiente es comprobar las plantillas que nos ofrece la herramienta. Para ello ejecutamos el siguiente comando:
 
@@ -46,17 +46,17 @@ Nosotros nos vamos basar en la plantilla de ẁebpack para empezar nuestro proye
 $ vue init webpack my-new-app
 ```
 
-Lo que este comando hace es generar una aplicación llamada my-new-app con la plantilla de webpack.
+Lo que este comando hace es generar una aplicación llamada `my-new-app` con la plantilla de webpack.
 
-Lo que hará vue-cli es una serie de preguntas para que configuremos ciertos aspectos a nuestro gusto. En el momento de creación del post, eran las siguientes:
+Lo que hará `vue-cli` es una serie de preguntas para que configuremos ciertos aspectos a nuestro gusto. En el momento de creación del post, eran las siguientes:
 
-* ? Project name: nos deja elegir un nombre para el proyecto, podemos coger el que hemos indicado por defecto.
-* ? Project description: una descripción que será incluida en el package.json del proyecto.
-* ? Author: El auto a incluir en el package.json
-* ? Runtime + Compiler or Runtime-only: nos deja elegir si queremos incluir el compilador dentro de la solución.
-* ? Install vue-router: Nos incluye un router por defecto en la solución y las dependencias necesarias.
-* ? Use ESLint to lint your code: Nos permite incluir un linter con la plantilla que deseemos para las reglas genéricas.
-* ? Setup unit tests with Karma + Mocha: Nos incluye las dependencias de test unitarios si lo deseamos.
+* **? Project name**: nos deja elegir un nombre para el proyecto, podemos coger el que hemos indicado por defecto.
+* **? Project description**: una descripción que será incluida en el package.json del proyecto.
+* **? Author**: El auto a incluir en el `package.json`
+* **? Runtime + Compiler or Runtime-only**: nos deja elegir si queremos incluir el compilador dentro de la solución.
+* **? Install vue-router**: Nos incluye un router por defecto en la solución y las dependencias necesarias.
+* **? Use ESLint to lint your code**: Nos permite incluir un linter con la plantilla que deseemos para las reglas genéricas.
+* **? Setup unit tests with Karma + Mocha**: Nos incluye las dependencias de test unitarios si lo deseamos.
 
 Cuando hayamos contestado a ellas tendremos nuestra plantilla lista. Para cerciorarnos de que todo fue correctamente, lanzamos los siguientes comandos:
 
@@ -66,7 +66,7 @@ $ npm install
 $ npm run dev
 ```
 
-Lo que hace esto es navegar hasta la carpeta del proyecto generado, instalar todas las dependencias del proyecto y ejecutar la tarea de npm llamada dev que nos compilar y empaqueta todo, lanza la app en el navegador y se queda escuchando a posibles cambios. Si todo fue bien se abrirá una web simplona.
+Lo que hace esto es navegar hasta la carpeta del proyecto generado, instalar todas las dependencias del proyecto y ejecutar la tarea de npm llamada dev que nos compila y empaqueta todo, lanza la app en el navegador y se queda escuchando a posibles cambios. Si todo fue bien se abrirá una web simplona.
 
 Y ¿Qué ha hecho por debajo ese init? Pues nos ha generado una estructura en carpetas parecida a esta:
 
@@ -98,14 +98,14 @@ Esta estructura es orientativa y podremos cambiar aquello que no se adecue a nue
 
 ## Formas de escribir el componente
 
-Una vez que tenemos esto, podemos empezar a desarrollar componentes. Si vamos a la carpeta @/src/components/ tendremos los componentes. Los componentes terminan con la extensión .vue.  En este caso de la plantilla, encontraréis un componente llamado Hello.vue donde se encuentra todo lo necesario sobre el. Tanto el html, como su css, como su js, se encuentra aquí.
+Una vez que tenemos esto, podemos empezar a desarrollar componentes. Si vamos a la carpeta `@/src/components/` tendremos los componentes. Los componentes terminan con la extensión `.vue`.  En este caso de la plantilla, encontraréis un componente llamado `Hello.vue` donde se encuentra todo lo necesario sobre el. Tanto el html, como su css, como su js, se encuentra aquí.
 
 Es lo que VueJS llamada como componente en un único fichero. El fichero internamente tiene una forma como la siguiente:
 
  
 
  
-Encontramos tres etiquetas especiales: template, script y style, delimitan el html, el js y el css de nuestro componente respectivamente. El loader de VueJS es capaz de entender estas etiquetas y de incluir cada porción en sus paquetes correspondientes. Nosotros no tenemos que preocuparnos de ellos.
+Encontramos tres etiquetas especiales: `template`, `script` y `style`, delimitan el html, el js y el css de nuestro componente respectivamente. El loader de VueJS es capaz de entender estas etiquetas y de incluir cada porción en sus paquetes correspondientes. Nosotros no tenemos que preocuparnos de ellos.
 
 Esto nos da muchas posibilidad porque nos aísla muy bien. Si el día de mañana yo necesito un componente en otro proyecto, simplemente me tendré que llevar este fichero .vue y el componente seguirá funcionando en teoría igual.
 
@@ -122,7 +122,7 @@ Ahora nuestro componente no se encuentra en un solo fichero, sino en 3. La carpe
 
 Captura de pantalla de 2017-05-09 15-35-16.png
 
-Puede ser un buen método si quieres que varios perfiles trabajen en tus componentes. De esta forma un maquetador, o alguien que trabaje en estilos no tiene ni porque saber que existe VueJS en su proyecto ya que el css está libre de nada que tenga que ver con ello.
+Puede ser un buen método si quieres que varios perfiles trabajen en tus componentes. De esta forma un maquetador, o alguien que trabaje en estilos no tiene ni porqué saber que existe VueJS en su proyecto ya que el css está libre de nada que tenga que ver con ello.
 
 ## Conclusión
 
@@ -130,7 +130,7 @@ El post de hoy es corto, pero conciso. La forma en cómo organizas tu código es
 
 La forma en que decidamos organizar internamente un componente, no deja de ser una cuestión de gusto, por lo que, en esa cuestión, no me meteré. Lo importante es que si dentro de un proyecto decides hacerlo de una manera, seas obcecado y siempre lo hagas de esa manera, hará que tu código sea más previsible y aburrido - y ser aburrido en ciertos aspectos es bueno :).
 
-A partir de ahora, los ejemplos de la serie estarán escritos en este sistema de fichero único y sabiendo que usaremos la plantilla que vue-cli nos genera por defecto, por lo que puede ser buena idea practicar ahora para poder seguir la serie en el futuro.
+A partir de ahora, los ejemplos de la serie estarán escritos en este sistema de fichero único y sabiendo que usaremos la plantilla que `vue-cli` nos genera por defecto, por lo que puede ser buena idea practicar ahora para poder seguir la serie en el futuro.
 
 Dejaremos por ahora los componente y nos adentraremos durante unas semanas en el uso de vue-router. Otra de las piezas importantes si hemos decidido hacer nuestra próxima SPA con VueJS. Por ahora, esto es todo amigos.
 
