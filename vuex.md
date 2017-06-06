@@ -18,7 +18,10 @@ La forma en que gestionemos y estructuremos el estado de nuestra aplicación pue
 
 Son todos aquellos métodos, funciones, o procedimientos que se encargan de mutar los estados de nuestra aplicación. Se encargan de que dado x este pueda crear un nuevo estado y. La definición matemática de una función es este:
 
+```
 f(x) = y
+```
+
 Dado un estado x que es pasado a una función f es obtenido el nuevo estado y. Los paradigmas de programación se articulan como propuestas para gestionar y mutar los estados por medios de diferentes tipos de cómputos.
 
 ### ¿Cómo puedo comunicarme entre componentes?
@@ -45,7 +48,7 @@ Podría ser buena idea, para aplicaciones medias, hacer uso de un un lugar centr
  
 Lo que hacemos es crear un objeto que contiene el estado a compartir y unos métodos que se encargan de mutar este estado. De esta manera centralizamos los estados y las acciones.
 
-Ahora, podemos crear estancias de componentes que compartan parte del estado. Si uno de los componentes quieren mutar un estado compartido, hacen uso de uno de los métodos del store. Cómo el objeto se encuentra reverenciado en todos los componentes que deseamos, el cambio se realiza en todos.
+Ahora, podemos crear instancias de componentes que compartan parte del estado. Si uno de los componentes quieren mutar un estado compartido, hacen uso de uno de los métodos del store. Cómo el objeto se encuentra reverenciado en todos los componentes que deseamos, el cambio se realiza en todos.
 
 Con esto, conseguiríamos una arquitectura muy parecida a la del siguiente dibujo:
 
@@ -59,7 +62,7 @@ Como decimos, este sistema nos puede funcionar, pero cuando contamos con aplicac
 
 Cuando el ejemplo anterior se nos queda demasiado corto, es hora de incluir a nuestra aplicación de vue una alternativa llamada vuex. vuex es la implementación que ha hecho la comunidad del patrón de diseño creado por Facebook llamado flux.
 
-Cuando llega ese momento en que tienes que compartir demasiado estados comunes entre componentes, que tienes que hacer virguerías para comunicarte en tu propia comunidad, que tienes métodos o acciones muy parecidas en muchos componentes que te gustaría refactorizar o que empiezas a tener problemas para seguir la trazabilidad por la que pasa un estado en particular es momento de plantearse usar este tipo de arquitecturas.
+Cuando llega ese momento en que tienes que compartir demasiado estados comunes entre componentes, que tienes que hacer virguerías para comunicarte en tu propia comunidad, que tienen métodos o acciones muy parecidas en muchos componentes que te gustaría refactorizar o que empiezas a tener problemas para seguir la trazabilidad por la que pasa un estado en particular es momento de plantearse usar este tipo de arquitecturas.
 
 flux es una arquitectura que gestiona el estado en un objeto singleton global donde su labor es crear mecanismos para evitar que otros componentes puedan cambiar el estado de una aplicación sin su control.
 
@@ -99,7 +102,7 @@ Como `vue-cli` no nos da soporte para vuex en su generador, lo siguiente será i
 
 Captura de pantalla de 2017-05-24 12-31-06.png
 
-Dentro de este index.js crearemos todo nuestro almacenamiento de estados. Lo primero que escribimos es lo siguiente:
+Dentro de este `index.js` crearemos todo nuestro almacenamiento de estados. Lo primero que escribimos es lo siguiente:
 
 ```javascript
 import Vue from 'vue';
