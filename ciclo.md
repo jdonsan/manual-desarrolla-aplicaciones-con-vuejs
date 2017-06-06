@@ -32,7 +32,7 @@ const component1 = {
 };
 ```
 
-Para iniciar librerías o estados externos. Por ejemplo, imaginemos que queremos iniciar una colección en localSotrage para realizar un componente con posibilidad de guardado offline. Podríamos hacer lo siguiente:
+Para iniciar librerías o estados externos. Por ejemplo, imaginemos que queremos iniciar una colección en `localSotrage` para realizar un componente con posibilidad de guardado offline. Podríamos hacer lo siguiente:
 
 ```javascript
 const component = {
@@ -44,7 +44,7 @@ const component = {
 
 ### `created`
 
-Cuando se ejecuta este hook, el componente acaba de registrar tanto los observadores como los eventos, pero todavía no ha sido ni renderizado ni incluido en el DOM. Por tanto, tenemos que tener en cuenta que dentro de created no podemos acceder a $el porque todavía no ha sido montado.
+Cuando se ejecuta este hook, el componente acaba de registrar tanto los observadores como los eventos, pero todavía no ha sido ni renderizado ni incluido en el DOM. Por tanto, tenemos que tener en cuenta que dentro de created no podemos acceder a `$el` porque todavía no ha sido montado.
 
 Es uno de los más usados y nos viene muy bien para iniciar variables del estado de manera asíncrona. Por ejemplo, necesitamos que un componente pinte los datos de un servicio determinado. Podríamos hacer algo como esto:
 
@@ -118,7 +118,7 @@ const component = {
 
 ## Destruyendo el componente
 
-Un componente puede ser destruido una vez que ya no es necesario para el usuario. Esta fase de desencadena cuando queremos eliminarlo del DOM y destruir la instancia de memoria.
+Un componente puede ser destruido una vez que ya no es necesario para el usuario. Esta fase se desencadena cuando queremos eliminarlo del DOM y destruir la instancia de memoria.
 
 ### `beforeDestroy`
 
@@ -138,7 +138,7 @@ const component = {
 
 Tanto los hijos internos, como las directivas, como sus eventos y escuchadores han sido eliminados. Este hook se ejecuta cuando la instancia ha sido eliminada. Nos puede ser muy útil para limpiar estados globales de nuestra aplicación.
 
-Si antes habíamos iniciado el localStorage con una colección para dar al componente soporte offline, ahora podríamos limpiar dicha colección:
+Si antes habíamos iniciado el `localStorage` con una colección para dar al componente soporte offline, ahora podríamos limpiar dicha colección:
 
 ```javascript
 const component = {
@@ -154,7 +154,7 @@ Existen otros dos hooks que necesitan una explicación aparte.  Dentro de VueJS 
 
 Pues bien, VueJS no cuenta solo con eso, sino que cuenta con una etiqueta especial llamada keep-alive. Esta etiqueta, en combinación con la etiqueta component, permite cachear componentes que han sido quitados del DOM, pero que sabemos que pueden ser usados en breve.  Este uso hace que tanto las fases de creación, como de destrucción, no se ejecuten por obvias y que de tal modo, se haya tenido que dar una opción.
 
-VueJS nos permite engancharnos a dos nuevos métodos cuando este comportamiento ocurre. Son los llamados `actived` y `deactived`, que son usados del mismo modo que el hook created y el hook `beforeDestroy` por los desarrolladores.
+VueJS nos permite engancharse a dos nuevos métodos cuando este comportamiento ocurre. Son los llamados `actived` y `deactived`, que son usados del mismo modo que el hook created y el hook `beforeDestroy` por los desarrolladores.
 
 ## Conclusión
 
