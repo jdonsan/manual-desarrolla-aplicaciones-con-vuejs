@@ -49,7 +49,7 @@ Pues en VueJS y su sistema de componentes pasa lo mismo. Dentro de un componente
  
 
  
-Estamos indicando, dentro del atributo props del objeto options, las propiedades de entrada que queremos que tenga nuestro componente, en nuestro caso son 3: title, subitle y description, al igual que en la función.
+Estamos indicando, dentro del atributo `props` del objeto `options`, las propiedades de entrada que queremos que tenga nuestro componente, en nuestro caso son 3: `title`, `subitle` y `description`, al igual que en la función.
 
 Estas propiedades, ahora, pueden ser usadas en su template. Es buena práctica dentro de cualquier componente que indiquemos estas propiedades y que les pongamos validadores.
 
@@ -68,29 +68,29 @@ Aunque hablaremos más de props en el futuro, aquí tienes más documentación.
 
 ## Personalizando eventos
 
-Hemos visto cómo componente padre consigue comunicar datos a un componente hijo por medio de las propiedades, pero ¿Qué ocurre cuando un hijo necesita informar de ciertos datos o acciones que están ocurriendo en su interior? ¿Cómo sería el return de un componente en VueJS si fuese una función JavaScript?
+Hemos visto cómo el componente padre consigue comunicar datos a un componente hijo por medio de las propiedades, pero ¿Qué ocurre cuando un hijo necesita informar de ciertos datos o acciones que están ocurriendo en su interior? ¿Cómo sería el return de un componente en VueJS si fuese una función JavaScript?
 
 Bueno, la opción por la que ha optado VueJS, para comunicar datos entre componentes hijos con componentes padres, ha sido por medio de eventos personalizados. Un componente hijo es capaz de emitir eventos cuando ocurre algo en su interior.
 
-Tenemos que pensar en esta emisión de eventos como en una emisora de radio. Las emisoras emiten información en una frecuencia sin saber que receptores serán los que reciban la señal. Es una buena forma de escalar y emitir sin preocuparte del número de oyentes.
+Tenemos que pensar en esta emisión de eventos como en una emisora de radio. Las emisoras emiten información en una frecuencia sin saber qué receptores serán los que reciban la señal. Es una buena forma de escalar y emitir sin preocuparte del número de oyentes.
 
 En los componentes de VueJS pasa lo mismo. Un componente emite eventos y otros componentes padre tienen la posibilidad de escucharlo o no. Es una buena forma de desacoplar componentes. El sistema de comunicación es este:
 
 props-events
 
-En nuestro caso, el componente va contar con un pequeño input y un botón para añadir cursos. Lo que ocurrirá es que el componentecourse emitirá un evento de tipo add con un objeto que contiene los datos del curso y los meses que se quiere cursar:
+En nuestro caso, el componente va contar con un pequeño `input` y un botón para añadir cursos. Lo que ocurrirá es que el componente `course` emitirá un evento de tipo `add` con un objeto que contiene los datos del curso y los meses que se quiere cursar:
 
  
 
  
-Lo que hacemos es usar el método del componente llamado $emit e indicar un 'tag' para el evento personalizado, en este caso add.
+Lo que hacemos es usar el método del componente llamado `$emit` e indicar un 'tag' para el evento personalizado, en este caso `add`.
 
 Ahora, si queremos registrar una función cuando hacemos uso del componente, lo haríamos de la siguiente manera:
 
  
 
  
-Hemos registrado un evento de tipo @add que ejecutará la función addToCart cada vez que el componente emita un evento add.
+Hemos registrado un evento de tipo `@add` que ejecutará la función `addToCart` cada vez que el componente emita un evento `add`.
 
 Aunque hablaremos más de eventos en el futuro, aquí tienes más documentación.
 
@@ -100,12 +100,12 @@ Una vez que tenemos esto, hemos conseguido definir tanto propiedades de entrada,
 
 Ahora bien, me gustaría poder definir ciertos estados y comportamientos dependiendo del tipo de curso que quiero mostrar. Me gustaría que los cursos de JavaScript tuviesen un estilo y los de CSS otro.
 
-Para hacer esto, podemos extender el componente base course y crear dos nuevos componentes a partir de este que se llamen course-js y course-css. Para hacer esto en VueJS, tenemos que hacer siguiente:
+Para hacer esto, podemos extender el componente base `course` y crear dos nuevos componentes a partir de este que se llamen `course-js` y `course-css`. Para hacer esto en VueJS, tenemos que hacer siguiente:
 
  
 
  
-Lo que hemos hecho es sacar todo el constructor a un objeto llamado course. Este objeto contiene todo lo que nosotros queremos que el componente tenga como base. Lo siguiente es definir dos componentes nuevos llamados course-js y course-css donde indicamos en el parámetro mixins que queremos que hereden.
+Lo que hemos hecho es sacar todo el constructor a un objeto llamado course. Este objeto contiene todo lo que nosotros queremos que el componente tenga como base. Lo siguiente es definir dos componentes nuevos llamados `course-js` y `course-css` donde indicamos en el parámetro `mixins` que queremos que hereden.
 
 Por último,  indicamos aquellos datos que queremos sobreescribir. Nada más. VueJS se encargará de componer el constructor a nuestro gusto y de generar los componentes que necesitamos. De esta forma podemos reutilizar código y componentes. Ahora podemos declarar nuestros componentes dentro del HTML de la siguiente forma:
 
@@ -114,11 +114,11 @@ Por último,  indicamos aquellos datos que queremos sobreescribir. Nada más. Vu
  
 Ambos componentes tienen la misma firma, pero internamente se comportan de diferente manera.
 
-En el futuro hablaremos más de mixins. Si necesitas saber más sobre ello, aquí puedes.
+> En el futuro hablaremos más de mixins. Si necesitas saber más sobre ello, aquí puedes.
 
 ## Refactorizando el componente
 
-Después de crear dos componentes más específicos, se me viene a la cabeza que ese template que estamos usando en course, presenta una estructura bastante compleja. Sería buena idea que refactorizásemos esa plantilla en trozos más pequeños y especializados que nos permitan centrarnos mejor en el propósito y la responsabilidad de cada uno de ellos.
+Después de crear dos componentes más específicos, se me viene a la cabeza que ese template que estamos usando en course, presenta una estructura bastante compleja. Sería buena idea que refactorizásemos esa plantilla en trozos más pequeños y especializados que nos permiten centrarnos mejor en el propósito y la responsabilidad de cada uno de ellos.
 
 Sin embargo, si vemos los componentes en los que podríamos dividir ese template, nos damos cuenta que por ahora, no nos gustaría crear componentes globales sobre estos elementos. Nos gustaría poder dividir el código pero sin que se encontrase en un contexto global. Esto en VueJS es posible.
 
@@ -172,9 +172,9 @@ Ahora podemos declararlo de esta manera:
  
 Dentro de marketplace definimos nuestro listado de cursos.
 
-Fijaros también en el detalle de que no estamos indicando ni courseni course-js ni course-css. Hemos indicado la etiqueta component que no se encuentra definida en ninguno de nuestros ficheros.
+Fijaros también en el detalle de que no estamos indicando ni courseni `course-js` ni `course-css`. Hemos indicado la etiqueta component que no se encuentra definida en ninguno de nuestros ficheros.
 
-Esto es porque component es una etiqueta de VueJS que en combinación con la directiva :is podemos cargar componentes de manera dinámica. Como yo no se que tipo de curso va haber en mi listado, necesito pintar el componente dependiendo de lo que me dice la variable del modelo course.type.
+Esto es porque component es una etiqueta de VueJS que en combinación con la directiva `:is` podemos cargar componentes de manera dinámica. Como yo no se que tipo de curso va haber en mi listado, necesito pintar el componente dependiendo de lo que me dice la variable del modelo `course.type`.
 
 Para saber más sobre slots, tenemos esta parte de la documentación.
 
@@ -195,7 +195,7 @@ Para ver todo el ejemplo junto, contamos con este código:
 
 Hemos explicado todo lo que tiene que ver con el corazón de la librería. Controlando y sabiendo cómo funcionan los componentes en VueJS, tendremos mucho recorrido ganado en poder aplicaciones del mundo real.
 
-Las propiedad, los eventos y los slots son una buena forma para diseñar componentes de una forma versátil y dinámica. Diseñar bien nuestros componentes será un primer paso a tener en cuenta si queremos que nuestra arquitectura triunfe, pero si es importante tener en cuenta que posibilidades nos da VueJS para que hacer este diseño más robusto y constante.
+Las propiedad, los eventos y los slots son una buena forma para diseñar componentes de una forma versátil y dinámica. Diseñar bien nuestros componentes será un primer paso a tener en cuenta si queremos que nuestra arquitectura triunfe, pero sí es importante tener en cuenta que posibilidades nos da VueJS para que hacer este diseño más robusto y constante.
 
 No te preocupes si el ejemplo te parece bastante enrevesado o sin sentido. Por culpa de tener que explicar todos los casos posibles que se pueden dar en un componente, hemos tenido que complicarlo todo. En el futuro veremos que muchas de estas decisiones que hemos tomado, como la herencia o el registro local, se podría haber solucionado con el paso de un nuevo parámetros y el registro global.
 
