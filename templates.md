@@ -88,13 +88,13 @@ Una directiva puede tener o no argumentos dependiendo de su funcionalidad. Por e
 
 ```
  
-Lo que hace v-bind con el argumento href es enlazar el contenido de `urlPasswordChange` como url del elemento a.
+Lo que hace `v-bind` con el argumento `href` es enlazar el contenido de `urlPasswordChange` como url del elemento `a`.
 
 Las directivas son un concepto bastante avanzado de este tipo de frameworks. Hay que tener en cuenta en todo momento que la ventaja de trabajar con estos sistemas es que el comportamiento es reactivo. Esto quiere decir, que si el modelo al que se encuentra enlazado un elemento HTML se ve modificado, el propio motor de plantillas se encargará de renderizar el nuevo elemento sin que nosotros tengamos que hacer nada.
 
 ### Directivas modificadoras
 
-Una directiva, en particular, puede tener más de un uso específico. Podemos indicar el uso específico accediendo a la propiedad que necesitamos incluir en el elemento. Un caso muy común es cuando registramos un evento determinado en un elemento y queremos evitar el evento por defecto que tiene el elemento. Por ejemplo, en un evento submit querremos evitar que nos haga un post contra el servidor para así realizar la lógica que necesitemos en JavaScript. Para hacer esto, lo haríamos así:
+Una directiva, en particular, puede tener más de un uso específico. Podemos indicar el uso específico accediendo a la propiedad que necesitamos incluir en el elemento. Un caso muy común es cuando registramos un evento determinado en un elemento y queremos evitar el evento por defecto que tiene el elemento. Por ejemplo, en un evento `submit` querremos evitar que nos haga un post contra el servidor para así realizar la lógica que necesitemos en JavaScript. Para hacer esto, lo haríamos así:
 
 ```html
 <form class="login" v-on:submit.prevent="onLogin">
@@ -104,7 +104,7 @@ Dentro de la API de VueJS contamos con todos estos modificadores.
 
 ### Atajo para la directiva v-bind o v-on
 
-Una de las directivas más utilizadas es v-bind, lo que nos permite esta directiva es enlazar una variable a un elemento ya sea un texto o un atributo. Cuando lo usamos para enlazar con un atributo como argumento, podríamos usar el método reducido y el comportamiento sería el mismo. Para usar el atajo ahora debemos usar :. Para ver un ejemplo veremos cuando enlazamos una url a un elemento a. Podemos hacerlo de esta manera:
+Una de las directivas más utilizadas es `v-bind`, lo que nos permite esta directiva es enlazar una variable a un elemento ya sea un texto o un atributo. Cuando lo usamos para enlazar con un atributo como argumento, podríamos usar el método reducido y el comportamiento sería el mismo. Para usar el atajo ahora debemos usar `:`. Para ver un ejemplo veremos cuando enlazamos una url a un elemento a. Podemos hacerlo de esta manera:
 
 ```html
 <button type="submit" v-bind:disabled="isFormEmpty">Entrar</button>
@@ -123,7 +123,7 @@ Los dos generarían el mismo HTML:
 <button type="submit" disabled="disabled">Entrar</button>
 ```
  
-En el caso de registrar un evento, tenemos algo parecido. No hace falta que indiquemos v-on sino que podemos indicarlo por medio de una arroba @ de esta manera:
+En el caso de registrar un evento, tenemos algo parecido. No hace falta que indiquemos `v-on` sino que podemos indicarlo por medio de una arroba `@` de esta manera:
 
 ```html
 <form class="login" @submit.prevent="onLogin">
