@@ -2,7 +2,7 @@
 
 Una vez que hemos visto cómo incluir vuex en nuestra aplicación, es momento de explicar los conceptos básicos de la librería.
 
-En el posts de hoy, dedicaremos tiempo a contar cómo podemos almacenar el estado dentro del store . Veremos cómo con muy poco de código podremos crear datos accesibles para varios componentes.
+En el posts de hoy, dedicaremos tiempo a contar cómo podemos almacenar el estado dentro del store. Veremos cómo con muy poco de código podremos crear datos accesibles para varios componentes.
 
 También repasaremos un concepto bastante interesante denominado getters que nos permitirán crear consultas más específicas sobre los datos que nos interesan para cada componente.
 
@@ -68,7 +68,7 @@ const componentA = {
 };
 ```
 
-Con esto quitamos la dependencia 'hardcodeada' y usamos la instancia de store que se encuentra inyectada (this.$store). De esta manera, quitamos dependencias tediosas en todos nuestros componentes. Ya se cuenta con él.
+Con esto quitamos la dependencia 'hardcodeada' y usamos la instancia de store que se encuentra inyectada (`this.$store`). De esta manera, quitamos dependencias tediosas en todos nuestros componentes. Ya se cuenta con él.
 
 El ejemplo sigue teniendo algo que huela mal ya que lo que hemos hecho es iniciar el estado interno, pero no hemos creado un componente que reaccione si cambia el estado del store. Para conseguir esto, nos basamos en la funcionalidad de estados computados con el que cuentan todos los componentes.
 
@@ -88,7 +88,7 @@ De esta forma, conseguimos que si el valor de store.state.count cambie, se ejecu
 
 ¿Qué ocurre si quiero incluir muchos estados en un componente? Insertar propiedades computadas de esta manera es algo tedioso. Estamos creando una función para llamar a un estado que se llama igual. Es código innecesario.
 
-Hay una funcionalidad muy chula en vuex que nos permite mapear estados a cómputos de una forma más agradable. Dentro de vuex se cuenta con el método mapState que permite esto. Podemos hacer esto, por ejemplo:
+Hay una funcionalidad muy chula en vuex que nos permite mapear estados a cómputos de una forma más agradable. Dentro de vuex se cuenta con el método `mapState` que permite esto. Podemos hacer esto, por ejemplo:
 
 ```javascript
 // ./components/componentA/componentA.js
@@ -101,7 +101,7 @@ export default {
 
 Este cambio no nos aporta más que azúcar sintáctico, pues el código de antes y el de ahora se comportan exactamente igual. Lo único que hacemos con esta forma es que el componente se ponga a escuchar todos los estados que existan dentro de nuestro store.
 
-Esto está muy bien, pero es poco real que un componente se ponga a computar todo. Por tanto, ¿cómo con mapState puedo seleccionar qué parte del estado me interesa? Tenemos varias formas que según el contexto nos podrán interesar más o menos.
+Esto está muy bien, pero es poco real que un componente se ponga a computar todo. Por tanto, ¿cómo con `mapState` puedo seleccionar qué parte del estado me interesa? Tenemos varias formas que según el contexto nos podrán interesar más o menos.
 
 Por ejemplo, si tenemos este store:
 
@@ -118,7 +118,7 @@ export default new Vuex.Store({
 });
 ```
 
-Puede que en mi componente solo me interese count y gists . Esto lo puedo hacer de esta manera:
+Puede que en mi componente solo me interese `count` y `gists`. Esto lo puedo hacer de esta manera:
 
 ```javascript
 // ./components/componentA/componentA.js
@@ -142,7 +142,7 @@ export default {
 };
 ```
 
-De esta forma, dentro del template, haríamos uso de {{ countAlias }} desacoplando ambas.
+De esta forma, dentro del template, haríamos uso de `{{ countAlias }}` desacoplando ambas.
 
 Puede que necesitemos calcular un dato a partir de un estado del store. En ese caso yo puedo indicar una función:
 
@@ -175,13 +175,13 @@ export default {
 };
 ```
 
-De esta forma, y gracias al nuevo Spread Operator de ES6, podemos combinar objetos diferentes de una manera muy sencilla.  Ahora contaría con tres propiedades computadas: las dos del store y la interna (myLocalComputed).
+De esta forma, y gracias al nuevo Spread Operator de ES6, podemos combinar objetos diferentes de una manera muy sencilla.  Ahora contaría con tres propiedades computadas: las dos del store y la interna (`myLocalComputed`).
 
-Estas utilidades con prefijo `map-` serán creadas para todos los elementos de vuex por lo que aprendérselo bien,  será necesario ya que lo usaremos en lo que queda de serie.
+> Estas utilidades con prefijo `map-` serán creadas para todos los elementos de vuex por lo que aprendérselo bien,  será necesario ya que lo usaremos en lo que queda de serie.
 
 ## Los getters
 
-Una cosa es cómo almaceno los datos en mi store global y otra diferente qué datos me son útiles dentro de un componente. Por ejemplo, puede que dentro de mi store se almacenen un numero considerable de gists, pero que un componente solo necesite aquellos que son públicos.
+Una cosa es cómo almaceno los datos en mi store global y otra diferente qué datos me son útiles dentro de un componente. Por ejemplo, puede que dentro de mí store se almacene un número considerable de gists, pero que un componente solo necesite aquellos que son públicos.
 
 Bueno, no parece muy grave, a fin de cuentas, si tengo acceso al store en un componente, podría hacer algo como esto:
 
@@ -221,7 +221,7 @@ export default new Vuex.Store({
 });
 ```
 
-Lo que hago es definir consultas dentro del objeto getters de mi store. Ahora en mi componente puedo hacer esto:
+Lo que hago es definir consultas dentro del objeto `getters` de mi store. Ahora en mi componente puedo hacer esto:
 
 ```javascript
 // ./components/componentA/componentA.js
@@ -300,7 +300,7 @@ export default {
 };
 ```
 
-También contamos con una utilidad de maps que se comportan igual que el de mapState. En este caso solo tenemos que usar mapGetters:
+También contamos con una utilidad de maps que se comportan igual que el de `mapState`. En este caso solo tenemos que usar `mapGetters`:
 
 ```javascript
 // ./components/componentA/componentA.js
