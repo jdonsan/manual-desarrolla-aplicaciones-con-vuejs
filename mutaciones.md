@@ -34,9 +34,11 @@ export default new Vuex.Store({
 };
 ```
 
-Dentro de mutations insertamos todos aquellos manejadores que queremos que manipulen nuestros datos. increment es el tipo de mutación que queremos y la función el manejador que se disparará. Si nos damos cuenta, el estado se inyecta como parámetro para ser manipulado. Usa esta instancia para que todo funcione correctamente.
+Dentro de mutations insertamos todos aquellos manejadores que queremos que manipulen nuestros datos. `increment` es el tipo de mutación que queremos y la función el manejador que se disparará. Si nos damos cuenta, el estado se inyecta como parámetro para ser manipulado. Usa esta instancia para que todo funcione correctamente.
 
-Una vez que tenemos esta mutación definida, ya podemos hacer uso de ella en nuestros componentes. Para usarlo, simplemente tendremos que ejecutar store.commit('increment'). En nuestro componente podríamos tener esto:
+Una vez que tenemos esta mutación definida, ya podemos hacer uso de ella en nuestros componentes. Para usarlo, simplemente tendremos que ejecutar `store.commit('increment')`. 
+
+En nuestro componente podríamos tener esto:
 
 ```javascript
 // ./components/componentA/componentA.js
@@ -50,7 +52,7 @@ export default {
 };
 ```
 
-Para evitar redundancias en el código, podemos hacer uso de mapMutations:
+Para evitar redundancias en el código, podemos hacer uso de `mapMutations`:
 
 ```javascript
 // ./components/componentA/componentA.js
@@ -95,7 +97,7 @@ export default {
 };
 ```
 
-Si no nos convence la firma del método commit por ser poco explicativa, podemos pasar un objeto indicando cada elemento de la siguiente forma:
+Si no nos convence la firma del método `commit` por ser poco explicativa, podemos pasar un objeto indicando cada elemento de la siguiente forma:
 
 ```javascript
 // ./components/componentA/componentA.js
@@ -114,7 +116,7 @@ export default {
 
 Esto ya será al gusto del desarrollador o el equipo.
 
-Para terminar con las mutaciones, vamos a aclarar un par de cosas para que el día de mañana no podamos cometer fallos innecesarios:
+Para terminar con las mutaciones, vamos a aclarar un par de cosas para que el día de mañana no podemos cometer fallos innecesarios:
 
 ### Cuidado con la reactividad de los objetos
 
@@ -156,7 +158,7 @@ export default new Vuex.Store({
 };
 ```
 
-Si necesitas hacer un cambio de más propiedades, usa el Spread Operator de ES6:
+Si necesitas hacer un cambio de más propiedades, usa el `Spread Operator` de ES6:
 
 ```javascript
 export default new Vuex.Store({
@@ -202,7 +204,7 @@ Sin embargo, si lo hago de esta manera, rápidamente me avisará de que algo no 
 
 ### No uses procesos asíncronos en tus mutaciones
 
-Otro tema interesante es tener en cuenta es que las mutaciones deben contar con manejadores que solo gestionen lógica síncrona. Internamente, vuex incluye un proxy a cada mutación para 'logar' el estado antes y después de la mutación.
+Otro tema interesante es tener en cuenta es que las mutaciones deben contar con manejadores que sólo gestionen lógica síncrona. Internamente, vuex incluye un proxy a cada mutación para 'logar' el estado antes y después de la mutación.
 
 Estos hooks son usados por las herramientas de depuración para que podamos tener instantáneas en todo momento. Si incluimos operaciones asíncronas, perdemos esta visión porque las herramientas nos mentirán al no poder esperar que la mutación acabe.
 
@@ -210,7 +212,7 @@ Y entonces ¿Cómo gestionamos la asincronía en mis aplicaciones? ¿No voy a po
 
 ## Las acciones
 
-Las acciones funcionan igual que las mutaciones. Eso sí, no mutan estado - eso lo delegan a las mutaciones - y se permiten todas las operaciones asíncronas que necesitemos. Por ejemplo, imaginemos que tenemos la mutación ADD_GISTS de esta forma:
+Las acciones funcionan igual que las mutaciones. Eso sí, no mutan estado - eso lo delegan a las mutaciones - y se permiten todas las operaciones asíncronas que necesitemos. Por ejemplo, imaginemos que tenemos la mutación `ADD_GISTS` de esta forma:
 
 ```javascript
 export const ADD_GISTS = 'ADD_GISTS';
@@ -302,7 +304,7 @@ export default {
 };
 ```
 
-Detengámonos un poco en el primer parámetro que le pasamos a una acción, el parámetro context. Al final context es una estancia del propio store con lo que podremos hacer todo aquello que hacemos en un componente. Por ejemplo, yo podría acceder al estado dentro de una acción:
+Detengámonos un poco en el primer parámetro que le pasamos a una acción, el parámetro context. Al final context es una instancia del propio store con lo que podremos hacer todo aquello que hacemos en un componente. Por ejemplo, yo podría acceder al estado dentro de una acción:
 
 ```javascript
 export const ADD_GISTS = 'ADD_GISTS';
