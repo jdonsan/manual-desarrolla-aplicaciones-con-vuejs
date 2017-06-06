@@ -6,9 +6,7 @@ Lo siguiente que tenemos que tener en cuenta es cómo poder manipular estos esta
 
 Para conseguir esto, vamos a explicar las dos funcionalidades que nos permiten esto y que, como veremos, tiene muchas similitudes a como lo hacen otras librerías como redux.
 
-Leer más…
-
-Las mutaciones
+## Las mutaciones
 
 En vuex no puedo llegar a una variable del estado y manipularla para que cambie directamente. Si hiciese esto, los componentes no reaccionarían al cambio. Debido a que la librería quiere seguir un sistema de flujo unidireccional, donde todas las fases se encuentren en un ciclo cerrado, deberemos usar un nuevo concepto conocido como mutaciones. Las mutaciones son aquellas funciones que se encargan de cambiar el valor de nuestro estado.
 
@@ -18,6 +16,7 @@ Igual que un evento.
 
 Para conseguir estas mutaciones, tenemos que registrarlas de la siguiente manera:
 
+```javascript
 // store/index.js
 ...
 
@@ -33,10 +32,13 @@ export default new Vuex.Store({
         }
     }
 };
+```
+
 Dentro de mutations insertamos todos aquellos manejadores que queremos que manipulen nuestros datos. increment es el tipo de mutación que queremos y la función el manejador que se disparará. Si nos damos cuenta, el estado se inyecta como parámetro para ser manipulado. Usa esta instancia para que todo funcione correctamente.
 
 Una vez que tenemos esta mutación definida, ya podemos hacer uso de ella en nuestros componentes. Para usarlo, simplemente tendremos que ejecutar store.commit('increment'). En nuestro componente podríamos tener esto:
 
+```javascript
 // ./components/componentA/componentA.js
 
 export default {
@@ -46,16 +48,22 @@ export default {
          }
      }
 };
+```
+
 Para evitar redundancias en el código, podemos hacer uso de mapMutations:
 
+```javascript
 // ./components/componentA/componentA.js
 import { mapMutations } from 'vuex';
 
 export default {
      methods: mapMutations();
 };
+```
+
 Al igual que pasaba con los getters, las mutaciones permiten payloads para manipular el estado. Por ejemplo:
 
+```javascript
 // store/index.js
 ...
 
@@ -71,8 +79,11 @@ export default new Vuex.Store({
         }
     }
 };
+```
+
 Y para usarlo en un componente:
 
+```javascript
 // ./components/componentA/componentA.js
 
 export default {
@@ -82,8 +93,11 @@ export default {
          }
      }
 };
+```
+
 Si no nos convence la firma del método commit por ser poco explicativa, podemos pasar un objeto indicando cada elemento de la siguiente forma:
 
+```javascript
 // ./components/componentA/componentA.js
 
 export default {
@@ -96,16 +110,19 @@ export default {
          }
      }
 };
+```
+
 Esto ya será al gusto del desarrollador o el equipo.
 
 Para terminar con las mutaciones, vamos a aclarar un par de cosas para que el día de mañana no podamos cometer fallos innecesarios:
 
-Cuidado con la reactividad de los objetos
+### Cuidado con la reactividad de los objetos
 
 El estado de un store se comporta igual que el data de un componente a nivel de 'reactividad'. Esto quiere decir, que inicies todas las variables de tu estado y que cuando vayas a mutar objetos del estado, ten en cuenta que las propiedades no provocarán reacciones al no contar con observadores ni getters internos en ellas.
 
 Por tanto, si necesitas mutar un objeto, usa la funcionalidad Vue.set que te permitirá indicar que una propiedad ha cambiado y que el sistema debe reaccionar. En vez de hacer esto:
 
+```javascript
 export default new Vuex.Store({
     state: {
         count: 0,
@@ -118,8 +135,11 @@ export default new Vuex.Store({
         }
     }
 };
+```
+
 Haz esto:
 
+```javascript
 import Vue from 'vue';
 
 export default new Vuex.Store({
@@ -134,8 +154,11 @@ export default new Vuex.Store({
         }
     }
 };
+```
+
 Si necesitas hacer un cambio de más propiedades, usa el Spread Operator de ES6:
 
+```javascript
 export default new Vuex.Store({
     state: {
         count: 0,
@@ -148,12 +171,15 @@ export default new Vuex.Store({
         }
     }
 };
+```
+
 Esto generará una nueva instancia del objeto con lo que la reacción sí está asegurada.
 
-Poner los tipos de las mutaciones como constantes
+### Poner los tipos de las mutaciones como constantes
 
 Otro buen uso dentro de la creación de mutaciones es el llevar las cadenas a constantes. De esta forma cuando crece un proyecto, tengo localizadas todas las mutaciones que se pueden realizar y evito hardcodeados de cadenas, lo que hará que tenga intellisense en mi editor de código favorito. Por tanto, es una buena práctica hacer esto:
 
+```javascript
 export const CHANGE_FULLNAME = 'CHANGE_FULLNAME';
 
 export default new Vuex.Store({
@@ -168,11 +194,13 @@ export default new Vuex.Store({
         }
     }
 };
+```
+
 De esta forma todo sigue igual. Si os dais cuenta, exporto la constante. Esto es porque ahora en los componentes también puedo hacer uso de estas constantes para realizar los commits. Si yo uso cadenas en mis componentes para referirme a mutaciones, y cambio el nombre a una de ellas, ningún editor podrá avisarme de que hay algo mal.
 
 Sin embargo, si lo hago de esta manera, rápidamente me avisará de que algo no va bien en tiempo de escritura del código. Como digo, esto es solo una buena práctica y no es obligatorio hacer uso de ello.
 
-No uses procesos asíncronos en tus mutaciones
+### No uses procesos asíncronos en tus mutaciones
 
 Otro tema interesante es tener en cuenta es que las mutaciones deben contar con manejadores que solo gestionen lógica síncrona. Internamente, vuex incluye un proxy a cada mutación para 'logar' el estado antes y después de la mutación.
 
@@ -180,10 +208,11 @@ Estos hooks son usados por las herramientas de depuración para que podamos tene
 
 Y entonces ¿Cómo gestionamos la asincronía en mis aplicaciones? ¿No voy a poder hacer llamadas a servidor o bases de datos en una aplicación de vue. Pues sí, para eso nacieron las acciones :)
 
-Las acciones
+## Las acciones
 
 Las acciones funcionan igual que las mutaciones. Eso sí, no mutan estado - eso lo delegan a las mutaciones - y se permiten todas las operaciones asíncronas que necesitemos. Por ejemplo, imaginemos que tenemos la mutación ADD_GISTS de esta forma:
 
+```javascript
 export const ADD_GISTS = 'ADD_GISTS';
 
 export default new Vuex.Store({
@@ -196,8 +225,11 @@ export default new Vuex.Store({
         }
     }
 };
+```
+
 Podríamos indicar una acción que obtenga los gists desde una API externa de la siguiente manera:
 
+```javascript
 export const ADD_GISTS = 'ADD_GISTS';
 
 export default new Vuex.Store({
@@ -216,6 +248,8 @@ export default new Vuex.Store({
                  .then(gists => context.commit(ADD_GISTS, gists);
         }
 };
+```
+
 Las acciones esperan una promesa para ser resueltas, de ahí que hagamos un return de la promesa que devuelve axios. Cuando axios nos devuelve los gists, podemos ejecutar commits con el tipo de mutación que queramos llevar a cabo. (El uso de constante tiene mucho sentido por todas las veces que vamos a usarlas durante nuestro proyecto).
 
 Me gusta que separen ambos conceptos en la librería. Las acciones son donde  me puedo dedicar a meter mi lógica, mis validaciones, mi comunicación con el exterior, y las mutaciones sólo se preocupan de controlar los estados, de manipularlo. Me parece un proceso bastante natural y bien separado en diferentes conceptos y responsabilidades:
@@ -224,6 +258,7 @@ Las acciones se encargan de preparar todo lo necesario para que una mutación co
 
 Para hacer uso de acciones en un componente, puedo hacerlo por medio del método dispatch. Dentro del componente haré esto:
 
+```javascript
 export default {
     name: 'dashboard-view',
     created() {
@@ -235,8 +270,11 @@ export default {
         }
     }
 };
+```
+
 Lo mismo que con el resto, contamos con un mapActions que funciona de la misma manera:
 
+```javascript
 import { mapActions } from 'vuex';
 
 export default {
@@ -246,8 +284,11 @@ export default {
     },
     methods: mapActions()
 };
+```
+
 Como pasaba con las mutaciones, las acciones también permiten un payload:
 
+```javascript
 export default {
     name: 'dashboard-view',
     created() {
@@ -259,8 +300,11 @@ export default {
         }
     }
 };
+```
+
 Detengámonos un poco en el primer parámetro que le pasamos a una acción, el parámetro context. Al final context es una estancia del propio store con lo que podremos hacer todo aquello que hacemos en un componente. Por ejemplo, yo podría acceder al estado dentro de una acción:
 
+```javascript
 export const ADD_GISTS = 'ADD_GISTS';
 
 export default new Vuex.Store({
@@ -281,10 +325,13 @@ export default new Vuex.Store({
             }
         }
 };
+```
+
 Si dentro del estado ya hay gists, no realizo la llamada. Deshago el objeto de esa forma gracias a ES6; es la nueva funcionalidad llamada asignación por Destructuring.
 
 Si esto es así, si tenemos una instancia del propio store en context, yo podría componer una acción determinada, a partir de otras acciones más específicas. Podría realizar varias llamadas asíncronas evitando el temido Callback Hell. Si lo unimos a los Async function de ES6, podemos tener algo parecido a esto:
 
+```javascript
 actions: { 
     async actionA ({ commit }) { 
         commit('gotData', await getData()) 
@@ -294,9 +341,11 @@ actions: {
         commit('gotOtherData', await getOtherData()) 
     } 
 }
+```
+
 Las posibilidades nos las impondrá negocio, pero con esto estamos más que cubiertos. Tenemos todos lo métodos en un sitio centralizado, cohesionado a sus datos y con muchas posibilidades de aislarlos para ser probados.
 
-Conclusión
+## Conclusión
 
 Quizá, al igual que me pasó a mí, os sintáis ahora mismo así:
 
