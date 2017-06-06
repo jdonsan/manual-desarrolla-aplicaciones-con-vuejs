@@ -1,6 +1,6 @@
 # Capítulo 9. Conceptos avanzados
 
-Con lo aprendido hasta ahora sobre vue-router, podríamos cubrir gran parte de la funcionalidad necesaria para un buen número de aplicaciones.
+Con lo aprendido hasta ahora sobre `vue-router`, podríamos cubrir gran parte de la funcionalidad necesaria para un buen número de aplicaciones.
 
 Sin embargo, cuando nos enfrentamos a aplicaciones más grandes, tener en cuenta otras posibilidades, nos pueden ayudar en términos de reutilización y buenas prácticas.
 
@@ -47,7 +47,7 @@ La idea es hacer algo como esto:
 
 Untitled Diagram.png
 
-Desarrollar un componente común que se llame ​TransferView que haga de componente contenedor, y 3 componentes hijos, más específicos, llamados ConfigView, DetailView y ConfirmView.
+Desarrollar un componente común que se llame ​`TransferView` que haga de componente contenedor, y 3 componentes hijos, más específicos, llamados `ConfigView`, `DetailView` y `ConfirmView`.
 
 Aunque con vue tendríamos soporte para desarrollar esto, vue-router nos da una funcionalidad que se apoya en un sistema de rutas anidadas. Yo podría configurar mi ruta de la siguiente manera:
 
@@ -56,17 +56,17 @@ Aunque con vue tendríamos soporte para desarrollar esto, vue-router nos da una 
  
 Lo que hacemos es incluir un nuevo parámetro  en la ruta llamado children. En este campo, podemos configurar todas las rutas anidadas que necesitemos. En nuestro caso 3.
 
-Lo último que hemos hecho es añadir el componente router-view en nuestro componente padre TransferView. De esta manera vue-router sabe en qué parte tienen que renderizar el componente hijo.
+Lo último que hemos hecho es añadir el componente `router-view` en nuestro componente padre `TransferView`. De esta manera vue-router sabe en qué parte tiene que renderizar el componente hijo.
 
-Este anidamiento puede ser todo lo profundo que queramos, simplemente tenemos que incluir el parámetro children, configurar las rutas con su componente hijo que queramos e indicar en el componente padre dónde pintarlo por medio de router-view.
+Este anidamiento puede ser todo lo profundo que queramos, simplemente tenemos que incluir el parámetro `children`, configurar las rutas con su componente hijo que queramos e indicar en el componente padre dónde pintarlo por medio de `router-view`.
 
-El anidamiento suele utilizarse también para crear la layout principal de nuestra aplicación. Como todas las vistas contarán con el header, el menú y el footer, lo que se hace es crear un componente AppView que contiene estos elementos y un componente router-view donde se renderizará la parte de la vista más específica.
+El anidamiento suele utilizarse también para crear la layout principal de nuestra aplicación. Como todas las vistas contarán con el header, el menú y el footer, lo que se hace es crear un componente `AppView` que contiene estos elementos y un componente `router-view` donde se renderizará la parte de la vista más específica.
 
 ## Pasar propiedades a un ComponentView
 
-Aunque un ComponentView es un componente muy especifico dentro de nuestra aplicación, y es bastante improbable que pueda ser reutilizado por estar tan acoplado con el negocio, es buena idea usar las mismas buenas prácticas que usamos en componentes más específicos.
+Aunque un `ComponentView` es un componente muy específico dentro de nuestra aplicación, y es bastante improbable que pueda ser reutilizado por estar tan acoplado con el negocio, es buena idea usar las mismas buenas prácticas que usamos en componentes más específicos.
 
-Cuando un componente de vista hace uso de parámetros para su correcto funcionamiento, es necesario que no lo acoplemos ,dentro de lo posible, a vue-router y que semos la funcionalidad de propiedades de entrada especificada por vue.
+Cuando un componente de vista hace uso de parámetros para su correcto funcionamiento, es necesario que no lo acoplemos ,dentro de lo posible, a `vue-router` y que usemos la funcionalidad de propiedades de entrada especificada por vue.
 
 Por tanto, intentemos evitar este tipo de accesos:
 
@@ -98,14 +98,14 @@ En este caso usamos la función para incluir la query realizada en la url como p
 
 Incluir meta-información de una ruta
 
-Puede darse el caso que necesitemos incluir información específica para una ruta. Puede sernos util marcar ciertas rutas para influir en su comportamiento. Esto se puede hacer incluyendo nuevos campos en el atributo metadel objeto routede la siguiente manera:
+Puede darse el caso que necesitemos incluir información específica para una ruta. Puede sernos útil marcar ciertas rutas para influir en su comportamiento. Esto se puede hacer incluyendo nuevos campos en el atributo `meta` del objeto `route` de la siguiente manera:
 
  
 
  
-De esta manera estamos marcando que la ruta login es publica para cualquier usuario. Hay que tener cuidado con esta meta información porque es heredada de padres a hijos por lo que tengamoslo en cuenta si pensamos que algo está yendo mal.
+De esta manera estamos marcando que la ruta login es pública para cualquier usuario. Hay que tener cuidado con esta meta información porque es heredada de padres a hijos por lo que tengámoslo en cuenta si pensamos que algo está yendo mal.
 
-Esta información es inyectada a los componentes dentro de $route.matched y es accesible tanto dentro de los componentes como de los interceptores de navegación. Por ejemplo, podemos combinar este campo con el interceptor beforeEach:
+Esta información es inyectada a los componentes dentro de `$route.matched` y es accesible tanto dentro de los componentes como de los interceptores de navegación. Por ejemplo, podemos combinar este campo con el interceptor `beforeEach`:
 
  
 
@@ -118,16 +118,25 @@ Un SPA suele contar con un sistema de rutas precedido por una almohadilla. De es
 
 Los que ya hemos trabajado con otros SPAs sabemos que las rutas suelen tener esta apariencia:
 
+```
 https://my-web.com/#/app/login
+```
+
 Evitar una URL como esta puede deberse a 3 razones:
 
-Puede que desde negocio se quiera trabajar en un sistema de rutas usable para que el usuario pueda recordaslas o guardarlas en favoritos.
-Puede que no nos interese como desarrolladores dar pistas al usuario del tipo de herramientas que usamos para nuestro desarrollo (Cuando en una web se ve un hash de este tipo es indicativo de SPA).
-Puede que tengamos problemas de SEO al no poder acceder a ciertas rutas.
+* Puede que desde negocio se quiera trabajar en un sistema de rutas usable para que el usuario pueda recordarlas o guardarlas en favoritos.
+
+* Puede que no nos interese como desarrolladores dar pistas al usuario del tipo de herramientas que usamos para nuestro desarrollo (Cuando en una web se ve un hash de este tipo es indicativo de SPA).
+
+* Puede que tengamos problemas de SEO al no poder acceder a ciertas rutas.
+
 Sería bastante bueno que nuestra librería pudiese entender correctamente la siguiente ruta:
 
+```
 https://my-web.com/app/login
-Esto es posible en vue gracias a nuestra librería de rutas vue-router. Yo puedo configurarlo de esta manera para que se comporte de forma nativa a como lo hace el navegador:
+```
+
+Esto es posible en vue gracias a nuestra librería de rutas `vue-router`. Yo puedo configurarlo de esta manera para que se comporte de forma nativa a como lo hace el navegador:
 
  
 
@@ -156,7 +165,7 @@ El problema que seguimos teniendo con esto es que si la ruta no existe, se nos s
  
 
  
-Para cualquier ruta (wildcard *), mostramos el componente NotFoundView. De esta forma siempre damos una información adecuada al usuario.
+Para cualquier ruta (wildcard *), mostramos el componente `NotFoundView`. De esta forma siempre damos una información adecuada al usuario.
 
 ## Cambiar el comportamiento del scroll
 
@@ -167,7 +176,7 @@ En el objeto router contamos con otro parámetro para gestionar esto:
  
 
  
-Esta función scrollBehavior nos permite acceder a los datos de la ruta de la que vengo y de la que voy. Además, se cuenta con un parámetro opcional que solo es inyectado si el cambio de ruta es provocado por los botones de navegación del propio navegador.
+Esta función `scrollBehavior` nos permite acceder a los datos de la ruta de la que vengo y de la que voy. Además, se cuenta con un parámetro opcional que solo es inyectado si el cambio de ruta es provocado por los botones de navegación del propio navegador.
 
 En el ejemplo de arriba, hemos indicado que scroll siempre se sitúe en la parte superior e izquierda de la página. Puede darse el caso que queramos simular una navegación hasta un 'anchor' determinado. Esto lo podríamos conseguir así:
 
@@ -198,7 +207,7 @@ Si vemos el ejemplo con detalle, veremos que se incluye la funcionalidad de hist
 
 ## Conclusión
 
-A lo largo de estos 3 últimos posts hemos hecho un repaso a todo lo que puede aportarnos una librería como vue-router. No es una librería innovadora, ni lo necesita ser, simplemente es una opción que se integra perfectamente con el ecosistema de vue para la gestión de rutas.
+A lo largo de estos 3 últimos posts hemos hecho un repaso a todo lo que puede aportarnos una librería como `vue-router`. No es una librería innovadora, ni lo necesita ser, simplemente es una opción que se integra perfectamente con el ecosistema de vue para la gestión de rutas.
 
 Terminado este capítulo, entraremos en una nueva fase de la serie donde estudiaremos la gestión del estado en una aplicación. Estamos muy cerca de contar con todas las piezas necesarias para poder hacer una aplicación completa, robusta y escalable con el ecosistema de vue.
 
