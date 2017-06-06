@@ -6,7 +6,7 @@ Como desarrolladores, tenemos muchas herramientas de trabajo, pero nada suele se
 
 Como antes de poder incluir cualquier herramienta en producción, hay que probarla y aprenderla, creo que es un buen momento para que nos detengamos unas semanas y prestemos atención a una de las librerías JavaScript que más está llamando la atención en los últimos meses: VueJS.
 
-No sé cuanto durará esta serie, así que lo mejor es que nos pongamos al lío y dediquemos nuestro tiempo a entenderla y a saber cómo se usa. ¿Te apetece unirte? ¿Estás con ganas de aprender la enésima librería de JavaScript? ¿Sí? Pues sigamos:
+No sé cuánto durará esta serie, así que lo mejor es que nos pongamos al lío y dediquemos nuestro tiempo a entenderla y a saber cómo se usa. ¿Te apetece unirte? ¿Estás con ganas de aprender la enésima librería de JavaScript? ¿Sí? Pues sigamos:
 
 ## ¿Qué es VueJS?
 
@@ -18,7 +18,7 @@ Es un sistema de modularización bastante parecido al de ReactJS. Facebook desar
 
 > A lo largo de estos primeros capítulos nos centraremos en el estudio del core del framework, por ahora dejaremos de lado a [vue-router](https://github.com/vuejs/vue-router "Repositorio de vue-router") y a [vuex](https://github.com/vuejs/vuex "Repositorio de vuex"), aunque en algún momento llegaremos hasta ellos.
 
-El core principal permite el desarrollo de componentes de UI por medio de JavaScript. La librería se enmarca dentro las arquitecturas de componentes (que tan de moda están) con una gestión interna de modelos basada en el patrón [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel "Wikipedia del patrón MVVM"). Esto quiere decir que los componentes, internamente, tienen mecanismos de doble data-binding para manipular el estado de la aplicación.
+El core principal permite el desarrollo de componentes de UI por medio de JavaScript. La librería se enmarca dentro las arquitecturas de componentes (que tan de moda están) con una gestión interna de modelos basada en el patrón [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel "Wikipedia del patrón MVVM"). Esto quiere decir que los componentes, internamente, tienen mecanismos de doble 'data-binding' para manipular el estado de la aplicación.
 
 Presume de ser una librería bastante rápida que consigue renderizar en mejores tiempos que ReactJS. Estos son los tiempos que podemos encontrar en su documentación:
 
@@ -30,7 +30,7 @@ Presume de ser una librería bastante rápida que consigue renderizar en mejores
 |73ms | 164ms |	95th Perc.|
 |343ms|	453ms|	Slowest|
 
-Como curiosidad: VueJS tiene un tamaño de 74.9 KB (la versión al hacerse el post es la v2.2.6).
+> Como curiosidad: VueJS tiene un tamaño de 74.9 KB (la versión al hacerse el post es la v2.2.6).
 
 ## ¿Qué caracteriza a VueJS?
 
@@ -39,7 +39,8 @@ Pero ¿qué define a VueJS? ¿Qué lo diferencia o lo asemeja al resto de altern
 * **Proporciona componentes visuales de forma reactiva**. Piezas de UI bien encapsulados que exponen una API con propiedades de entrada y emisión de eventos. Los componentes reaccionan ante eventos masivos sin que el rendimiento se vea perjudicado.
 
 * **Cuenta con conceptos de directivas, filtros y componentes bien diferenciados**. Iremos definiendo y explicando estos elementos a lo largo de la serie.
-La API es pequeña y fácil de usar. Nos tendremos que fiar por ahora si ellos lo dicen :)
+
+* **La API es pequeña y fácil de usar**. Nos tendremos que fiar por ahora si ellos lo dicen :)
 
 * **Utiliza Virtual DOM**. Como las operaciones más costosas en JavaScript suelen ser las que operan con la API del DOM, y VueJS por su naturaleza reactiva se encontrará todo el rato haciendo cambios en el DOM, cuenta con una copia cacheada que se encarga de ir cambiando aquellas partes que son necesarias cambiar.
 
@@ -87,7 +88,7 @@ $ npm install vue --save
 
 De esta forma, ya tendremos todo lo necesario para trabajar en nuestro primer ejemplo. Lo que esta dependencia nos descarga son diferentes VueJS dependiendo del entorno que necesitemos.
 
-Lo que hacemos ahora es añadir un fichero index.html en la raíz e incluimos tanto la librería de Vue, como nuestro fichero JS, donde desarrollaremos este primer ejemplo:
+Lo que hacemos ahora es añadir un fichero `index.html` en la raíz e incluimos tanto la librería de Vue, como nuestro fichero JS, donde desarrollaremos este primer ejemplo:
 
 ```html
 <!DOCTYPE html>
@@ -112,13 +113,13 @@ Antes de que pasemos al código, me gustaría recomendaros un par de herramienta
 
 ### Depurando el código
 
-Casi todos los frameworks importantes cuentan con una herramienta específica para poder depurar y analizar ciertos aspectos de nuestras aplicaciones. VueJS no iba a ser menos y (cuenta con un plugin para Firefox y Chrome)[https://github.com/vuejs/vue-devtools] que se integra con el resto de herramientas de desarrollo de ambos navegadores.
+Casi todos los frameworks importantes cuentan con una herramienta específica para poder depurar y analizar ciertos aspectos de nuestras aplicaciones. VueJS no iba a ser menos y [cuenta con un plugin para Firefox y Chrome](https://github.com/vuejs/vue-devtools) que se integra con el resto de herramientas de desarrollo de ambos navegadores.
 
 He podido probar la herramienta de Chrome y me ha sorprendido lo fácil que es de usar. En la versión con la que he podido trastear, es posible inspeccionar los componentes que se encuentran en nuestro HTML. Esta inspección nos permite ver los modelos que se encuentran enlazados y la posibilidad de depurar esta información.
 
 ![Plugin de vue para el developers tools de chrome](/images/introduccion/screenshot.png)
 
-Otro de los apartados está dedicado a la posibilidad de gestionar el estado de nuestra aplicación por medio de 'vuex'. La funcionalidad nos permite ver las transiciones en las que se mueve nuestra aplicación como si de un vídeo que se pueda rebobinar se tratase.
+Otro de los apartados está dedicado a la posibilidad de gestionar el estado de nuestra aplicación por medio de `vuex`. La funcionalidad nos permite ver las transiciones en las que se mueve nuestra aplicación como si de un vídeo que se pueda rebobinar se tratase.
 
 La otra funcionalidad que incluye es la posibilidad de detectar todos los eventos que se están generando en nuestra aplicación VueJS. Como iremos viendo a lo largo de los posts, VueJS genera un importante número de eventos para comunicar los diferentes componentes de nuestra interfaz. Poder ver en tiempo real y por medio de notificaciones como se van generando, es una maravilla a la hora de saber lo que pasa.
 
@@ -130,7 +131,7 @@ La forma en la que hemos instalado la primera dependencia de VueJS es algo rudim
 
 Como en el caso de Angular, la gente de VueJS nos proporciona una herramienta de terminal muy útil para nuestro día a día: [vue-cli](https://github.com/vuejs/vue-cli "Repositorio de vue-cli"). Esta herramienta nos permitirá generar plantillas de nuestro proyecto, generar componentes e incluso personalizar plantillas a nuestro gusto.
 
-vue-cli no solo nos ayudará a empezar rápidamente en un proyecto, sino que además, nos ayudará a entender cómo estructurar nuestro código y a seguir una serie de buenas prácticas debemos tener en cuenta si queremos que nuestro proyecto escale.
+`vue-cli` no solo nos ayudará a empezar rápidamente en un proyecto, sino que además, nos ayudará a entender cómo estructurar nuestro código y a seguir una serie de buenas prácticas debemos tener en cuenta si queremos que nuestro proyecto escale.
 
 Para instalarlo como dependencia global, solo tendremos que lanzar el siguiente comando:
 
@@ -149,7 +150,7 @@ Los nuevos editores de texto permiten incluir pequeños plugins para añadir fun
 
 ##Primer ejemplo
 
-Para mostrar un poco de código, vamos a crear un pequeño ejemplo. La idea es crear una pequeña aplicación que nos permita añadir nuevos juegos a mi listado de juegos favoritos - sí, lo siento, no deja de ser el 'TODO LIST' de toda la vida :).
+Para mostrar un poco de código, vamos a crear un pequeño ejemplo. La idea es crear una pequeña aplicación que nos permita añadir nuevos juegos a mi listado de juegos favoritos - sí, lo siento, no deja de ser el `TODO LIST` de toda la vida :).
 
 Para conseguir esto, lo primero que vamos a hacer es añadir un elemento HTML que haga de contenedor de nuestra aplicación VueJS:
 
@@ -175,7 +176,7 @@ Para conseguir esto, lo primero que vamos a hacer es añadir un elemento HTML qu
  
 De esta manera, conseguimos delimitar el contexto en el que puede actuar nuestra aplicación. Es una buena forma de poder crear tantas aplicaciones VueJS necesitemos en un proyecto o incluso de poder alternar tecnologías.
 
-Lo siguiente que hacemos es crear una instancia de nuestra aplicación VueJS en nuestro fichero app.js:
+Lo siguiente que hacemos es crear una instancia de nuestra aplicación VueJS en nuestro fichero `app.js`:
 
 ```javascript
 const app = new Vue({
@@ -184,7 +185,7 @@ const app = new Vue({
 
 ```
  
-Lo que le decimos a VueJS es que genere una nueva instancia que tenga como referencia al elemento HTML que tenga como identificador único la palabra reservada app.
+Lo que le decimos a VueJS es que genere una nueva instancia que tenga como referencia al elemento HTML que tenga como identificador único la palabra reservada `app`.
 
 Lo siguiente que vamos a hacer es añadirle una pequeña plantilla con el HTML de nuestra aplicación:
 
