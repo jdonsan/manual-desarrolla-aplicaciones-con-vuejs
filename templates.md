@@ -54,7 +54,7 @@ Podríamos tener este comportamiento con cualquier atributo de un elemento HTML.
 
 En VueJS se puede interpolar texto por medio de pequeñas expresiones. Es una posibilidad de incluir un poco de lógica en nuestra plantilla. Podríamos por ejemplo evaluar una expresión para renderizar o no un elemento de esta manera:
 
-```
+```html
 <div class="errors-container" v-if="errors.length !== 0">
 ```
  
@@ -96,7 +96,7 @@ Las directivas son un concepto bastante avanzado de este tipo de frameworks. Hay
 
 Una directiva, en particular, puede tener más de un uso específico. Podemos indicar el uso específico accediendo a la propiedad que necesitamos incluir en el elemento. Un caso muy común es cuando registramos un evento determinado en un elemento y queremos evitar el evento por defecto que tiene el elemento. Por ejemplo, en un evento submit querremos evitar que nos haga un post contra el servidor para así realizar la lógica que necesitemos en JavaScript. Para hacer esto, lo haríamos así:
 
-```
+```html
 <form class="login" v-on:submit.prevent="onLogin">
 ```
  
