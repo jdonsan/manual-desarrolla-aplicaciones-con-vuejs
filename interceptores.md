@@ -26,9 +26,9 @@ router.beforeEach((to, from, next) => {
 
 beforeEach nos inyecta tres parámetros en la función de callback:
 
-* to: Es el objeto router con la información de la ruta a la que voy.
-* from: Es el objeto router con la información de la ruta de la que vengo.
-* next: Es la función que me permite reanudar la navegación. Es una función que tiene un comportamiento bastante complejo ya que nos permite diferentes datos de entrada. Por ejemplo:
+* **to**: Es el objeto router con la información de la ruta a la que voy.
+* **from**: Es el objeto router con la información de la ruta de la que vengo.
+* **next**: Es la función que me permite reanudar la navegación. Es una función que tiene un comportamiento bastante complejo ya que nos permite diferentes datos de entrada. Por ejemplo:
     * Si la ejecutamos sin parámetro (`next()`), la navegación se reanudará hacia la ruta indicada en `to`.
     * Si la ejecutamos con una cadena que nos indique otra ruta (`next('/')`), nos redirigirá a la ruta que le hemos indicado.
     * Si indicamos un valor booleano `false` (`next(false)`), abortará la redirección.
@@ -78,7 +78,7 @@ Este interceptor se ejecuta después de que todos los interceptores de los compo
 router.afterEach((to, from) => { // ... });
 ```
 
-Como podemos apreciar, en este caso no se inyecta la función next por lo que no será posible influir en la navegación.
+Como podemos apreciar, en este caso no se inyecta la función `next` por lo que no será posible influir en la navegación.
 
 Es un interceptor que vamos a usar poco y que nos puede venir bien para depurar las rutas de navegación.
 
@@ -105,13 +105,13 @@ const router = new VueRouter({
 
 Lo que hacemos es limpiar la sesión del usuario antes de navegar a login. De esta manera nunca se nos olvidará quitar privilegios al usuario si se ha hecho un logout.
 
-Este interceptor puede sernos útil para evitar ir a rutas intermedias en un proceso de compra. Por ejemplo, podemos evitar mostrar  la vista detalle si el usuario no ha seleccionado antes en una vista previa ningún producto.
+Este interceptor puede sernos útil para evitar ir a rutas intermedias en un proceso de compra. Por ejemplo, podemos evitar mostrar la vista detalle si el usuario no ha seleccionado antes en una vista previa ningún producto.
 
 ## Interceptores locales a un componente
 
 Podemos localizar todavía más cuándo interceptar la navegación. Podemos incluir interceptores a nivel de un componente. Dependiendo del contexto de navegación en el que se encuentre un componente, podremos hacer unas acciones u otras.
 
-Este mecanismo interno en un componente es muy importante porque la librería vue-router cachea los componentes y evita que ciertos hooks - como los de creación o destrucción - no sean ejecutados siempre. Por tanto, estos interceptores nos podrán ayudar porque tienen acceso a la instancia interna del propio componente.
+Este mecanismo interno en un componente es muy importante porque la librería `vue-router` cachea los componentes y evita que ciertos hooks - como los de creación o destrucción - no sean ejecutados siempre. Por tanto, estos interceptores nos podrán ayudar porque tienen acceso a la instancia interna del propio componente.
 
 Si yo quisiera interceptar comportamientos de navegación para un componente, lo haría de la siguiente forma:
 
@@ -130,7 +130,7 @@ Estudiemos cada uno de ellos:
 
 En este interceptor entramos cuando la navegación ha sido confirmada, pero todavía no se ha creado, ni renderizado el componente. Nos puede venir bien usarlo para saber si el componente tiene algún comportamiento de navegación especial antes de pintarse.
 
-Si nosotros queremos influenciar en el estado de un componente, tenemos que esperar a que sea creado. Para conseguir esto, podemos hacerlo pasándole una función a next() de la siguiente manera:
+Si nosotros queremos influenciar en el estado de un componente, tenemos que esperar a que sea creado. Para conseguir esto, podemos hacerlo pasándole una función a `next()` de la siguiente manera:
 
 ```javascript
 const CartSummary = { 
@@ -154,7 +154,7 @@ const CartSummary = {
 };
 ```
 
-Como los interceptores detienen la navegación hasta que se ejecuta la función next(), nos vienen bien para gestionar este asincronismo.
+Como los interceptores detienen la navegación hasta que se ejecuta la función `next()`, nos vienen bien para gestionar este asincronismo.
 
 ### `beforeRouteUpdate`
 
