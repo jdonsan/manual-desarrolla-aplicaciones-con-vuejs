@@ -22,7 +22,7 @@ Este hook se realiza nada más instanciar un componente. Durante este hook no ti
 
 Aunque pueda parecer poco útil, utilizar este hook puede ser es un buen momento para dos acciones en particular:
 
-Para configurar ciertos parámetros internos u opciones, inherentes a las propias funcionalidad de VueJS. Un caso de uso común es cuando queremos evitar  referencias circulares entre componentes. Cuando usamos una herramienta de empaquetado de componentes, podemos entrar en bucle infinito por culpa de dichas referencias. Para evitar esto, podemos cargar el componente de manera 'diferida' para que el propio empaquetador no se vuelva loco.
+* Para configurar ciertos parámetros internos u opciones, inherentes a las propias funcionalidad de VueJS. Un caso de uso común es cuando queremos evitar  referencias circulares entre componentes. Cuando usamos una herramienta de empaquetado de componentes, podemos entrar en bucle infinito por culpa de dichas referencias. Para evitar esto, podemos cargar el componente de manera 'diferida' para que el propio empaquetador no se vuelva loco.
 
 ```javascript
 const component1 = {
@@ -32,7 +32,7 @@ const component1 = {
 };
 ```
 
-Para iniciar librerías o estados externos. Por ejemplo, imaginemos que queremos iniciar una colección en `localSotrage` para realizar un componente con posibilidad de guardado offline. Podríamos hacer lo siguiente:
+* Para iniciar librerías o estados externos. Por ejemplo, imaginemos que queremos iniciar una colección en `localSotrage` para realizar un componente con posibilidad de guardado offline. Podríamos hacer lo siguiente:
 
 ```javascript
 const component = {
