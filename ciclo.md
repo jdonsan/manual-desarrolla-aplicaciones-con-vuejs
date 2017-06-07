@@ -166,6 +166,6 @@ A mi por lo menos, que un framework cuente con estos mecanismos, me suele dar se
 
 Os dejo el diagrama que resume el ciclo de vida de un componente:
 
-lifecycle.png
+![ciclo de vida de un componente](/images/ciclo/lifecycle.png)
 
 Nos leemos :)
