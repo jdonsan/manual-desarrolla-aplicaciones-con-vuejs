@@ -35,7 +35,30 @@ Cuando ocurre esto, tenemos que empezar a pensar en alguna estrategia que nos se
 Este bus de datos se consigue creando una nueva instancia de la clase Vue. Yo por ejemplo, podría hacer esto para comunicar dos componentes sin parentesco:
 
  
+```javascript
+const bus = new Vue();
 
+const componentA = {
+  methods: {
+      doAction() {
+        bus.$emit('increment', 1);
+      }
+  }
+};
+
+const componentB = {
+  data() {
+    return {
+      count: 0
+    }
+  },
+  created() {
+    bus.$on('increment', (num) => {
+      this.count += num;
+    });
+  }
+};
+```
  
 Lo que hago es crear una instancia de Vue que cuenta con un método $emit para emitir eventos y un método $on para registrarme a eventos. Con esto, lo que hago es, en el componente B, registrarme al evento increment cuando el componente ya ha sido creado y esperar a que el componente A emita nuevos cambios al ejecutar su método doAction. Es muy parecido a la comunicación que tiene un hijo con un padre, pero esta vez sin parentesco.
 
@@ -43,8 +66,36 @@ Este sistema nos puede funcionar puntualmente para aplicaciones pequeñas o en c
 
 Podría ser buena idea, para aplicaciones medias, hacer uso de un un lugar centralizado donde compartir estos estados y métodos. Una pequeña librería que usen los componentes. Podríamos pensar en algo como esto:
 
- 
+```javascript
+var store = {
+  debug: true,
+  state: {
+    message: 'Hello!'
+  },
+  setMessageAction (newValue) {
+    this.debug && console.log('setMessageAction triggered with', newValue)
+    this.state.message = newValue
+  },
+  clearMessageAction () {
+    this.debug && console.log('clearMessageAction triggered')
+    this.state.message = ''
+  }
+};
 
+var vmA = new Vue({
+  data: {
+    privateState: {},
+    sharedState: store.state
+  }
+});
+
+var vmB = new Vue({
+  data: {
+    privateState: {},
+    sharedState: store.state
+  }
+});
+```
  
 Lo que hacemos es crear un objeto que contiene el estado a compartir y unos métodos que se encargan de mutar este estado. De esta manera centralizamos los estados y las acciones.
 
@@ -52,7 +103,7 @@ Ahora, podemos crear instancias de componentes que compartan parte del estado. S
 
 Con esto, conseguiríamos una arquitectura muy parecida a la del siguiente dibujo:
 
-
+![Flujo de un store casero](/images/vuex/state.png)
 
 La solución no me convence del todo, porque no dejamos de tener un estado global con vía libre para realizar cambios a cualquier componente. No existe ningún control y puede ser difícil para trazar qué componente es el responsable en el cambio de un estado. No hay encapsulamiento, y si no somos cuidadosos, podemos liarla parda. Entre tener esto y nada, lo mismo.
 
@@ -68,15 +119,15 @@ flux es una arquitectura que gestiona el estado en un objeto singleton global do
 
 Dentro de la comunidad se han desarrollado muchas implementaciones de flux, pero una de las más conocidas es redux. redux es una librería, de estilo funcional, muy utilizada por ser agnóstica al frameworks.
 
-Esto quiere decir, que la librería puede ser utilizada tanto con Angular como con React sin sufrir fricciones con los diferentes planteamientos ya que se encarga de la gestión de forma que no se acopla con ninguna plataforma. Siempre necesitaremos conectores específicos para usarlo con cada una de ellas. En vue también se cuenta con un conector para redux, por si los desarrolladores desean hacer uso de él.
+Esto quiere decir, que la librería puede ser utilizada tanto con Angular como con React sin sufrir fricciones con los diferentes planteamientos ya que se encarga de la gestión de forma que no se acopla con ninguna plataforma. Siempre necesitaremos conectores específicos para usarlo con cada una de ellas. [En vue también se cuenta con un conector para redux, por si los desarrolladores desean hacer uso de él.](https://github.com/revue/revue)
 
 Sin embargo, como decíamos, en vue se  ha optado por desarrollar una implementación específica del patrón llamada vuex y que se acopla mucho mejor a la filosofía de vue como iremos viendo a lo largo de estos posts.
 
 La arquitectura de vuex está muy bien esquematizada en esta imagen:
 
-vuex.png
+![](/images/vuex/vuex1.png)
 
-Aunque entraremos en detalle más adelante ( no hoy, tranquilos :) ) expliquemos cada elemento:
+Aunque entraremos en detalle más adelante (no hoy, tranquilos :smile:) expliquemos cada elemento:
 
 * El cuadro verde representa nuestra arquitectura de componentes. Los cuales se presentan ahora como la estructura de un edificio esperando a estar habitado por los estados de la aplicación.
 
@@ -100,7 +151,7 @@ $ npm install vuex --save
 
 Como `vue-cli` no nos da soporte para vuex en su generador, lo siguiente será incluir la carpeta donde almacenaremos todo lo necesario para vuex. Lo hacemos de esta manera:
 
-Captura de pantalla de 2017-05-24 12-31-06.png
+![carpeta del store en el proyecto](/images/vuex/captura-de-pantalla-de-2017-05-24-12-31-06.png)
 
 Dentro de este `index.js` crearemos todo nuestro almacenamiento de estados. Lo primero que escribimos es lo siguiente:
 
