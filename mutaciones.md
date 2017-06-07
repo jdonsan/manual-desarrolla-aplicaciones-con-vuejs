@@ -329,9 +329,9 @@ export default new Vuex.Store({
 };
 ```
 
-Si dentro del estado ya hay gists, no realizo la llamada. Deshago el objeto de esa forma gracias a ES6; es la nueva funcionalidad llamada asignación por Destructuring.
+Si dentro del estado ya hay gists, no realizo la llamada. Deshago el objeto de esa forma gracias a ES6; [es la nueva funcionalidad llamada asignación por Destructuring](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Destructuring_assignment).
 
-Si esto es así, si tenemos una instancia del propio store en context, yo podría componer una acción determinada, a partir de otras acciones más específicas. Podría realizar varias llamadas asíncronas evitando el temido Callback Hell. Si lo unimos a los Async function de ES6, podemos tener algo parecido a esto:
+Si esto es así, si tenemos una instancia del propio store en context, yo podría componer una acción determinada, a partir de otras acciones más específicas. [Podría realizar varias llamadas asíncronas evitando el temido Callback Hell](http://callbackhell.com/). [Si lo unimos a los Async function de ES6](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/funcion_asincrona), podemos tener algo parecido a esto:
 
 ```javascript
 actions: { 
@@ -351,7 +351,7 @@ Las posibilidades nos las impondrá negocio, pero con esto estamos más que cubi
 
 Quizá, al igual que me pasó a mí, os sintáis ahora mismo así:
 
-cabraloca.jpg
+![meme de cabra encima de una rama diciendo: "Pero como he llegado hasta aqui"](/images/mutaciones/cabraloca.jpg)
 
 Es curioso que vuex tenga unos conceptos muy concretos y predefinidos que estudiados por separado son entendibles y coherentes, pero que cuando juntamos todo lo aprendido es un... vale, estoy perdido...
 
