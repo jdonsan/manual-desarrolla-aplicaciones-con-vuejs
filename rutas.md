@@ -20,18 +20,39 @@ Si por un casual, hemos decidido desarrollarla con VueJS, puede ser tentador usa
 
 Y si no añadimos un enrutador ¿Cómo lo hacemos? Podemos preparar nosotros una pequeña solución que permita este dinamismo. Por ejemplo, con algo parecido a esto:
 
- 
+```javascript
+const NotFound = { template: '<p>Page not found</p>' };
+const Home = { template: '<p>home page</p>' };
+const About = { template: '<p>about page</p>' };
 
+const routes = {
+  '/': Home,
+  '/about': About
+};
+
+new Vue({
+  el: '#app',
+  data: {
+    currentRoute: window.location.pathname
+  },
+  computed: {
+    ViewComponent () {
+      return routes[this.currentRoute] || NotFound
+    }
+  },
+  render (h) { return h(this.ViewComponent) }
+});
+```
  
-Lo que hacemos, en este caso, es apoyarnos de la funcionalidad de propiedades computadas que nos ofrece el framework  para conseguir dinamismo. Lo que conseguimos es que cada vez que la variable `currentRoute` cambie, se ejecute la función `ViewComponent` que devuelve el componente que hayamos configurado en nuestro array routes. Si la ruta puesta en el navegador no es correcta, renderizamos el componente NotFound.
+Lo que hacemos, en este caso,[ es apoyarnos de la funcionalidad de propiedades computadas que nos ofrece el framework](https://vuejs.org/v2/guide/computed.html) para conseguir dinamismo. Lo que conseguimos es que cada vez que la variable `currentRoute` cambie, se ejecute la función `ViewComponent` que devuelve el componente que hayamos configurado en nuestro array `routes`. Si la ruta puesta en el navegador no es correcta, renderizamos el componente `NotFound`.
 
 La implementación es bastante sencilla y nos va a permitir la navegación por nuestra aplicación sin hacer mucho más. Si nuestra aplicación empieza a crecer, tenemos que tener en cuenta que una solución como esta es limitada y que deberemos ir pensando en incluir algo más elaborado.
 
 ## Y si lo necesitamos ¿Cómo empezamos?
 
-Si necesitamos algo más elaborado, puede ser una buena idea que diseñemos nuestra propia librería como hace Juanma en este post, o que usemos una de las librerías con las que ya contamos en la comunidad como es el caso de Director.
+Si necesitamos algo más elaborado, [puede ser una buena idea que diseñemos nuestra propia librería como hace Juanma en este post](http://blog.koalite.com/2016/03/disenando-un-router-para-aplicaciones-spa/), o [que usemos una de las librerías con las que ya contamos en la comunidad como es el caso de Director](https://github.com/flatiron/director).
 
-Tenemos también la opción de extender VueJS con una nueva librería llamada vue-router, esta es la opción que vamos a explicar. Es la opción que mejor se adapta al propio framework y que nos va a proporcionar todo lo necesario.
+Tenemos también la opción de extender VueJS [con una nueva librería llamada vue-router, esta es la opción que vamos a explicar](https://router.vuejs.org/en/). Es la opción que mejor se adapta al propio framework y que nos va a proporcionar todo lo necesario.
 
 Para usarla tenemos varias formas: si es un proyecto que ya tenemos empezado, por medio de la línea de comandos:
 
@@ -43,9 +64,9 @@ O creando un proyecto desde 0 con vue-cli, indicando en la configuración del pr
 
 Una vez que tenemos esto, lo siguiente será configurar nuestras rutas e indicar a VueJS que incluya esta configuración en su contexto. Para hacer esto, creamos una carpeta en la raíz del proyecto de esta manera:
 
-Captura de pantalla de 2017-05-17 11-42-53.png
+![](/images/rutas/captura-de-pantalla-de-2017-05-17-11-42-53.png)
 
-Dentro del fichero index.js vamos a ir incluyendo toda la configuración de rutas de nuestra aplicación. Dentro de este fichero incluimos las siguientes líneas.
+Dentro del fichero `index.js` vamos a ir incluyendo toda la configuración de rutas de nuestra aplicación. Dentro de este fichero incluimos las siguientes líneas.
 
 ```javascript
 import Vue from 'vue';
