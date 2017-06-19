@@ -19,7 +19,8 @@
   * [Capítulo 12. Las mutaciones y acciones en vuex](mutaciones.md)
   * [Capítulo 13. Los módulos](módulos.md)
 * Bloque 5. Webpack
-  * TBD
+  * [Capítulo 14. Conceptos básicos](webpack-basico.md)
+  * [Capítulo 15. Conceptos avanzados](webpack-avanzado.md)
 * Bloque 6. Renderizado en servidor con nuxt
   * TBD
 * Bloque 7. Otros conceptos y herramientas
