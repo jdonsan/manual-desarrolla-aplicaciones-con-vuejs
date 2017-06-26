@@ -24,9 +24,9 @@ Para simplificar las cosas, dejemos de lado el entorno de test y centrémonos en
 ---- webpack.pro.config.js
 ```
 
-Lo primero que hemos hecho es meter todas las configuraciones en una carpeta llamada /build. organizando los ficheros así, no ensuciamos la carpeta raíz. Como sabemos, la carpeta raíz ya que de por sí está demasiado llena de ficheros de configuración genéricos. Separar todo lo relativo a la build mejora la legibilidad.
+Lo primero que hemos hecho es meter todas las configuraciones en una carpeta llamada `/build`. organizando los ficheros así, no ensuciamos la carpeta raíz. Como sabemos, la carpeta raíz ya que de por sí está demasiado llena de ficheros de configuración genéricos. Separar todo lo relativo a la build mejora la legibilidad.
 
-Lógicamente, si hacemos esto, cuando lancemos el comando webpack en línea de comandos no funcionará. Esto se debe a que Webpack no encuentra la configuración por defecto. Para solucionar esto, insertaremos un par de comandos nuevos en nuestro proyecto Node. En el package.json pondremos estas dos líneas dentro de scripts:
+Lógicamente, si hacemos esto, cuando lancemos el comando `webpack` en línea de comandos no funcionará. Esto se debe a que Webpack no encuentra la configuración por defecto. Para solucionar esto, insertaremos un par de comandos nuevos en nuestro proyecto Node. En el `package.json` pondremos estas dos líneas dentro de scripts:
 
 ```javascript
 // package.json
@@ -40,11 +40,11 @@ Lógicamente, si hacemos esto, cuando lancemos el comando webpack en línea de 
 }
 ```
 
-Cuando en mi línea de comandos ejecute npm run build:dev, se ejecutará la configuración de desarrollo y cuando se ejecute npm run build:pro, la de producción.
+Cuando en mi línea de comandos ejecute `npm run build:dev`, se ejecutará la configuración de desarrollo y cuando se ejecute `npm run build:pro`, la de producción.
 
-Volviendo a nuestra carpeta build,  vemos que los nombres de los ficheros son claros e inequívocos. Todo desarrollador tiene claro sobre dónde va a influir cada uno. El fichero base (webpack.base.conf.js) contendrá la parte de la configuración más genérica. Este fichero es como el padre de las dos configuraciones especificas webpack.dev.config.js y webpack.pro.config.js.
+Volviendo a nuestra carpeta build,  vemos que los nombres de los ficheros son claros e inequívocos. Todo desarrollador tiene claro sobre dónde va a influir cada uno. El fichero base (`webpack.base.conf.js`) contendrá la parte de la configuración más genérica. Este fichero es como el padre de las dos configuraciones especificas `webpack.dev.config.js` y `webpack.pro.config.js`.
 
-Para que estos ficheros específicos hereden la configuración del base, tenemos que hacer uso un módulo de Webpack llamado webpack-merge. Así que lo primero que hacemos es instalar las dependencias que necesitamos en nuestro proyecto.
+Para que estos ficheros específicos hereden la configuración del base, tenemos que hacer uso un módulo de Webpack llamado `webpack-merge`. Así que lo primero que hacemos es instalar las dependencias que necesitamos en nuestro proyecto.
 
 ```
 $ npm install webpack webpack-merge --save-dev
@@ -73,7 +73,7 @@ const config = {
 module.exports = config;
 ```
 
-Como hicimos en el post anterior, tenemos un punto de entrada en ./src/main.js y una salida en ./dist/app.min.js. Incluimos el plugin HtmlWebpackPlugin  para que nos inyecte los scripts necesarios para que funcione nuestro index.html.
+Como hicimos en el post anterior, tenemos un punto de entrada en `./src/main.js` y una salida en `./dist/app.min.js`. Incluimos el plugin `HtmlWebpackPlugin`  para que nos inyecte los scripts necesarios para que funcione nuestro `index.html`.
 
 Ahora lo que hacemos es rehusar esa configuración para los dos entornos, de la siguiente manera:
 
@@ -137,9 +137,9 @@ export default {
 };
 ```
 
-Nuestro componente importa su CSS específico (import './style.css'). No es la mejor forma de hacerlo y en vue nunca importaremos el CSS así, pero para el ejemplo nos vale.
+Nuestro componente importa su CSS específico `(import './style.css'`). No es la mejor forma de hacerlo y en vue nunca importaremos el CSS así, pero para el ejemplo nos vale.
 
-Lo que hacemos ahora es configurar nuestro webpack.base.conf.js para decirle qué tiene que hacer con este código. Lo hacemos así:
+Lo que hacemos ahora es configurar nuestro `webpack.base.conf.js` para decirle qué tiene que hacer con este código. Lo hacemos así:
 
 ```javascript
 // webpack.base.conf.js
@@ -167,7 +167,7 @@ const config = {
 };
 ```
 
-Con esta nueva regla estamos diciéndole que todos los ficheros que terminen en .css, queremos que se encuentren extraídos en el fichero que hayamos indicado en el plugin, en este caso app.min.css. Lo que le decimos también es que, mientras tanto,  vaya ejecutando el loader css-loader que es muy útil para resolver los @import de CSS3.
+Con esta nueva regla estamos diciéndole que todos los ficheros que terminen en `.css`, queremos que se encuentren extraídos en el fichero que hayamos indicado en el plugin, en este caso `app.min.css`. Lo que le decimos también es que, mientras tanto,  vaya ejecutando el loader `css-loader` que es muy útil para resolver los `@import` de CSS3.
 
 De esta forma, podemos ir escribiendo nuestro CSS en ficheros separados, y Webpack se encargará de ir juntándolos respetando el orden de las dependencias.
 
@@ -194,7 +194,7 @@ Si observamos el fichero CSS:
 }
 ```
 
-Vemos que tiene como dependencia una imagen (icon.png). Necesitamos una manera de indicarle a Webpack la forma en la que tiene que tratar a esta imagen. Para ello, incluiremos un nuevo loader que se encarga de mover ficheros a la ruta que decidamos:
+Vemos que tiene como dependencia una imagen (`icon.png`). Necesitamos una manera de indicarle a Webpack la forma en la que tiene que tratar a esta imagen. Para ello, incluiremos un nuevo loader que se encarga de mover ficheros a la ruta que decidamos:
 
 ```javascript
 // webpack.base.conf.js
@@ -226,9 +226,9 @@ const config = {
 };
 ```
 
-Lo que indico es una nueva regla que se ejecuta cuando, un fichero cargado termine en .png, .svg, .jpg  o .gif y se ejecutará el loader file-loader. Este loader lo que hace es guardar una copia en dist. A su vez, cambia la url del resto de ficheros que lo enlazasen para que apunten a la nueva ubicación.
+Lo que indico es una nueva regla que se ejecuta cuando, un fichero cargado termine en `.png`, `.svg`, `.jpg`  o `.gif` y se ejecutará el loader `file-loader`. Este loader lo que hace es guardar una copia en `dist`. A su vez, cambia la url del resto de ficheros que lo enlazasen para que apunten a la nueva ubicación.
 
-El loader cuenta con una opción de configuración donde podemos indicar el nombre de  la carpeta donde queremos guardarlo o nombre específico que debe tener: En este caso, le estamos diciendo, que guarde las imágenes en ./dist/img.
+El loader cuenta con una opción de configuración donde podemos indicar el nombre de  la carpeta donde queremos guardarlo o nombre específico que debe tener: En este caso, le estamos diciendo, que guarde las imágenes en `./dist/img`.
 
 Hemos metido, en el nombre, un hash que Webpack genera automáticamente. De esta forma, el navegador puede saber si la imagen ha cambiado o sigue siendo la misma y por tanto puede mantenerla cacheada. Esto lo explicaremos en el siguiente post dedicado al Caching.
 
@@ -245,7 +245,7 @@ Parece una tontería, pero la forma en la que se suelen cargar estos ficheros de
 }
 ```
 
-Todos los ficheros que hayan sido referenciados con formato .csv o .tsv serán procesados por el loader dsv-loader.
+Todos los ficheros que hayan sido referenciados con formato `.csv` o `.tsv` serán procesados por el loader `dsv-loader`.
 
 En nuestro programa hacemos caso de un CSV de datos con usuarios de ejemplo. Como comprobarás en el repositorio, no hemos tenido que hacer parseos. Para nosotros se ha convertido en un fichero JS más con el que trabajar.
 
@@ -298,21 +298,21 @@ module.exports = config;
 
 Con esto, si vamos al Developer Tools, comprobaremos que cuando volvamos a generar el paquete, tendremos esto en sources:
 
-
+![Imagen de los sourcesmaps descargados](/images/webpack/captura-de-pantalla-de-2017-06-20-13-02-131.png)
 
 Ya podemos poner puntos de parada y depurar nuestro código.
 
 ### Poder contar con un servidor ligero para lanzar el resultado
 
-Existen muchas formas de levantar un servidor web en Node. Podemos hacer uso de módulos como http-server que nos permitirá hacer peticiones sobre nuestra webapp.
+Existen muchas formas de levantar un servidor web en Node. Podemos hacer uso de módulos como `http-server` que nos permitirá hacer peticiones sobre nuestra webapp.
 
-Sin embargo, podemos sacarle mucho más potencial a Webpack gracias a un módulo llamado webpacl-dev-middlerware. Este módulo permite cargar nuestra build empaquetada dentro de un servidor Web. De esta forma tenemos mucho más margen para configurar cosas por medio de código.
+Sin embargo, podemos sacarle mucho más potencial a Webpack gracias a un módulo llamado `webpack-dev-middlerware`. Este módulo permite cargar nuestra build empaquetada dentro de un servidor Web. De esta forma tenemos mucho más margen para configurar cosas por medio de código.
 
-El módulo es muy potente porque nos cargará la build en memoria. Esto significa que cuando estemos en desarrollo no se creará la carpeta dist en disco. lo que provocará que la construcción sea más rápida.
+El módulo es muy potente porque nos cargará la build en memoria. Esto significa que cuando estemos en desarrollo no se creará la carpeta `dist` en disco. lo que provocará que la construcción sea más rápida.
 
 Es buen módulo también porque nos puede servir como proxy. Si nuestra aplicación hace llamadas a una API de nuestro servidor, nos permitirá redirigir el tráfico hacia donde digamos. De esta forma, podemos tener desacopladas aplicaciones front con back que en producción se encontrarán dentro del mismo dominio.
 
-Para poner este modulo tendremos que hacer varias cosas. Lo primero es añadir un fichero dev-server.js a la carpeta build. Dentro de este fichero incluiremos la configuración de nuestro servidor:
+Para poner este modulo tendremos que hacer varias cosas. Lo primero es añadir un fichero `dev-server.js` a la carpeta build. Dentro de este fichero incluiremos la configuración de nuestro servidor:
 
 ```javascript
 const webpack = require("webpack");
@@ -334,9 +334,9 @@ app.listen(3000, function () {
 
 Lo que estamos haciendo es levantar un servidor con Express en el puerto 3000. Lo que hacemos es compilar nuestra configuración en tiempo ejecución del script. Luego le pasamos la configuración compilada al módulo webpack-dev-middleware. Gracias a esto, conseguimos que nuestro empaquetado final se sirva desde memoria.
 
-Lo bueno de este módulo es que ya pone nuestro proyecto en mode watch = on, lo que significa que si hemos cambiado algo de nuestro código, el módulo sabe lanzar de nuevo la compilación.
+Lo bueno de este módulo es que ya pone nuestro proyecto en `mode watch = on`, lo que significa que si hemos cambiado algo de nuestro código, el módulo sabe lanzar de nuevo la compilación.
 
-El único cambio que tenemos que hacer ahora tiene que ver con cómo ejecutamos este build. Volvemos al package.json:
+El único cambio que tenemos que hacer ahora tiene que ver con cómo ejecutamos este build. Volvemos al `package.json`:
 
 ```javascript
 // packege.json
@@ -356,9 +356,9 @@ Cuando lanzo `npm run build:dev`. Se levanta un servidor, se compila el proyecto
 
 Lo último que nos queda es que, ese observador que recompila cada vez que haya un cambio, sepa indicar al navegador que se recargue. Como decimos, hay varias formas de hacer esto pues Webpack cuenta con la funcionalidad de carga de módulos en caliente, sin embargo, ya que estamos haciendo uso de un servidor 'ad hoc' con Express, usaremos otro middleware para conseguir esto.
 
-El módulo que necesitamos es el siguiente: webpack-hot-middleware. Este módulo es el encargado de indicarle al navegador que existen cambios a actualizar. Para hacer uso de él, tenemos que seguir los siguientes pasos:
+El módulo que necesitamos es el siguiente: `webpack-hot-middleware`. Este módulo es el encargado de indicarle al navegador que existen cambios a actualizar. Para hacer uso de él, tenemos que seguir los siguientes pasos:
 
-Tenemos que indicar a Webpack que nos habilite toda la funcionalidad de HRM. Para eso, incluimos el plugin webpack.HotModuleReplacementPlugin de la siguiente manera:
+Tenemos que indicar a Webpack que nos habilite toda la funcionalidad de HRM. Para eso, incluimos el plugin `webpack.HotModuleReplacementPlugin` de la siguiente manera:
 
 ```javascript
 // ./build/webpack.dev.conf.js
@@ -415,7 +415,7 @@ hotClient.subscribe(function (event) {
 });
 ```
 
-Este fichero lo tenemos que incluir en nuestro compilado. Para ello, cambiamos el entry de dev para que lo tenga en cuenta. Lo inclímos el primero en el array o no funcionará:
+Este fichero lo tenemos que incluir en nuestro compilado. Para ello, cambiamos el `entry` de `dev` para que lo tenga en cuenta. Lo incluimos el primero en el array o no funcionará:
 
 ```javascript
 const webpack = require('webpack');
@@ -453,7 +453,7 @@ Tareas como la depuración y la carga dinámica dejan de ser importantes y minif
 
 ### Optimizando el index.html
 
-En nuestro caso, estamos generando 3 ficheros que estaría bien que optimizaramos. Para hacerlo incluíremos una serie de plugins que harán por nosotros el trabajo. Lo primero que haremos será indicar que el index.html se encuentre minificado. Para esto, lo hacemos así:
+En nuestro caso, estamos generando 3 ficheros que estaría bien que optimizaramos. Para hacerlo incluiremos una serie de plugins que harán por nosotros el trabajo. Lo primero que haremos será indicar que el `index.html` se encuentre minificado. Para esto, lo hacemos así:
 
 ```javascript
 // ./build/webpack.pro.conf.js
@@ -479,12 +479,13 @@ const config = merge(webpackBaseConf, {
 module.exports = config;
 ```
 
-Añadimos un nuevo parámetro al plugin HtmlWebpackPlugin llamado minify. Nos permite configurar varias cosas. Por poner un ejemplo de todo lo que se puede hacer, he decidido eliminar los comentarios del HTML final, los espacios blancos que no aporten marcado y las dobles comillas de atributos que sean posibles quitarla. Con esto reducimos el tamaño y el funcionamiento sigue siendo el mismo.
+Añadimos un nuevo parámetro al plugin `HtmlWebpackPlugin` llamado minify. Nos permite configurar varias cosas. Por poner un ejemplo de todo lo que se puede hacer, he decidido eliminar los comentarios del HTML final, los espacios blancos que no aporten marcado y las dobles comillas de atributos que sean posibles quitarla. Con esto reducimos el tamaño y el funcionamiento sigue siendo el mismo.
 
 ### Optimizando el app.min.css
 
-Hacemos algo muy parecido con el CSS. Añadimos un nuevo plugin que permite optimizar estilos. Tan fácil como añadir el plugin OptimizeCSSPlugin:
+Hacemos algo muy parecido con el CSS. Añadimos un nuevo plugin que permite optimizar estilos. Tan fácil como añadir el plugin `OptimizeCSSPlugin`:
 
+```javascript
 // ./build/webpack.pro.conf.js
 
 const webpack = require('webpack');
@@ -508,10 +509,13 @@ const config = merge(webpackBaseConf, {
 };
 
 module.exports = config;
-Optimizando app.min.js
+```
+
+### Optimizando `app.min.js`
 
 Por último, añadimos plugins para optimizar el JS. Es igual que el anterior, pero con los nuevos plugins:
 
+```javascript
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const webpackBaseConf = require('./webpack.base.conf');
@@ -534,21 +538,27 @@ const config = merge(webpackBaseConf, {
 });
 
 module.exports = config;
-webpack.optimize.UglifyJsPlugin es un plugin del propio Webpack que sirve para optimizar JS.
+```
+
+`webpack.optimize.UglifyJsPlugin` es un plugin del propio Webpack que sirve para optimizar JS.
  
-Marcar paquete como producción
+### Marcar paquete como producción
 
 Es buena práctica que marquemos el paquete como producción. Esto es así porque cuando la variable de entorno se encuentra en producción hace que se desconecten mecanismos que no deberían verse.
 
 Por ejemplo, en vue, cuando el compilado se encuentra en producción, las Developers Tools especiales de vue se desactivan para que nadie pueda depurar las rutas o los flujos. También, muchas librerías usan este mecanismos para esconder trazas de log. Con ello ganamos en seguridad y en velocidad.
 
 Para incluir esto, mete este nuevo plugin de esta manera:
+
+```javascript
 // webpack.pro.config.js
 
 new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('production')
-})
-Conclusiones
+});
+```
+
+## Conclusiones
 
 Con todo esto, tenemos mucho avanzado. Nos hemos dejado mucho por el camino. No hemos explicado como incluir un linter que nos evalúe la homogeneidad de nuestro código, ni hemos incluido plugins que ejecuten tests. No hemos añadido plugins para cambiar las cadenas de i18n, ni hemos transpilado nuestros ficheros SASS para convertirlos en CSS.
 
@@ -558,4 +568,4 @@ En el último post de la serie comprobaremos los conocimientos que hemos adquiri
 
 Nos leemos :)
 
-> Os dejo el repositorio por aquí por si queréis ver lo que hemos hecho en este post.
+> [Os dejo el repositorio por aquí por si queréis ver lo que hemos hecho en este post](https://github.com/jdonsan/elabismo-webpack-primera-build).
