@@ -1,3 +1,5 @@
+![cover](cover.jpg)
+
 # Acerca de este manual
 
 Este manual es una recopilación de posts extraídos del blog [El Abismo de Null](https://elabismodenull.wordpress.com/tag/vuejs/) sobre el desarrollo de aplicaciones hechas en JavaScript con el nuevo framework VueJS.
