@@ -186,11 +186,11 @@ module.exports = function(env) {
 }
 ```
 
-Con esto se generan dos paquetes dentro de dist uno para main y otro para el vendor.
+Con esto se generan dos paquetes dentro de `dist` uno para `main` y otro para el `vendor`.
 
-La configuración anterior presenta varios problemas. El primero es que aunque estemos separando moment en un paquete aparte dentro de vendor, no significa que no se esté incluyendo también en main. Estamos duplicando código. El segundo es un problema de flexibilidad. Estamos haciendo que en nuestro paquete de vendor solo se incluya la librería moment. Esto no es real pues muchas dependencias se deberán incluir aquí.
+La configuración anterior presenta varios problemas. El primero es que aunque estemos separando `moment` en un paquete aparte dentro de `vendor`, no significa que no se esté incluyendo también en `main`. Estamos duplicando código. El segundo es un problema de flexibilidad. Estamos haciendo que en nuestro paquete de `vendor` solo se incluya la librería `moment`. Esto no es real pues muchas dependencias se deberán incluir aquí.
 
-Para solucionar el primer problema,  usamos el plugin CommonsChunkPlugin que lo que hace es extraer todas las dependencias repetidas de los paquetes generados a donde nosotros le digamos. Por lo tanto hacemos esto:
+Para solucionar el primer problema,  usamos el plugin `CommonsChunkPlugin` que lo que hace es extraer todas las dependencias repetidas de los paquetes generados a donde nosotros le digamos. Por lo tanto hacemos esto:
 
 ```javascript
 var webpack = require('webpack');
@@ -215,9 +215,9 @@ module.exports = function(env) {
 }
 ```
 
-Incluimos el plugin e indicamos dónde queremos guardar los módulos comunes. En este caso en vendor.
+Incluimos el plugin e indicamos dónde queremos guardar los módulos comunes. En este caso en `vendor`.
 
-El segundo caso va muy relacionado con el primero ya que lo que vamos a hacer es quitar el punto de entrada de vendor y vamos a dejar que el plugin de CommonsChunkPlugin se encargue de generar el paquete de forma implícita.
+El segundo caso va muy relacionado con el primero ya que lo que vamos a hacer es quitar el punto de entrada de `vendor` y vamos a dejar que el plugin de `CommonsChunkPlugin` se encargue de generar el paquete de forma implícita.
 
 ```javascript
 var webpack = require('webpack');
@@ -244,7 +244,7 @@ module.exports = function() {
 }
 ```
 
-Lo que hemos hecho es decirle a Webpack que saque las módulos cómunes en el paquete vendor de todo lo que se encuentra dentro de la carpeta node_modules. Como todas nuestras dependencias externas se encontrarán en esta carpeta, ya tenemos la separación en un paquete independiente solucionado.
+Lo que hemos hecho es decirle a Webpack que saque las módulos comunes en el paquete `vendor` de todo lo que se encuentra dentro de la carpeta node_modules. Como todas nuestras dependencias externas se encontrarán en esta carpeta, ya tenemos la separación en un paquete independiente solucionado.
 
 Seguimos teniendo un último problema. Webpack incluye en todos los empaquetados un motor de ejecución para gestionar estos módulos en los paquetes que realiza. Si hemos creado dos paquetes dentro de nuestra aplicación, hemos hecho que Webpack incluya este runtime en cada uno de ellos. Para optimizar esto del todo tenemos una solución: Sacar este motor a un nuevo paquete denominado por Webpack como manifest. Lo hacemos así:
 
@@ -288,9 +288,9 @@ El último caso que nos queda es la posibilidad de cargar zonas de nuestro códi
 
 Con Webpack, podemos indicar que se genere un paquete mínimo con lo que más se suele usar y después ir cargando otros módulos cuando sean usados.
 
-La forma de conseguir esto no es por medio de configuración de nuestro Webpack, sino que nos supone un cambio a la hora de que desarrollemos. Dentro de la especificación de JavaScript ya existe un apartado dedicado a la carga de módulos bajo demanda. La forma de usarlo es por medio de la nueva palabra reservada import().
+La forma de conseguir esto no es por medio de configuración de nuestro Webpack, sino que nos supone un cambio a la hora de que desarrollemos. Dentro de la especificación de JavaScript ya existe un apartado dedicado a la carga de módulos bajo demanda. La forma de usarlo es por medio de la nueva palabra reservada `import()`.
 
-Este método es asíncrono y permite ser usado por medio de promesas y funciones asíncronas. Por ejemplo, si quisieramos cargar moment bajo demanda, podría hacer algo como esto:
+Este método es asíncrono y permite ser usado por medio de promesas y funciones asíncronas. Por ejemplo, si quisiéramos cargar `moment` bajo demanda, podría hacer algo como esto:
 
 ```javascript
 function determineDate() {
@@ -304,7 +304,7 @@ function determineDate() {
 determineDate();
 ```
 
-Webpack entiende perfectamente este código y se encargará de cargar moment cuando le hayamos indicado. vue hará mucho uso de esta funcionalidad también, por lo que es importante tenerla clara.
+Webpack entiende perfectamente este código y se encargará de cargar `moment` cuando le hayamos indicado. vue hará mucho uso de esta funcionalidad también, por lo que es importante tenerla clara.
 
 Con funciones asíncronas sería de la siguiente manera:
 
