@@ -21,6 +21,7 @@
 * Bloque 5. Webpack
   * [Capítulo 14. Conceptos básicos](webpack-basico.md)
   * [Capítulo 15. Configurando nuestra primera build](webpack-avanzado.md)
+  * [Capítulo 16. Caching, Shimming & Splitting](webpack-performance.md)
 * Bloque 6. Renderizado en servidor con nuxt
   * TBD
 * Bloque 7. Otros conceptos y herramientas

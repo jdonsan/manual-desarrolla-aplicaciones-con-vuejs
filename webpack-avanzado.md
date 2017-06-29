@@ -1,4 +1,4 @@
-# Configurando nuestra primera build
+# Capítulo 15. Configurando nuestra primera build
 
 Los conceptos básicos están bien. Ayudan a asentar el conocimiento que necesitamos para desarrollar cosas más complicadas. Pero sin un caso real donde aplicar esos conocimientos, es difícil aprender de forma consistente.
 
