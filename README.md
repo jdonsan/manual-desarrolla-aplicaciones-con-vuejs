@@ -56,6 +56,8 @@ Si te gusta lo que has leído y crees que puede aportar valor a otras personas, 
 
 Puedes compartir por cualquier red social, blog o podcasts que creas conveniente.
 
+* [Tuitea](https://twitter.com/intent/tweet?text=Acabo%20de%20descubrir%20el%20manual%20%27Desarrolla%20aplicaciones%20con%20VueJS%27%20de%20@jdonsan%20en%20https://www.gitbook.com/book/jdonsan/desarrolla-aplicaciones-con-vuejs/details)
+
 ## Descarga
 
 El manual se encuentra disponible en la plataforma GitBook de manera pública. **Están habilitados los formatos en MARKDOWN, HTML, PDF, EPUB y MOBI** para que puedas disfrutar de ella desde cualquier tipo de dispositivo.
