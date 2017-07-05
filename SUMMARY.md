@@ -23,7 +23,7 @@
   * [Capítulo 15. Configurando nuestra primera build](webpack-avanzado.md)
   * [Capítulo 16. Caching, Shimming & Splitting](webpack-performance.md)
 * Bloque 6. Renderizado en servidor con nuxt
-  * TBD
+  * [Capítulo 17. Introducción a Server-Side Rendering](ssr.md)
 * Bloque 7. Otros conceptos y herramientas
   * TBD
 
