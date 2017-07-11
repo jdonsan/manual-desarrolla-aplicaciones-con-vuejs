@@ -18,12 +18,14 @@
   * [Capítulo 11. Los estados y getters](getters.md)
   * [Capítulo 12. Las mutaciones y acciones en vuex](mutaciones.md)
   * [Capítulo 13. Los módulos](módulos.md)
-* Bloque 5. El empaquetado de la aplicación con Webpack
+* Bloque 5. El empaquetado de la aplicación con webpack
   * [Capítulo 14. Conceptos básicos](webpack-basico.md)
   * [Capítulo 15. Configurando nuestra primera build](webpack-avanzado.md)
   * [Capítulo 16. Caching, Shimming & Splitting](webpack-performance.md)
-* Bloque 6. Renderizado en servidor con nuxt
+* Bloque 6. Renderizado en servidor con vue-server-renderer
   * [Capítulo 17. Introducción a Server-Side Rendering](ssr.md)
-* Bloque 7. Otros conceptos y herramientas
-  * TBD
+  * [Capítulo 18. Configurando Webpack para SSR](ssr-webpack.md)
+  * [Capítulo 19. Adaptando tu proyecto a SSR](ssr-proyecto.md)
+* Bloque 7. Otras herramientas
+  * [Capítulo 20. Aplicaciones universales con Nuxt](nuxt.md)
 
