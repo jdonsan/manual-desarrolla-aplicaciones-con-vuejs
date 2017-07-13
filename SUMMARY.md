@@ -16,7 +16,7 @@
 * Bloque 4. La gestión de estados con vuex
   * [Capítulo 10. Introducción](vuex.md)
   * [Capítulo 11. Los estados y getters](getters.md)
-  * [Capítulo 12. Las mutaciones y acciones en vuex](mutaciones.md)
+  * [Capítulo 12. Las mutaciones y acciones](mutaciones.md)
   * [Capítulo 13. Los módulos](módulos.md)
 * Bloque 5. El empaquetado de la aplicación con webpack
   * [Capítulo 14. Conceptos básicos](webpack-basico.md)
