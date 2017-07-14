@@ -12,7 +12,7 @@ Como podrás ver a lo largo de los capítulos, esta herramienta supone una forma
 
 El manual intenta ser lo más explícito posible en las explicaciones de todos esos conceptos que puedan resultarte nuevos. Sin embargo, sí espero una predisposición de conocimientos previos por tu parte.
 
-Por ejemplo, el manual se encargará de explicarte todo los conceptos importantes de:
+Por ejemplo, el manual se encargará de explicar todo los conceptos importantes de:
 
 * Vue
 * Vue-Router
@@ -62,7 +62,7 @@ Puedes compartir por cualquier red social, blog o podcasts que creas conveniente
 
 El manual se encuentra disponible en la plataforma GitBook de manera pública. **Están habilitados los formatos en MARKDOWN, HTML, PDF, EPUB y MOBI** para que puedas disfrutar de ella desde cualquier tipo de dispositivo.
 
-Aunque las 5 formas han sido probadas, puede ser que se me hayan pasado aquellos detalles de maquetación o de visualización por lo que de ser así, te agradecería que me lo comentaras o que me enviaras una Pull Request con los cambios.
+Aunque las 5 formas han sido probadas, puede ser que se me hayan pasado aquellos detalles de maquetación o de visualización más específicos, por lo que de ser así, te agradecería que me lo comentaras o que me enviaras una Pull Request con los cambios.
 
 ## Feedback
 
