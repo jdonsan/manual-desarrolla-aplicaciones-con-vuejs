@@ -22,12 +22,10 @@ Lo bueno de VueJS es que el cambio de estas plantillas en DOM no se produce de m
 
 ## La interpolación
 
-Una interpolación es la posibilidad de cambiar partes de una cadena de texto por variables. Para indicar dónde queremos un comportamiento dinámico de una cadena de texto dentro de VueJS, lo podemos indicar, marcando la variable que queremos interpolar con las dobles llaves (también conocidos como 'bigotes'):
-
+Una interpolación es la posibilidad de cambiar partes de una cadena de texto por variables. Para indicar dónde queremos un comportamiento dinámico de una cadena de texto dentro de VueJS, lo podemos indicar, marcando la variable que queremos interpolar con las dobles llaves \(también conocidos como 'bigotes'\):
 
 ```html
 <h1>Bienvenido {{ user.name }}</h1>
-
 ```
 
 ### Interpolando HTML
@@ -37,7 +35,7 @@ Este sistema nos sirve para interpolar variables que no contienen HTML. Si neces
 ```html
 <div v-html="rawHtml"></div>
 ```
- 
+
 Este caso puede ser una mala práctica si lo que intentamos es estructurar nuestras vistas por medio de este método. El concepto de componente es el idóneo para reutilizar elementos. Intentemos usar este método solo en casos en los que no es posible otro método y teniendo en cuenta que el HTML incrustado sea controlado 100% por nosotros y no por el usuario, de esta manera podremos evitar ataques por XSS.
 
 ### Interpolando atributos
@@ -47,7 +45,7 @@ VueJS no solo nos deja interpolar textos de nuestros elementos HTML, también no
 ```html
 <button type="submit" v-bind:disabled="isFormEmpty">Entrar</button>
 ```
- 
+
 Podríamos tener este comportamiento con cualquier atributo de un elemento HTML.
 
 ### Interpolando por medio de expresiones
@@ -57,7 +55,7 @@ En VueJS se puede interpolar texto por medio de pequeñas expresiones. Es una po
 ```html
 <div class="errors-container" v-if="errors.length !== 0">
 ```
- 
+
 Esto renderizaría el elemento dependiendo de si evalúe a true o a false. Aunque contemos con la posibilidad, es buena práctica que todas estas evaluaciones nos las llevemos a nuestra parte JavaScript. De esta manera separamos correctamente lo que tiene que ver con la vista de lo que tiene que ver con la lógica. Seguimos respetando los niveles de responsabilidad.
 
 Si no tenéis mas remedio que usar una expresión de este estilo, hay que tener en cuenta que ni los flujos ni las iteraciones de JavaScript funcionan en ellos. La siguiente interpolación de una expresión daría un error:
@@ -74,9 +72,8 @@ Por ejemplo, y como ya hemos ido viendo, contamos con directivas como esta:
 
 ```html
 <input id="username" type="text" v-model="user.name" />
-
 ```
- 
+
 `v-model` nos permite hacer un doble data-binding sobre una variable específica. En este caso user.name.
 
 Una directiva puede tener o no argumentos dependiendo de su funcionalidad. Por ejemplo, una directiva con argumento serían las siguiente:
@@ -85,9 +82,8 @@ Una directiva puede tener o no argumentos dependiendo de su funcionalidad. Por e
 <a v-bind:href="urlPasswordChange" target="_blank">
   ¿Has olvidado tu contraseña?
 </a>
-
 ```
- 
+
 Lo que hace `v-bind` con el argumento `href` es enlazar el contenido de `urlPasswordChange` como url del elemento `a`.
 
 Las directivas son un concepto bastante avanzado de este tipo de frameworks. Hay que tener en cuenta en todo momento que la ventaja de trabajar con estos sistemas es que el comportamiento es reactivo. Esto quiere decir, que si el modelo al que se encuentra enlazado un elemento HTML se ve modificado, el propio motor de plantillas se encargará de renderizar el nuevo elemento sin que nosotros tengamos que hacer nada.
@@ -99,7 +95,7 @@ Una directiva, en particular, puede tener más de un uso específico. Podemos in
 ```html
 <form class="login" v-on:submit.prevent="onLogin">
 ```
- 
+
 Dentro de la API de VueJS contamos con todos estos modificadores.
 
 ### Atajo para la directiva v-bind o v-on
@@ -109,12 +105,11 @@ Una de las directivas más utilizadas es `v-bind`, lo que nos permite esta direc
 ```html
 <button type="submit" v-bind:disabled="isFormEmpty">Entrar</button>
 ```
- 
+
 O de esta otra que queda más reducido:
 
 ```html
 <button type="submit" :disabled="isFormEmpty">Entrar</button>
-
 ```
 
 Los dos generarían el mismo HTML:
@@ -122,13 +117,13 @@ Los dos generarían el mismo HTML:
 ```html
 <button type="submit" disabled="disabled">Entrar</button>
 ```
- 
+
 En el caso de registrar un evento, tenemos algo parecido. No hace falta que indiquemos `v-on` sino que podemos indicarlo por medio de una arroba `@` de esta manera:
 
 ```html
 <form class="login" @submit.prevent="onLogin">
 ```
- 
+
 El comportamiento sería el mismo que con v-on.
 
 En este post hemos explicado algunas de las directivas que hay, para entender el concepto, pero la API cuenta con todas estas.
@@ -139,21 +134,21 @@ Cuando interpolamos una variable dentro de nuestro HTML, puede que no se pinte t
 
 Hacer esta conversión en JavaScript, rompería con su responsabilidad específica dentro de una web, no solo estamos haciendo que trabaje con lógica, sino que la conversión implica hacer que trabaje en cómo presenta los datos por pantalla.
 
-Para evitar esto, se han inventado los filtros. Un filtro modifica una variable en tiempo de renderizado a la hora de interpolar la cadena. Para cambiar el formato de una variable tenemos que incluir el carácter |y el filtro que queremos usar como transformación.
+Para evitar esto, se han inventado los filtros. Un filtro modifica una variable en tiempo de renderizado a la hora de interpolar la cadena. Para cambiar el formato de una variable tenemos que incluir el carácter `|` y el filtro que queremos usar como transformación.
 
 Este sería un caso donde convertimos el texto de la variable en mayúsculas:
 
 ```html
 <h1>Bienvenido {{ user.name | uppercase }}</h1>
 ```
- 
+
 Los filtros se comportan como una tubería de transformación por lo que yo puedo concatenar todos los filtros que necesite de esta manera:
 
 ```html
 <h1>Bienvenido {{ user.name | filter1 | filter2 | filterN }}</h1>
 ```
- 
-En VueJS v1 se contaba dentro del core con una serie de filtros por defecto que en VueJS v2 han quitado para agilizar su tamaño. Para incluir estos filtros podemos insertar la siguiente librería que extiende el framework.
+
+En VueJS v1 se contaba dentro del core con una serie de filtros por defecto que en VueJS v2 han quitado para agilizar su tamaño. [Para incluir estos filtros podemos insertar la siguiente librería que extiende el framework](https://github.com/freearhey/vue2-filters).
 
 ## Todo junto
 
@@ -254,4 +249,5 @@ Si a alguno de vosotros al leer el este post sobre plantillas, el sistema de dir
 
 Por el momento, nos quedamos aquí.
 
-Nos leemos :)
+Nos leemos :\)
+
