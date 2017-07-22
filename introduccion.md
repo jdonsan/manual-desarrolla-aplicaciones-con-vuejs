@@ -10,7 +10,7 @@ No sé cuánto durará esta serie, así que lo mejor es que nos pongamos al lío
 
 ## ¿Qué es VueJS?
 
-Vue (pronunciado como viu) es la nueva herramienta JavaScript creada por [Evan You](https://www.linkedin.com/in/evanyou/ "Currículum de Evan You"), miembro bastante conocido en la comunidad por participar en el desarrollo de [Meteor](https://www.meteor.com/ "Web oficcial de meteor") y por ser desarrollador de Google durante varios años.
+Vue (pronunciado como viu) es la nueva herramienta JavaScript creada por [Evan You](https://www.linkedin.com/in/evanyou/ "Currículum de Evan You"), miembro bastante conocido en la comunidad por participar en el desarrollo de [Meteor](https://www.meteor.com/ "Web oficial de meteor") y por ser desarrollador de Google durante varios años.
 
 Evan You define su herramienta [como un framework progresivo](http://slides.com/evanyou/progressive-javascript#/ "Slides de Evan You hablando sobre framework progresivo"). Progresivo porque el framework se encuentra dividido en diferentes librerías bien acotadas que tienen una responsabilidad específica. De esta manera, el desarrollador va incluyendo los diferentes módulos según las necesidades del contexto en el que se encuentre. No es necesario incluir toda la funcionalidad desde el principio como en el caso de frameworks como [Angular](https://github.com/angular/angular "Repositorio de Angular").
 
