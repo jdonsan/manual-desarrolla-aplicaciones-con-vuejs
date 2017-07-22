@@ -1,6 +1,6 @@
 # Capítulo 1. The Progressive JavaScript Framework
 
-Hoy comienza una nueva serie en El Abismo. Hoy empezamos un nuevo viaje hacia nuevas tierras tecnológica. Hemos hablado largo y tendido en el blog sobre buenas prácticas, patrones, paradigmas y pequeños trucos que nos han ayudado a hacer mejor JavaScript. Creo que es hora de que aprovechemos todo ese conocimiento que hemos ido adquiriendo, y que lo empleemos en conocer mejor nuestras herramientas de trabajo.
+Hoy comienza una nueva serie en El Abismo. Hoy empezamos un nuevo viaje hacia nuevas tierras tecnológicas. Hemos hablado largo y tendido en el blog sobre buenas prácticas, patrones, paradigmas y pequeños trucos que nos han ayudado a hacer mejor JavaScript. Creo que es hora de que aprovechemos todo ese conocimiento que hemos ido adquiriendo, y que lo empleemos en conocer mejor nuestras herramientas de trabajo.
 
 Como desarrolladores, tenemos muchas herramientas de trabajo, pero nada suele ser tan importante como el conjunto de librerías o frameworks a los que nos atamos en los proyectos. Incluir estas dependencias en nuestro proyectos va a determinar la forma en la que trabajamos y el estilo que tendremos que usar. De ahí la importancia de elegir aquellas herramientas que realmente necesitamos y que nos harán sentirnos cómodos.
 
@@ -12,7 +12,7 @@ No sé cuánto durará esta serie, así que lo mejor es que nos pongamos al lío
 
 Vue (pronunciado como viu) es la nueva herramienta JavaScript creada por [Evan You](https://www.linkedin.com/in/evanyou/ "Currículum de Evan You"), miembro bastante conocido en la comunidad por participar en el desarrollo de [Meteor](https://www.meteor.com/ "Web oficcial de meteor") y por ser desarrollador de Google durante varios años.
 
-Evan You define su herramienta [como un framework progresivo](http://slides.com/evanyou/progressive-javascript#/ "Slides de Evan You hablando sobre framework progresivo"). Progresivo porque el frameworks se encuentra dividido en diferentes librerías bien acotadas que tienen una responsabilidad específica. De esta manera, el desarrollador va incluyendo los diferentes módulos según las necesidades del contexto en el que se encuentre. No es necesario incluir toda la funcionalidad desde el principio como en el caso de frameworks como [Angular](https://github.com/angular/angular "Repositorio de Angular").
+Evan You define su herramienta [como un framework progresivo](http://slides.com/evanyou/progressive-javascript#/ "Slides de Evan You hablando sobre framework progresivo"). Progresivo porque el framework se encuentra dividido en diferentes librerías bien acotadas que tienen una responsabilidad específica. De esta manera, el desarrollador va incluyendo los diferentes módulos según las necesidades del contexto en el que se encuentre. No es necesario incluir toda la funcionalidad desde el principio como en el caso de frameworks como [Angular](https://github.com/angular/angular "Repositorio de Angular").
 
 Es un sistema de modularización bastante parecido al de ReactJS. Facebook desarrolló un core para poder trabajar con vistas, pero a partir de ahí se han ido creando toda una serie de librerías (tanto por parte de Facebook como de la comunidad) que permite trabajar de una manera eficiente en un SPA. Aquí todas las piezas importantes se enmarcan dentro del proyecto de [VueJS](https://github.com/vuejs "Repositorios de VueJS") creado por Evan You.
 
@@ -212,7 +212,7 @@ Lo que hacemos es configurar la plantilla que queremos que renderice VueJS. Buen
 
 * [línea 6]: Vuelvo a definir otro componente. En este caso, es un componente que cuenta con un `input` y un `button`. Lo veremos más tarde. De este elemento, lo más destacable es el atributo `@new="addNewGame`. Es un nuevo atributo que no se encuentra en el estándar de HTML ¿Qué es entonces? Estos elementos personalizados son lo que en VueJS se entiende como directivas. Son un marcado personalizado que aporta nueva funcionalidad al elemento HTML marcado. En este caso, lo que estamos haciendo es añadir un listener que escucha en el evento `new`, cada vez que el componente `game-add` emite un evento `new`, el elemento padre se encuentra escuchando y ejecuta la función `addNewGame`. No os preocupéis si no lo entendéis ahora porque lo explicaremos en un post dedicado a la comunicación entre componentes.
 
-* [línea 7]: En esta línea hemos añadido otro componente. Este componente  `game-list` se encarga de pintar por pantalla el listado de videojuegos favoritos. Como vemos, tiene una nueva directiva que no conocíamos de VueJS: `v-bind`. Esta directiva lo que hace es enlazar una propiedad interna de un componente con un modelo del elemento padre, en este caso el modelo games.
+* [línea 7]: En esta línea hemos añadido otro componente. Este componente `game-list` se encarga de pintar por pantalla el listado de videojuegos favoritos. Como vemos, tiene una nueva directiva que no conocíamos de VueJS: `v-bind`. Esta directiva lo que hace es enlazar una propiedad interna de un componente con un modelo del elemento padre, en este caso el modelo games.
 
 Vale, parece que la plantilla se puede llegar a entender.
  
@@ -286,7 +286,7 @@ Vue.component('game-add', {
  
 Miremos un poco en detalle:
 
-* [línea 3]: Volvemos a definir una plantilla HTML con un único elemento raíz.
+* **[línea 3]**: Volvemos a definir una plantilla HTML con un único elemento raíz.
 
 * **[línea 4]**: El elemento tiene una directiva `v-model` que nos va a permitir ir obteniendo el valor del `input` e ir incluyéndolo en la variable `titleGame`.
 
@@ -391,10 +391,10 @@ const app = new Vue({
 
 ## Conclusión
 
-Nos queda mucho camino por recorrer, pero parece que la filosofía de VueJS tiene sentido. Hay un equipo de personas muy competentes del mundo JavaScript que han sabido extraer de las herramientas que han usado en el pasado, todas las características buenas y  las han desarrollado aquí.
+Nos queda mucho camino por recorrer, pero parece que la filosofía de VueJS tiene sentido. Hay un equipo de personas muy competentes del mundo JavaScript que han sabido extraer de las herramientas que han usado en el pasado, todas las características buenas y las han desarrollado aquí.
 
-El ejemplo es simple, pero si nos puede dar una idea de lo intuitivo y fácil que puede llegar a ser. Si vienes de utilizar frameworks y librerías orientadas a componentes no te costará el cambio. 
+El ejemplo es simple pero si nos puede dar una idea de lo intuitivo y fácil que puede llegar a ser. Si vienes de utilizar frameworks y librerías orientadas a componentes no te costará el cambio. 
 
-Si vienes de un mundo más artesano que hace uso de jQuery y/o Handlebars, el aprendizaje progresivo que propone, y el sistema de plugins, te puede ayudar e incluso a sonar muy parecido. Y... si eres nuevo en el mundo JavaScript... bienvenido, cualquier sitio es bueno para empezar.
+Si vienes de un mundo más artesano que hace uso de jQuery y/o Handlebars, el aprendizaje progresivo que propone y el sistema de plugins te pueden ayudar e incluso llegar a sonar muy parecido. Y... si eres nuevo en el mundo JavaScript... bienvenido, cualquier sitio es bueno para empezar.
 
 Nos leemos :)
