@@ -1,6 +1,6 @@
 # Capítulo 2. Trabajando con templates
 
-Cuando trabajamos en Web, una de las primeras decisiones que solemos tomar es las forma en que se va a pintar los datos de los usuarios por pantalla:
+Cuando trabajamos en Web, una de las primeras decisiones que solemos tomar es la forma en que se van a pintar los datos de los usuarios por pantalla:
 
 Podemos optar por guardar una serie de HTMLs estáticos que ya cuentan con la información del usuario necesaria incrustada y almacenados dentro de base de datos. Este es el modelo que suelen desarrollar los CMS de muchos e-commerces o blogs personales.
 
@@ -76,7 +76,7 @@ Por ejemplo, y como ya hemos ido viendo, contamos con directivas como esta:
 
 `v-model` nos permite hacer un doble data-binding sobre una variable específica. En este caso user.name.
 
-Una directiva puede tener o no argumentos dependiendo de su funcionalidad. Por ejemplo, una directiva con argumento serían las siguiente:
+Una directiva puede tener o no argumentos dependiendo de su funcionalidad. Por ejemplo, una directiva con argumento sería la siguiente:
 
 ```html
 <a v-bind:href="urlPasswordChange" target="_blank">
@@ -243,9 +243,9 @@ const app = new Vue({
 
 Parece una tontería, pero saber desarrollar plantillas en VueJS nos ayuda mucho en nuestro camino a comprender el framework. No olvidemos que estamos aprendiendo sobre un framework progresivo y que, quizá, existan desarrolladores que con esto tengan más que suficiente para desarrollar aplicaciones con VueJS y que no necesiten muchas más funcionalidades.
 
-Los que hayan usado en su vida profesional motores de plantillas, habrán visto que el sistema es el mismo de siempre. Esto es otra de las ventajas de VueJS: el framework intenta ser todo lo práctico que puede y no intentar reinventar la rueda si es posibile. Si algo como las plantillas HTML ha funcionado ya en otros sistemas, por qué no aprovecharnos de ellos.
+Los que hayan usado en su vida profesional motores de plantillas, habrán visto que el sistema es el mismo de siempre. Esto es otra de las ventajas de VueJS: el framework intenta ser todo lo práctico que puede y no intentar reinventar la rueda si es posible. Si algo como las plantillas HTML ha funcionado ya en otros sistemas, por qué no aprovecharnos de ellos.
 
-Si a alguno de vosotros al leer el este post sobre plantillas, el sistema de directivas y filtros presentado se le queda un poco pequeño, es bueno recordar que VueJS permite su extensión por medio de plugins y que crear nuevas directivas y nuevos filtros estará disponible para nosotros. Hablaremos en El Abismo más adelante de cómo hacer esto.
+Si a alguno de vosotros, al leer este post sobre plantillas, el sistema de directivas y filtros presentado se le queda un poco pequeño, es bueno recordar que VueJS permite su extensión por medio de plugins y que crear nuevas directivas y nuevos filtros estará disponible para nosotros. Hablaremos en El Abismo más adelante de cómo hacer esto.
 
 Por el momento, nos quedamos aquí.
 
