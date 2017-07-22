@@ -10,11 +10,11 @@ En el caso de VueJS existen 4 estados posibles. El framework nos va a permitir i
 
 * Lo tercero, y último, es la posibilidad de incluir acciones que se tienen que dar antes o después de haber llegado a un estado interno del componente.
 
-A lo largo del posts vamos a hacer un resumen de todos los posibles hooks. Explicaremos en qué momento se ejecuta y cómo se encuentra un componente en dicho estado. Por último, pondremos algunos ejemplos para explicar la utilidad de cada uno de ellos:
+A lo largo del posts vamos a hacer un resumen de todos los posibles hooks. Explicaremos en qué momento se ejecutan y cómo se encuentra un componente en cada uno de esos estados. Por último, pondremos algunos ejemplos para explicar la utilidad de cada uno de ellos:
 
 ## Creando el componente
 
-Un componente cuenta con un estado de creación. Este estado se produce entre la instanciación y el montaje del elemento en el DOM. Cuenta con dos hooks. Estos dos hooks son los únicos que pueden interceptarse en renderizado en servidor (dedicaremos una entrada de esto en próximos capítulos), el resto, debido su naturaleza, sólo pueden ser usados en el navegador.
+Un componente cuenta con un estado de creación. Este estado se produce entre la instanciación y el montaje del elemento en el DOM. Cuenta con dos hooks. Estos dos hooks son los únicos que pueden interceptarse en renderizado en servidor (dedicaremos una entrada de esto en próximos capítulos), el resto, debido a su naturaleza, sólo pueden ser usados en el navegador.
 
 ### `beforeCreate`
 
@@ -22,7 +22,7 @@ Este hook se realiza nada más instanciar un componente. Durante este hook no ti
 
 Aunque pueda parecer poco útil, utilizar este hook puede ser es un buen momento para dos acciones en particular:
 
-* Para configurar ciertos parámetros internos u opciones, inherentes a las propias funcionalidad de VueJS. Un caso de uso común es cuando queremos evitar  referencias circulares entre componentes. Cuando usamos una herramienta de empaquetado de componentes, podemos entrar en bucle infinito por culpa de dichas referencias. Para evitar esto, podemos cargar el componente de manera 'diferida' para que el propio empaquetador no se vuelva loco.
+* Para configurar ciertos parámetros internos u opciones, inherentes a las propias funcionalidad de VueJS. Un caso de uso común es cuando queremos evitar referencias circulares entre componentes. Cuando usamos una herramienta de empaquetado de componentes, podemos entrar en bucle infinito por culpa de dichas referencias. Para evitar esto, podemos cargar el componente de manera 'diferida' para que el propio empaquetador no se vuelva loco.
 
 ```javascript
 const component1 = {
@@ -32,11 +32,11 @@ const component1 = {
 };
 ```
 
-* Para iniciar librerías o estados externos. Por ejemplo, imaginemos que queremos iniciar una colección en `localSotrage` para realizar un componente con posibilidad de guardado offline. Podríamos hacer lo siguiente:
+* Para iniciar librerías o estados externos. Por ejemplo, imaginemos que queremos iniciar una colección en `localStorage` para realizar un componente con posibilidad de guardado offline. Podríamos hacer lo siguiente:
 
 ```javascript
 const component = {
-    destroyed: function () {
+    beforeCreate: function () {
         localStorage.setItem('tasks', []);
     }
 };
@@ -60,7 +60,7 @@ const component = {
 
 ## Montando el componente
 
-Una vez que el componente se ha creado, podemos entrar en una fase de montaje, es decir que se renderizará e insertará en el DOM. Puede darse el caso que al instanciar un componente no hayamos indicado la opción el. De ser así, el componente se encontraría en estado creado de manera latente hasta que se indique o hasta que ejecutemos el método $mount que lo que provocará es que el componente se renderice, pero no se monte (el montaje sería manual).
+Una vez que el componente se ha creado, podemos entrar en una fase de montaje, es decir, que se renderizará e insertará en el DOM. Puede darse el caso que al instanciar un componente no hayamos indicado la opción el. De ser así, el componente se encontraría en estado creado de manera latente hasta que se indique o hasta que ejecutemos el método $mount, lo que provocará que el componente se renderice pero no se monte (el montaje sería manual).
 
 ### `beforeMount`
 
@@ -84,13 +84,13 @@ const component = {
 
 ## Actualizando el componente
 
-Cuando un componente ha sido creado y montado se encuentra a disposición del usuario. Cuando un componente entra en interacción con el usuario pueden darse eventos y cambios de estados. Estos cambios desembocan la necesidad de tener que volver a renderizar e incluir las diferencias provocadas dentro del DOM de nuevo. Es por eso, que el componente entra en un estado de actualización que también cuenta con dos hooks.
+Cuando un componente ha sido creado y montado se encuentra a disposición del usuario. Cuando un componente entra en interacción con el usuario pueden darse eventos y cambios de estados. Estos cambios desembocan en la necesidad de tener que volver a renderizar e incluir las diferencias provocadas dentro del DOM de nuevo. Es por eso que el componente entra en un estado de actualización que también cuenta con dos hooks.
 
 ### `beforeUpdate`
 
-Es el hook que se desencadena nada más que se provoca un actualización de estado, antes de que se se comience con el re renderizado del Virtual DOM y su posterior 'mapeo' en el DOM real.
+Es el hook que se desencadena nada más que se provoca un actualización de estado, antes de que se se comience con el re-renderizado del Virtual DOM y su posterior 'mapeo' en el DOM real.
 
-Este hook es un buen sitio para trazar cuándo se provocan cambios de estado y se desembocan renderizados que nosotros no preveíamos o que son muy poco intuitivos a simple vista. Podríamos hacer lo siguiente:
+Este hook es un buen sitio para trazar cuándo se provocan cambios de estado y producen renderizados que nosotros no preveíamos o que son muy poco intuitivos a simple vista. Podríamos hacer lo siguiente:
 
 ```javascript
 const component = {
@@ -104,7 +104,7 @@ Puedes pensar que es un buen sitio para computar o auto calcular estados a parti
 
 ### `updated`
 
-Se ejecuta una vez que el componente ha re renderizado los cambios en el DOM real. Al igual que ocurría con el hook mounted es buen momento para hacer ciertas manipulaciones del DOM externas a VueJS o hacer comprobaciones del estado de las variables en ese momento.
+Se ejecuta una vez que el componente ha re-renderizado los cambios en el DOM real. Al igual que ocurría con el hook mounted es buen momento para hacer ciertas manipulaciones del DOM externas a VueJS o hacer comprobaciones del estado de las variables en ese momento.
 
 Puede que tengamos que volver a rehacer un componente que tenemos de jQuery, Aquí puede ser buen momento para volver a lanzarlo y hacer un refresh o reinit:
 
@@ -150,9 +150,9 @@ const component = {
 
 ## Otros hooks
 
-Existen otros dos hooks que necesitan una explicación aparte.  Dentro de VueJS yo puedo incluir componentes dinámicos en mi DOM. De esta manera, yo puedo determinar, en tiempo de JavaScript, que componente renderizar. Esto lo veíamos en el post anterior y nos puedes ser muy útil a la hora de pintar diferentes vistas de una WebApp.
+Existen otros dos hooks que necesitan una explicación aparte. Dentro de VueJS yo puedo incluir componentes dinámicos en mi DOM. De esta manera, yo puedo determinar, en tiempo de JavaScript, que componente renderizar. Esto lo veíamos en el post anterior y nos puede ser muy útil a la hora de pintar diferentes vistas de una WebApp.
 
-Pues bien, VueJS no cuenta solo con eso, sino que cuenta con una etiqueta especial llamada keep-alive. Esta etiqueta, en combinación con la etiqueta component, permite cachear componentes que han sido quitados del DOM, pero que sabemos que pueden ser usados en breve.  Este uso hace que tanto las fases de creación, como de destrucción, no se ejecuten por obvias y que de tal modo, se haya tenido que dar una opción.
+Pues bien, VueJS no cuenta solo con eso, sino que cuenta con una etiqueta especial llamada keep-alive. Esta etiqueta, en combinación con la etiqueta component, permite cachear componentes que han sido quitados del DOM, pero que sabemos que pueden ser usados en breve. Este uso hace que tanto las fases de creación, como de destrucción, no se ejecuten por obvias y que de tal modo, se haya tenido que dar una opción.
 
 VueJS nos permite engancharse a dos nuevos métodos cuando este comportamiento ocurre. Son los llamados `actived` y `deactived`, que son usados del mismo modo que el hook created y el hook `beforeDestroy` por los desarrolladores.
 
