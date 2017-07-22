@@ -1,4 +1,4 @@
-#Capítulo 4. Creando componentes
+# Capítulo 4. Creando componentes
 
 Estamos en pleno boom de los frameworks y librerías front orientados a componentes. Parecen ser la mejor forma de modularizar nuestro código y de conseguir piezas reutilizables y mantenibles con un alto nivel de cohesión interno y un bajo acoplamiento entre piezas.
 
@@ -55,9 +55,9 @@ createCourse(
 );
 ```
 
-Dados estos parámetros, yo espero que la función me devuelve lo que me promete: un curso.
+Dados estos parámetros, yo espero que la función me devuelva lo que me promete: un curso.
 
-Pues en VueJS y su sistema de componentes pasa lo mismo. Dentro de un componentes podemos definir propiedades de entrada. Lo hacemos de la siguiente manera:
+Pues en VueJS y su sistema de componentes pasa lo mismo. Dentro de un componente podemos definir propiedades de entrada. Lo hacemos de la siguiente manera:
 
 ```javascript
 Vue.component('course', {
@@ -89,7 +89,7 @@ Ahora ya podemos usar, en nuestro HTML, nuestro componente e indicar sus propied
  
 Como vemos, es igual que en el caso de la función.
 
-Hay que tener en cuenta que las propiedades son datos que se propagan en una sola dirección, es decir de padres a hijos. Si yo modifico una propiedad dentro de un componente hijo, ese cambio no se propagará hacia el padre y por tanto no provocará ningún tipo de reacción por parte del sistema.
+Hay que tener en cuenta que las propiedades son datos que se propagan en una sola dirección, es decir, de padres a hijos. Si yo modifico una propiedad dentro de un componente hijo, ese cambio no se propagará hacia el padre y por tanto no provocará ningún tipo de reacción por parte del sistema.
 
 > [Aunque hablaremos más de props en el futuro, aquí tienes más documentación](https://vuejs.org/v2/guide/components.html#Props).
 
@@ -101,11 +101,11 @@ Bueno, la opción por la que ha optado VueJS, para comunicar datos entre compone
 
 Tenemos que pensar en esta emisión de eventos como en una emisora de radio. Las emisoras emiten información en una frecuencia sin saber qué receptores serán los que reciban la señal. Es una buena forma de escalar y emitir sin preocuparte del número de oyentes.
 
-En los componentes de VueJS pasa lo mismo. Un componente emite eventos y otros componentes padre tienen la posibilidad de escucharlo o no. Es una buena forma de desacoplar componentes. El sistema de comunicación es este:
+En los componentes de VueJS pasa lo mismo. Un componente emite eventos y otros componentes padre tienen la posibilidad de escucharlos o no. Es una buena forma de desacoplar componentes. El sistema de comunicación es este:
 
 ![Props y eventos](/images/componentes/props-events.png)
 
-En nuestro caso, el componente va contar con un pequeño `input` y un botón para añadir cursos. Lo que ocurrirá es que el componente `course` emitirá un evento de tipo `add` con un objeto que contiene los datos del curso y los meses que se quiere cursar:
+En nuestro caso, el componente va a contar con un pequeño `input` y un botón para añadir cursos. Lo que ocurrirá es que el componente `course` emitirá un evento de tipo `add` con un objeto que contiene los datos del curso y los meses que se quiere cursar:
 
 ```javascript
 Vue.component('course', {
@@ -138,7 +138,7 @@ Hemos registrado un evento de tipo `@add` que ejecutará la función `addToCart`
 
 ### Extendiendo el componente
 
-Una vez que tenemos esto, hemos conseguido definir tanto propiedades de entrada, como los eventos que emite mi componente. Podríamos decir que tenemos un componente curso base.
+Una vez que tenemos esto, hemos conseguido definir tanto las propiedades de entrada como los eventos que emite mi componente. Podríamos decir que tenemos un componente curso base.
 
 Ahora bien, me gustaría poder definir ciertos estados y comportamientos dependiendo del tipo de curso que quiero mostrar. Me gustaría que los cursos de JavaScript tuviesen un estilo y los de CSS otro.
 
@@ -195,7 +195,7 @@ Vue.component('course-js', {
         return {
             styleClass: 'course-js',
             header: {
-                title: 'Curse JS',
+                title: 'Curso JS',
                 image: 'http://lorempixel.com/64/64/'
             }
         }
@@ -218,12 +218,12 @@ Vue.component('course-css', {
  
 Lo que hemos hecho es sacar todo el constructor a un objeto llamado course. Este objeto contiene todo lo que nosotros queremos que el componente tenga como base. Lo siguiente es definir dos componentes nuevos llamados `course-js` y `course-css` donde indicamos en el parámetro `mixins` que queremos que hereden.
 
-Por último,  indicamos aquellos datos que queremos sobreescribir. Nada más. VueJS se encargará de componer el constructor a nuestro gusto y de generar los componentes que necesitamos. De esta forma podemos reutilizar código y componentes. Ahora podemos declarar nuestros componentes dentro del HTML de la siguiente forma:
+Por último, indicamos aquellos datos que queremos sobreescribir. Nada más. VueJS se encargará de componer el constructor a nuestro gusto y de generar los componentes que necesitamos. De esta forma podemos reutilizar código y componentes. Ahora podemos declarar nuestros componentes dentro del HTML de la siguiente forma:
 
 ```html
 <course-js 
   title="Curso JavaScript" 
-  subtitle="Curso Introdutorio"
+  subtitle="Curso Introductorio"
   description="Esto es un nuevo curso para aprender"
   @add="addToCart">
 </course-js>
@@ -235,7 +235,7 @@ Por último,  indicamos aquellos datos que queremos sobreescribir. Nada más. Vu
 </course-css>
 ```
  
-Ambos componentes tienen la misma firma, pero internamente se comportan de diferente manera.
+Ambos componentes tienen la misma firma pero internamente se comportan de diferente manera.
 
 > [En el futuro hablaremos más de mixins. Si necesitas saber más sobre ello, aquí puedes](https://vuejs.org/v2/guide/mixins.html).
 
@@ -341,7 +341,7 @@ const courseFooter = {
     },
 };
 ```
-Estos constructores podrían ser usados de forma global, y no estaría mal usado. Sin embargo, para el ejemplo, vamos a registrarlos de forma local en el componentes `course` de esta manera:
+Estos constructores podrían ser usados de forma global, y no estaría mal usado. Sin embargo, para el ejemplo, vamos a registrarlos de forma local en el componente `course` de esta manera:
 
 ```javascript
 const course = {
@@ -355,7 +355,7 @@ const course = {
 };
 ```
  
-Todos los componentes cuentan con este atributo components para que registremos constructores y puedan ser usado.
+Todos los componentes cuentan con este atributo components para que registremos constructores y puedan ser usados.
 
 Personalmente, creo que pocas veces vamos a hacer uso de un registro local, pero que contemos con ello, creo que es una buena decisión de diseño y nos permite encapsular mucho mejor a la par que modularizar componentes.
 
@@ -377,7 +377,7 @@ Vue.component('marketplace', {
 });
 ```
  
-Lo que hacemos es definir un 'template' bastante simple donde se va a encapsular HTML dentro de slot.  Dentro de un componente podemos indicar todos los slot que necesitemos. Simplemente les tendremos que indicar un nombre para que VueJS sepa diferenciarlos.
+Lo que hacemos es definir un 'template' bastante simple donde se va a encapsular HTML dentro de slot. Dentro de un componente podemos indicar todos los slot que necesitemos. Simplemente les tendremos que indicar un nombre para que VueJS sepa diferenciarlos.
 
 Ahora podemos declararlo de esta manera:
 
@@ -397,9 +397,9 @@ Ahora podemos declararlo de esta manera:
  
 Dentro de marketplace definimos nuestro listado de cursos.
 
-Fijaros también en el detalle de que no estamos indicando ni courseni `course-js` ni `course-css`. Hemos indicado la etiqueta component que no se encuentra definida en ninguno de nuestros ficheros.
+Fijaros también en el detalle de que no estamos indicando ni course ni `course-js` ni `course-css`. Hemos indicado la etiqueta component que no se encuentra definida en ninguno de nuestros ficheros.
 
-Esto es porque component es una etiqueta de VueJS que en combinación con la directiva `:is` podemos cargar componentes de manera dinámica. Como yo no se que tipo de curso va haber en mi listado, necesito pintar el componente dependiendo de lo que me dice la variable del modelo `course.type`.
+Esto es porque component es una etiqueta de VueJS en la que, en combinación con la directiva `:is`, podemos cargar componentes de manera dinámica. Como yo no se que tipo de curso va a haber en mi listado, necesito pintar el componente dependiendo de lo que me dice la variable del modelo `course.type`.
 
 > [Para saber más sobre slots, tenemos esta parte de la documentación](https://vuejs.org/v2/guide/components.html#Content-Distribution-with-Slots).
 
@@ -686,12 +686,12 @@ const app = new Vue({
  
 ## Conclusión
 
-Hemos explicado todo lo que tiene que ver con el corazón de la librería. Controlando y sabiendo cómo funcionan los componentes en VueJS, tendremos mucho recorrido ganado en poder aplicaciones del mundo real.
+Hemos explicado todo lo que tiene que ver con el corazón de la librería. Controlando y sabiendo cómo funcionan los componentes en VueJS, tendremos mucho recorrido ganado en poder desarrollar aplicaciones del mundo real.
 
-Las propiedad, los eventos y los slots son una buena forma para diseñar componentes de una forma versátil y dinámica. Diseñar bien nuestros componentes será un primer paso a tener en cuenta si queremos que nuestra arquitectura triunfe, pero sí es importante tener en cuenta que posibilidades nos da VueJS para que hacer este diseño más robusto y constante.
+Las propiedad, los eventos y los slots son una buena forma para diseñar componentes de una forma versátil y dinámica. Diseñar bien nuestros componentes será un primer paso a tener en cuenta si queremos que nuestra arquitectura triunfe, pero sí es importante tener en cuenta qué posibilidades nos da VueJS para hacer este diseño más robusto y constante.
 
-No te preocupes si el ejemplo te parece bastante enrevesado o sin sentido. Por culpa de tener que explicar todos los casos posibles que se pueden dar en un componente, hemos tenido que complicarlo todo. En el futuro veremos que muchas de estas decisiones que hemos tomado, como la herencia o el registro local, se podría haber solucionado con el paso de un nuevo parámetros y el registro global.
+No te preocupes si el ejemplo te parece bastante enrevesado o sin sentido. Por culpa de tener que explicar todos los casos posibles que se pueden dar en un componente, hemos tenido que complicarlo todo. En el futuro veremos que muchas de estas decisiones que hemos tomado, como la herencia o el registro local, se podría haber solucionado con el paso de un nuevo parámetro y el registro global.
 
-En próximos posts, seguiremos hablando sobre componentes y seguiremos entendiendo los mejor.
+En próximos posts, seguiremos hablando sobre componentes y seguiremos entendiendolos mejor.
 
 Nos leemos :)
