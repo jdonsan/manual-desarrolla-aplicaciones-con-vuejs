@@ -2,7 +2,7 @@
 
 Con el post anterior, tenemos la mitad del flujo de vuex explicado. Ya somos capaces de obtener estados de nuestro store global y de crear reacciones en los componentes a partir de esto.
 
-Lo siguiente que tenemos que tener en cuenta es cómo poder manipular estos estados para que se conviertan y muten en aquello que necesitamos, ya sea por la interacción del usuario, como por los eventos que se encuentran registrados en mi aplicación.
+Lo siguiente que tenemos que tener en cuenta es cómo poder manipular estos estados para que se conviertan y muten en aquello que necesitamos, ya sea tanto por la interacción del usuario como por los eventos que se encuentran registrados en mi aplicación.
 
 Para conseguir esto, vamos a explicar las dos funcionalidades que nos permiten esto y que, como veremos, tiene muchas similitudes a como lo hacen otras librerías como redux.
 
@@ -116,7 +116,7 @@ export default {
 
 Esto ya será al gusto del desarrollador o el equipo.
 
-Para terminar con las mutaciones, vamos a aclarar un par de cosas para que el día de mañana no podemos cometer fallos innecesarios:
+Para terminar con las mutaciones, vamos a aclarar un par de cosas para que el día de mañana no cometamos fallos innecesarios:
 
 ### Cuidado con la reactividad de los objetos
 
@@ -254,7 +254,7 @@ export default new Vuex.Store({
 
 Las acciones esperan una promesa para ser resueltas, de ahí que hagamos un return de la promesa que devuelve axios. Cuando axios nos devuelve los gists, podemos ejecutar commits con el tipo de mutación que queramos llevar a cabo. (El uso de constante tiene mucho sentido por todas las veces que vamos a usarlas durante nuestro proyecto).
 
-Me gusta que separen ambos conceptos en la librería. Las acciones son donde  me puedo dedicar a meter mi lógica, mis validaciones, mi comunicación con el exterior, y las mutaciones sólo se preocupan de controlar los estados, de manipularlo. Me parece un proceso bastante natural y bien separado en diferentes conceptos y responsabilidades:
+Me gusta que separen ambos conceptos en la librería. Las acciones son donde me puedo dedicar a meter mi lógica, mis validaciones, mi comunicación con el exterior, y las mutaciones sólo se preocupan de controlar los estados, de manipularlos. Me parece un proceso bastante natural y bien separado en diferentes conceptos y responsabilidades:
 
 Las acciones se encargan de preparar todo lo necesario para que una mutación confirme un cambio en el estado como si de una transacción se tratase. Es como tener un sistema tricapa en un espacio muy reducido.
 
@@ -345,7 +345,7 @@ actions: {
 }
 ```
 
-Las posibilidades nos las impondrá negocio, pero con esto estamos más que cubiertos. Tenemos todos lo métodos en un sitio centralizado, cohesionado a sus datos y con muchas posibilidades de aislarlos para ser probados.
+Las posibilidades nos las impondrá negocio, pero con esto estamos más que cubiertos. Tenemos todos los métodos en un sitio centralizado, cohesionado a sus datos y con muchas posibilidades de aislarlos para ser probados.
 
 ## Conclusión
 
@@ -363,6 +363,6 @@ Muchos pensaréis: ¿Y tanto lío para qué? Yo con mi jQuery era feliz ¿Por qu
 
 El problema viene cuando esto no es así, cuando escalar tus proyectos y equipos está siendo difícil, cuando el ego de cada desarrollador ha hecho que aquello no tenga un estilo predefinido.
 
-vuex te ayuda a eso, a evitar luchas entre tu equipo por cómo se estructuran o nombras las cosas, a no tener que pensar en eso. ¿Te gusta su estilo? ¿Lo entiendes? ¿Merece la pena el tiempo invertido? Pues adelante, ni lo dudes, pero ten en cuenta que se necesita un proceso de adaptación que tendrá un coste.
+Vuex te ayuda a eso, a evitar luchas entre tu equipo por cómo se estructuran o nombras las cosas, a no tener que pensar en eso. ¿Te gusta su estilo? ¿Lo entiendes? ¿Merece la pena el tiempo invertido? Pues adelante, ni lo dudes, pero ten en cuenta que se necesita un proceso de adaptación que tendrá un coste.
 
 Nos leemos :)
