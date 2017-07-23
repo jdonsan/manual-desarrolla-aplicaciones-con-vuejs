@@ -48,9 +48,9 @@ router.beforeEach((to, from, next) => {
 });
 ```
 
-El orden de ejecución es FIFO (El primero en registrarse, es el primero en ejecutarse).
+El orden de ejecución es FIFO (El primero en registrarse es el primero en ejecutarse).
 
-Los interceptores globales, nos puede venir muy bien para comprobar algún estado global de la aplicación. Por ejemplo, puede venirnos muy bien para comprobar si un usuario en particular va a poder tener acceso a una determinada parte de la aplicación o no.
+Los interceptores globales nos pueden venir muy bien para comprobar algún estado global de la aplicación. Por ejemplo, puede venirnos muy bien para comprobar si un usuario en particular va a poder tener acceso a una determinada parte de la aplicación o no.
 
 ```javascript
 function existToken() {
@@ -176,11 +176,11 @@ const CartSummary = {
 };
 ```
 
-Sin callbacks, ni artificios. Directamente accediendo a la instancia porque el componente ya se encuentra instanciado. Nada de fontanería.
+Sin callbacks ni artificios. Directamente accediendo a la instancia porque el componente ya se encuentra instanciado. Nada de fontanería.
 
 ### `beforeRouteLeave`
 
-Por último, contamos con este interceptor que se ejecuta cuando antes de cambiar de ruta y sabemos que el componente no va a ser utilizado.
+Por último, contamos con este interceptor que se ejecuta antes de cambiar de ruta y sabiendo que el componente no va a ser utilizado.
 
 Como se ejecuta antes de ir a la nueva navegación, tiene acceso al estado del componente. Es muy utilizado para evitar navegaciones involuntarias y sin querer. Imagínate que el usuario ha dado sin querer a salir de la compra y tiene todo relleno.
 
