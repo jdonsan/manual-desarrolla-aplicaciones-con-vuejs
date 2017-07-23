@@ -10,7 +10,7 @@ En el post de hoy - y en los sucesivos - veremos las formas en las que podemos i
 
 Es un sistema que permite configurar la navegación de nuestra aplicación. Suele componerse de una librería que se encuentra interceptando la ruta que indicamos en nuestro navegador para saber en todo momento a qué estado de la aplicación debe moverse.
 
-Un enrutador nos permite decir, para una url determinada, que componente renderizar. Está muy basado en los sistemas de Modelo-Vista-Controlador y el diseño de API Rest. Suelen ser muy útiles para gestionar de una manera centralizada el comportamiento y el viaje que debe llevar un usuario por nuestra aplicación. Al final no deja de ser una forma de solucionar las diferentes direcciones web con las que cuenta mi aplicación en un sistema SPA.
+Un enrutador nos permite decir, para una url determinada, qué componente renderizar. Está muy basado en los sistemas de Modelo-Vista-Controlador y el diseño de API Rest. Suelen ser muy útiles para gestionar de una manera centralizada el comportamiento y el viaje que debe llevar un usuario por nuestra aplicación. Al final no deja de ser una forma de solucionar las diferentes direcciones web con las que cuenta mi aplicación en un sistema SPA.
 
 ## ¿Y si no necesitamos un sistema de rutas?
 
@@ -44,7 +44,7 @@ new Vue({
 });
 ```
  
-Lo que hacemos, en este caso,[ es apoyarnos de la funcionalidad de propiedades computadas que nos ofrece el framework](https://vuejs.org/v2/guide/computed.html) para conseguir dinamismo. Lo que conseguimos es que cada vez que la variable `currentRoute` cambie, se ejecute la función `ViewComponent` que devuelve el componente que hayamos configurado en nuestro array `routes`. Si la ruta puesta en el navegador no es correcta, renderizamos el componente `NotFound`.
+Lo que hacemos, en este caso, [es apoyarnos en la funcionalidad de propiedades computadas que nos ofrece el framework](https://vuejs.org/v2/guide/computed.html) para conseguir dinamismo. Lo que conseguimos es que cada vez que la variable `currentRoute` cambie, se ejecute la función `ViewComponent` que devuelve el componente que hayamos configurado en nuestro array `routes`. Si la ruta puesta en el navegador no es correcta, renderizamos el componente `NotFound`.
 
 La implementación es bastante sencilla y nos va a permitir la navegación por nuestra aplicación sin hacer mucho más. Si nuestra aplicación empieza a crecer, tenemos que tener en cuenta que una solución como esta es limitada y que deberemos ir pensando en incluir algo más elaborado.
 
@@ -66,7 +66,7 @@ Una vez que tenemos esto, lo siguiente será configurar nuestras rutas e indicar
 
 ![](/images/rutas/captura-de-pantalla-de-2017-05-17-11-42-53.png)
 
-Dentro del fichero `index.js` vamos a ir incluyendo toda la configuración de rutas de nuestra aplicación. Dentro de este fichero incluimos las siguientes líneas.
+Dentro del fichero `index.js` vamos a ir incluyendo toda la configuración de rutas de nuestra aplicación. Dentro de este fichero incluimos las siguientes líneas:
 
 ```javascript
 import Vue from 'vue';
@@ -93,9 +93,9 @@ new Vue({
 });
 ```
 
-Lo único que hacemos es inyectar en la instancia principal de nuestra aplicación vue, nuestro router para que sea accesible a todo el árbol de componentes.
+Lo único que hacemos es inyectar en la instancia principal de nuestra aplicación vue nuestro router para que sea accesible a todo el árbol de componentes.
  
-Si ahora queremos que estos componentes se pinten, `vue-router` cuenta con un componente específico donde se irá incluyendo el componente que la ruta nos indique. En nuestro componente  app, hay que añadir el componente  `<router-view>`. Lo único que hace este componente es sustituirse por nuestra vista.
+Si ahora queremos que estos componentes se pinten, `vue-router` cuenta con un componente específico donde se irá incluyendo el componente que la ruta nos indique. En nuestro componente app, hay que añadir el componente  `<router-view>`. Lo único que hace este componente es sustituirse por nuestra vista.
  
 Ya está. No necesitamos más fontanería. Ya podemos empezar a configurar rutas.
 
@@ -154,7 +154,7 @@ export default new Router({
 
 Lo que hemos conseguido con esto es que tanto `/products/1234` como `products/3452` nos renderice el mismo componente. Siempre que queramos incluir una parte dinámica a nuestra ruta, tenemos que indicarlo con dos puntos `:`.
 
-Este dinamismo nos puede ser muy útil para obtener productos por un id determinado de servidor pues, la parte dinámica, es inyectada dentro de nuestros componentes en el campo `$route.params`.
+Este dinamismo nos puede ser muy útil para obtener productos por un id determinado de servidor dado que la parte dinámica es inyectada dentro de nuestros componentes en el campo `$route.params`.
 
 Con este comportamiento se puede hacer cualquier cosa que se nos ocurra ya que `vue-router` usa la librería `path-to-regexp` para relacionar rutas por medio de expresiones regulares. Si necesitas algo mucho más específico sería bueno que le echases una ojeada.
 
@@ -162,7 +162,7 @@ Puedes preguntarte qué ocurriría si más de una ruta de las que has configurad
 
 ## ¿Cómo navegamos a nuevas rutas?
 
-Una vez que hemos configurado nuestras rutas, podemos navegar entre ellas para que el usuario pueda realizar las acciones necesarias. Esta navegación la podemos hacer de dos maneras: de manera semántica por medio del componente `<router-link>` o por manera programática.
+Una vez que hemos configurado nuestras rutas, podemos navegar entre ellas para que el usuario pueda realizar las acciones necesarias. Esta navegación la podemos hacer de dos maneras: de manera semántica por medio del componente `<router-link>` o de manera programática.
 
 Si lo hacemos de manera semántica tendríamos que hacerlo de esta manera dentro de nuestros templates:
 
