@@ -4,7 +4,7 @@ Una vez que hemos visto cómo incluir vuex en nuestra aplicación, es momento de
 
 En el posts de hoy, dedicaremos tiempo a contar cómo podemos almacenar el estado dentro del store. Veremos cómo con muy poco de código podremos crear datos accesibles para varios componentes.
 
-También repasaremos un concepto bastante interesante denominado getters que nos permitirán crear consultas más específicas sobre los datos que nos interesan para cada componente.
+También repasaremos un concepto bastante interesante denominado getters que nos permitirá crear consultas más específicas sobre los datos que nos interesan para cada componente.
 
 ## Los estados
 
@@ -38,7 +38,7 @@ const componentA = {
 };
 ```
 
-Lo que hemos hecho es iniciar el estado interno count del componente con el estado global del store. Este código lo podemos mejorar ya que se encuentra algo acoplado. Si recordáis, en el post anterior,  inyectamos nuestro store para propagarse por todo el árbol de componentes de esta manera:
+Lo que hemos hecho es iniciar el estado interno count del componente con el estado global del store. Este código lo podemos mejorar ya que se encuentra algo acoplado. Si recordáis, en el post anterior, inyectamos nuestro store para propagarse por todo el árbol de componentes de esta manera:
 
 ```javascript
 import Vue from 'vue';
@@ -70,7 +70,7 @@ const componentA = {
 
 Con esto quitamos la dependencia 'hardcodeada' y usamos la instancia de store que se encuentra inyectada (`this.$store`). De esta manera, quitamos dependencias tediosas en todos nuestros componentes. Ya se cuenta con él.
 
-El ejemplo sigue teniendo algo que huela mal ya que lo que hemos hecho es iniciar el estado interno, pero no hemos creado un componente que reaccione si cambia el estado del store. Para conseguir esto, nos basamos en la funcionalidad de estados computados con el que cuentan todos los componentes.
+El ejemplo sigue teniendo algo que huele mal ya que lo que hemos hecho es iniciar el estado interno, pero no hemos creado un componente que reaccione si cambia el estado del store. Para conseguir esto, nos basamos en la funcionalidad de estados computados con la que cuentan todos los componentes.
 
 El ejemplo se convertiría en algo cómo esto:
 
@@ -101,7 +101,7 @@ export default {
 
 Este cambio no nos aporta más que azúcar sintáctico, pues el código de antes y el de ahora se comportan exactamente igual. Lo único que hacemos con esta forma es que el componente se ponga a escuchar todos los estados que existan dentro de nuestro store.
 
-Esto está muy bien, pero es poco real que un componente se ponga a computar todo. Por tanto, ¿cómo con `mapState` puedo seleccionar qué parte del estado me interesa? Tenemos varias formas que según el contexto nos podrán interesar más o menos.
+Esto está muy bien, pero es poco real que un componente se ponga a computar todo. Por tanto, ¿cómo puedo con `mapState` seleccionar qué parte del estado me interesa? Tenemos varias formas que, según el contexto, nos podrán interesar más o menos.
 
 Por ejemplo, si tenemos este store:
 
@@ -129,7 +129,7 @@ export default {
 };
 ```
 
-De esta manera, solo me mapearía esas dos propiedades y no user. Puede que por cierto contexto, el nombre del estado del store y del estado interno que se computa, no tengan que llamarse igual. Podemos mapearlo también, indicando un objeto de esta manera:
+De esta manera, solo me mapearía esas dos propiedades y no user. Puede que, por cierto contexto, el nombre del estado del store y del estado interno que se computa, no tengan que llamarse igual. Podemos mapearlo también, indicando un objeto de esta manera:
 
 ```javascript
 // ./components/componentA/componentA.js
@@ -177,11 +177,11 @@ export default {
 
 De esta forma, y gracias al nuevo Spread Operator de ES6, podemos combinar objetos diferentes de una manera muy sencilla.  Ahora contaría con tres propiedades computadas: las dos del store y la interna (`myLocalComputed`).
 
-> Estas utilidades con prefijo `map-` serán creadas para todos los elementos de vuex por lo que aprendérselo bien,  será necesario ya que lo usaremos en lo que queda de serie.
+> Estas utilidades con prefijo `map-` serán creadas para todos los elementos de vuex por lo que aprendérselo bien, será necesario ya que lo usaremos en lo que queda de serie.
 
 ## Los getters
 
-Una cosa es cómo almaceno los datos en mi store global y otra diferente qué datos me son útiles dentro de un componente. Por ejemplo, puede que dentro de mí store se almacene un número considerable de gists, pero que un componente solo necesite aquellos que son públicos.
+Una cosa es cómo almaceno los datos en mi store global y otra diferente qué datos me son útiles dentro de un componente. Por ejemplo, puede que dentro de mi store se almacene un número considerable de gists, pero que un componente solo necesite aquellos que son públicos.
 
 Bueno, no parece muy grave, a fin de cuentas, si tengo acceso al store en un componente, podría hacer algo como esto:
 
@@ -235,7 +235,7 @@ export default {
 };
 ```
 
-Estamos reutilizando consultas con solo llamar a las propiedades que tengamos almacenadas en getters. Con vuex ,  puedo componer getters de esta manera:
+Estamos reutilizando consultas con solo llamar a las propiedades que tengamos almacenadas en getters. Con vuex, puedo componer getters de esta manera:
 
 ```javascript
 // store/index.js
