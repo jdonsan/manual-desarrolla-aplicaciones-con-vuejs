@@ -214,7 +214,7 @@ $router.go(-1);
 
 Esto iría a la ruta anteriormente visitada.
 
-Una de las cosas que me gusta de esta API de navegación es que los nombres no han sido puesto de manera caprichosa. Si nos fijamos en ellos, son un mapeo 1 a 1 de la API History. De manera nativa los navegadores cuentan con `window.history.pushState`, `window.history.replaceState` y `window.history.go`. Esto hace que si hemos usado la API nativa, usarla en vue nos muy intuitivo.
+Una de las cosas que me gusta de esta API de navegación es que los nombres no han sido puesto de manera caprichosa. Si nos fijamos en ellos, son un mapeo 1 a 1 de la API History. De manera nativa los navegadores cuentan con `window.history.pushState`, `window.history.replaceState` y `window.history.go`. Esto hace que si hemos usado la API nativa, usarla en vue nos resulte muy intuitivo.
 
 ## Conclusión
 
