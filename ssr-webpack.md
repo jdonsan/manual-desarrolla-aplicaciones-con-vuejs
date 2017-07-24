@@ -202,6 +202,6 @@ Con esto, tenemos un buen porcentaje de nuestro proyecto adaptado. Como veis, el
 
 Un sistema como estos nos esta suponiendo un nivel de fontanería elevado. No hemos desarrollado nada de nuestro negocio y todo lo que hacemos es configurar y configurar para que todo vaya de manera óptima. Las opciones de vue-server-renderer + webpack pueden llegar a abrumar, así que, si no nos queda más remedio que hacer uso de un sistema como este, tendremos que seguir practicando y estudiando para asimilar los conceptos.
 
-En el próximo posts, nos centraremos en adaptar el router y el store de la aplicación.
+En el próximo post, nos centraremos en adaptar el router y el store de la aplicación.
 
 Nos leemos :)
