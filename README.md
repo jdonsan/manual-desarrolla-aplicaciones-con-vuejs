@@ -78,5 +78,9 @@ Gracias por leer esta guía y confiar en ella para dar tus primeros pasos en Vue
 
 Tu productividad y tu equipo agradecerá que hayas apostado por una tecnología como esta.
 
+Agradezco mucho la ayuda de las siguientes personas que han colaborado a hacer este manual un poco mejor:
+
+* [Rafa García](https://github.com/rafagarcia): Corrector ortográfico y estilístico.
+
 En fin...empecemos :\)
 
