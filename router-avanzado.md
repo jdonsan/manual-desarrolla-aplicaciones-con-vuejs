@@ -94,7 +94,7 @@ Lo último que hemos hecho es añadir el componente `router-view` en nuestro com
 
 Este anidamiento puede ser todo lo profundo que queramos, simplemente tenemos que incluir el parámetro `children`, configurar las rutas con su componente hijo que queramos e indicar en el componente padre dónde pintarlo por medio de `router-view`.
 
-El anidamiento suele utilizarse también para crear la layout principal de nuestra aplicación. Como todas las vistas contarán con el header, el menú y el footer, lo que se hace es crear un componente `AppView` que contiene estos elementos y un componente `router-view` donde se renderizará la parte de la vista más específica.
+El anidamiento suele utilizarse también para crear el layout principal de nuestra aplicación. Como todas las vistas contarán con el header, el menú y el footer, lo que se hace es crear un componente `AppView` que contiene estos elementos y un componente `router-view` donde se renderizará la parte de la vista más específica.
 
 ## Pasar propiedades a un ComponentView
 
