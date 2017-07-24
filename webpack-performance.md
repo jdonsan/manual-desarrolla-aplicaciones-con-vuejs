@@ -288,7 +288,7 @@ El último caso que nos queda es la posibilidad de cargar zonas de nuestro códi
 
 Con Webpack, podemos indicar que se genere un paquete mínimo con lo que más se suele usar y después ir cargando otros módulos cuando sean usados.
 
-La forma de conseguir esto no es por medio de configuración de nuestro Webpack, sino que nos supone un cambio a la hora de que desarrollemos. Dentro de la especificación de JavaScript ya existe un apartado dedicado a la carga de módulos bajo demanda. La forma de usarlo es por medio de la nueva palabra reservada `import()`.
+La forma de conseguir esto no es por medio de la configuración de nuestro Webpack, sino que nos supone un cambio a la hora de que desarrollemos. Dentro de la especificación de JavaScript ya existe un apartado dedicado a la carga de módulos bajo demanda. La forma de usarlo es por medio de la nueva palabra reservada `import()`.
 
 Este método es asíncrono y permite ser usado por medio de promesas y funciones asíncronas. Por ejemplo, si quisiéramos cargar `moment` bajo demanda, podría hacer algo como esto:
 
@@ -304,7 +304,7 @@ function determineDate() {
 determineDate();
 ```
 
-Webpack entiende perfectamente este código y se encargará de cargar `moment` cuando le hayamos indicado. vue hará mucho uso de esta funcionalidad también, por lo que es importante tenerla clara.
+Webpack entiende perfectamente este código y se encargará de cargar `moment` cuando le hayamos indicado. Vue hará mucho uso de esta funcionalidad también, por lo que es importante tenerla clara.
 
 Con funciones asíncronas sería de la siguiente manera:
 
