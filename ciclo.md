@@ -10,11 +10,11 @@ En el caso de VueJS existen 4 estados posibles. El framework nos va a permitir i
 
 * Lo tercero, y último, es la posibilidad de incluir acciones que se tienen que dar antes o después de haber llegado a un estado interno del componente.
 
-A lo largo del posts vamos a hacer un resumen de todos los posibles hooks. Explicaremos en qué momento se ejecutan y cómo se encuentra un componente en cada uno de esos estados. Por último, pondremos algunos ejemplos para explicar la utilidad de cada uno de ellos:
+A lo largo del post vamos a hacer un resumen de todos los posibles hooks. Explicaremos en qué momento se ejecutan y cómo se encuentra un componente en cada uno de esos estados. Por último, pondremos algunos ejemplos para explicar la utilidad de cada uno de ellos:
 
 ## Creando el componente
 
-Un componente cuenta con un estado de creación. Este estado se produce entre la instanciación y el montaje del elemento en el DOM. Cuenta con dos hooks. Estos dos hooks son los únicos que pueden interceptarse en renderizado en servidor (dedicaremos una entrada de esto en próximos capítulos), el resto, debido a su naturaleza, sólo pueden ser usados en el navegador.
+Un componente cuenta con un estado de creación. Este estado se produce entre la instanciación y el montaje del elemento en el DOM. Cuenta con dos hooks. Estos dos hooks son los únicos que pueden interceptarse en renderizado en servidor (dedicaremos una entrada a esto en próximos capítulos), el resto, debido a su naturaleza, sólo pueden ser usados en el navegador.
 
 ### `beforeCreate`
 
@@ -162,7 +162,7 @@ Conocer el ciclo de vida de un componente nos hace conocer mejor VueJS. Nos perm
 
 Puede que en muchas ocasiones no tengamos que recurrir a ellos, o puede que en tiempo de depuración tengamos un mixin que trace cada fase para obtener información. Quién sabe. Lo bueno es la posibilidad de contar con ello. Lo bueno es el poder registrarnos en estos métodos y no depender tanto de la magia interna de un framework.
 
-A mi por lo menos, que un framework cuente con estos mecanismos, me suele dar seguridad para llevar productos a producción con ella.
+A mi por lo menos, que un framework cuente con estos mecanismos, me suele dar seguridad para llevar productos a producción con él.
 
 Os dejo el diagrama que resume el ciclo de vida de un componente:
 
