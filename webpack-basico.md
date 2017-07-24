@@ -4,7 +4,7 @@ Nos detenemos por un momento en el camino de vue y nos ponemos manos a la obra e
 
 Como pudimos ver en el capítulo donde estudiamos vue-cli, vimos que la plantilla nos generó una serie de ficheros donde ya se encontraba la construcción de nuestra aplicación de una forma mágica, sin que nosotros tuviésemos que desarrollar o crear nada, simplemente ejecutando un comando.
 
-Estos ficheros se encontraban creados con Webpack y hacían todo lo necesario para no tener que mancharnos las manos nosotros. Como no vamos a basar el destino de un proyecto en la magia y los fuegos artificiales, es hora de que nos atemos los machos y entendamos qué estaba haciendo vue-cli por nosotros.
+Estos ficheros se encontraban creados con Webpack y hacían todo lo necesario para no tener que mancharnos las manos nosotros. Cómo no vamos a basar el destino de un proyecto en la magia y los fuegos artificiales, es hora de que nos atemos los machos y entendamos qué estaba haciendo vue-cli por nosotros.
 
 Puede ser que algún día necesitemos incluir algo en la configuración que no viene por defecto y que estos conocimientos nos sean muy útiles. Así que vamos al lío:
 
