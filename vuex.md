@@ -22,7 +22,7 @@ Son todos aquellos métodos, funciones, o procedimientos que se encargan de muta
 f(x) = y
 ```
 
-Dado un estado x que es pasado a una función f es obtenido el nuevo estado y. Los paradigmas de programación se articulan como propuestas para gestionar y mutar los estados por medios de diferentes tipos de cómputos.
+Dado un estado x que es pasado a una función f es obtenido el nuevo estado y los paradigmas de programación se articulan como propuestas para gestionar y mutar los estados por medios de diferentes tipos de cómputos.
 
 ### ¿Cómo puedo comunicarme entre componentes?
 
@@ -115,7 +115,7 @@ Como decimos, este sistema nos puede funcionar, pero cuando contamos con aplicac
 
 Cuando el ejemplo anterior se nos queda demasiado corto, es hora de incluir a nuestra aplicación de vue una alternativa llamada vuex. Vuex es la implementación que ha hecho la comunidad del patrón de diseño creado por Facebook llamado flux.
 
-Cuando llega ese momento en el que tienes que compartir demasiado estados comunes entre componentes, que tienes que hacer virguerías para comunicarte en tu propia comunidad, que tienen métodos o acciones muy parecidas en muchos componentes que te gustaría refactorizar o que empiezas a tener problemas para seguir la trazabilidad por la que pasa un estado en particular es momento de plantearse usar este tipo de arquitecturas.
+Cuando llega ese momento en el que tienes que compartir demasiados estados comunes entre componentes, que tienes que hacer virguerías para comunicarte en tu propia comunidad, que tienen métodos o acciones muy parecidas en muchos componentes que te gustaría refactorizar o que empiezas a tener problemas para seguir la trazabilidad por la que pasa un estado en particular es momento de plantearse usar este tipo de arquitecturas.
 
 Flux es una arquitectura que gestiona el estado en un objeto singleton global donde su labor es crear mecanismos para evitar que otros componentes puedan cambiar el estado de una aplicación sin su control.
 
@@ -138,7 +138,7 @@ Aunque entraremos en detalle más adelante (no hoy, tranquilos :smile:) explique
 * Por otra parte, los componentes son capaces de lanzar acciones. Las acciones son el círculo amarillo y son un buen sitio donde gestionar parte de la lógica más próxima a los datos de nuestra aplicación. Permiten gestionar asincronía, por lo que son el lugar idóneo para realizar llamadas a servidores externos (caja gris).
 Cuando una acción ha terminado de realizar sus labores asíncronas (o síncronas), permite realizar confirmaciones (commits) contra el estado.
 
-* Estas confirmaciones lo que provocan son ejecutar métodos especializados en la mutación de cambios. Esto se puede ver en el círculo rojo. Cuando se ejecutan estos métodos de mutación se desencadenan cambios en el estado que provocan renderizados en el HTML. De esta manera, cerramos el círculo.
+* Estas confirmaciones lo que provocan es la ejecución de métodos especializados en la mutación de cambios. Esto se puede ver en el círculo rojo. Cuando se ejecutan estos métodos de mutación se desencadenan cambios en el estado que provocan renderizados en el HTML. De esta manera, cerramos el círculo.
 
 Si nos fijamos, nos encontramos en un flujo unidireccional, lo que nos ayuda a entender en todo momento qué es lo que está ocurriendo en nuestro sistema.
 Por ahora dejemos esto aquí, en el marco teórico, porque lo explicaremos con ejemplos más adelante. Ahora veamos como integrar la librería de vuex en nuestro SPA.
