@@ -2,7 +2,7 @@
 
 Una vez que hemos visto cómo incluir vuex en nuestra aplicación, es momento de explicar los conceptos básicos de la librería.
 
-En el posts de hoy, dedicaremos tiempo a contar cómo podemos almacenar el estado dentro del store. Veremos cómo con muy poco de código podremos crear datos accesibles para varios componentes.
+En el post de hoy, dedicaremos tiempo a contar cómo podemos almacenar el estado dentro del store. Veremos cómo con muy poco de código podremos crear datos accesibles para varios componentes.
 
 También repasaremos un concepto bastante interesante denominado getters que nos permitirá crear consultas más específicas sobre los datos que nos interesan para cada componente.
 
@@ -84,7 +84,7 @@ const componentA = {
 };
 ```
 
-De esta forma, conseguimos que si el valor de store.state.count cambie, se ejecute esta función y el componente reaccione a cambios. Vale, parece que lo tenemos listo. Sigamos.
+De esta forma, conseguimos que si el valor de store.state.count cambia, se ejecute esta función y el componente reaccione a cambios. Vale, parece que lo tenemos listo. Sigamos.
 
 ¿Qué ocurre si quiero incluir muchos estados en un componente? Insertar propiedades computadas de esta manera es algo tedioso. Estamos creando una función para llamar a un estado que se llama igual. Es código innecesario.
 
@@ -199,7 +199,7 @@ export default {
 
 Nada mal ¿no? Ahora, el 'pequeño' problema viene cuando otro componente necesita también conocer solo los gists públicos. Para conseguir esto, podría coger la función anterior, llevármela a una librería y reutilizar la utilidad en ambos componentes. Sin embargo, estamos creando código que se encuentra muy acoplado a vuex y que nos va a hacer incluir dependencias en los componentes.
 
-vuex ha pensado en ello y nos ha dado una funcionalidad dentro del store llamada getters. Los getters son funciones que permiten obtener datos parciales de nuestro estado y que son reutilizables por todas los componentes de una forma más cómoda que creando librerías e incluyendo dependencias.
+vuex ha pensado en ello y nos ha dado una funcionalidad dentro del store llamada getters. Los getters son funciones que permiten obtener datos parciales de nuestro estado y que son reutilizables por todos los componentes de una forma más cómoda que creando librerías e incluyendo dependencias.
 
 Refactoricemos el componente anterior, llevémonoslo a nuestro store de esta manera:
 
@@ -258,9 +258,9 @@ export default new Vuex.Store({
 });
 ```
 
-Los getters son inyectados internamente. De esta manera, puedes usarlo getters dentro de otros getters.
+Los getters son inyectados internamente. De esta manera, puedes usar los getters dentro de otros getters.
 
-Incluso hay que pensar que esto no se limita a búsquedas estáticas. Puedo indicar desde el componente que elemento me puede interesar de una colección;
+Incluso hay que pensar que esto no se limita a búsquedas estáticas. Puedo indicar desde el componente qué elemento me puede interesar de una colección;
 
 ```javascript
 // store/index.js
