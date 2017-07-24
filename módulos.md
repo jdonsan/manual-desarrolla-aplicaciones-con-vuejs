@@ -57,7 +57,7 @@ const moduleA = {
 };
 ```
 
-Si necesitase acceder al estado del un ámbito global, es decir, del estado raiz, podría hacerlo tanto en los getters como en los actions, pues tengo acceso a esta parte del store. En los getters se inyecta un tercer parámetro con este estado y en los actions el objeto context cuenta también con ello. Veamos el ejemplo:
+Si necesitase acceder al estado del ámbito global, es decir, del estado raiz, podría hacerlo tanto en los getters como en los actions, pues tengo acceso a esta parte del store. En los getters se inyecta un tercer parámetro con este estado y en los actions el objeto context cuenta también con ello. Veamos el ejemplo:
 
 ```javascript
 const moduleA = {
@@ -110,9 +110,9 @@ this.$store.commit('a/increment');
 
 Si vas a usar este sistema de espacio de nombres, ten en cuenta usar esta nomenclatura en formato cadena como si accedieras a un fichero de una carpeta también para los `mapGetters`, `mapActions` y `mapMutations`, ya que se usa el mismo.
 
-## Acceso al elementos globales en los módulos
+## Acceso a elementos globales en los módulos
 
-Puede ocurrir que cuando nuestros módulos se encuentren dentro de un espacio de nombres, queramos acceder a un getter de su módulo superior. Para hacer eso,  los getterscuentan con cuarto parámetro donde son inyectados estos rootGetters
+Puede ocurrir que cuando nuestros módulos se encuentren dentro de un espacio de nombres, queramos acceder a un getter de su módulo superior. Para hacer eso,  los getters cuentan con cuarto parámetro donde son inyectados estos rootGetters
 
 ```javascript
 modules: { 
@@ -182,7 +182,7 @@ store.registerModule(['nested', 'myModule'], { // ... });
 
 Donde el acceso interno sería `this.$store.nested.myModule.state`.
 
-Esta forma de registrar módulos dinámica mente, nos viene muy bien para que plugins de vue puedan hacer uso de la potencia de vuex para que puedan enganchar su módulo de datos a nuestra estructura en árbol del estado.
+Esta forma de registrar módulos dinámicamente, nos viene muy bien para que plugins de vue puedan hacer uso de la potencia de vuex para que puedan enganchar su módulo de datos a nuestra estructura en árbol del estado.
 
 ## Reutilizando módulos
 
@@ -207,7 +207,7 @@ Estos barcos son tan largos que con el movimiento interno que produce el fuel s
 
 Como en todo, el arte del desarrollo está en diseñar y nombrar adecuadamente las cosas. De nada nos sirve contar con esta funcionalidad de modularización sino hemos dedicado un tiempo a comprender el negocio y las formas en que tenemos que moldearlo.
 
-Obsesionarnos con modular en las primeras fases de desarrollo nos va a servir de poco y la refactorización y el tiempo en un proyecto, nos irá diciendo que necesidades pueden surgir. Encontrar ese equilibrio entro no dejarnos llevar por la deuda técnica y empezar a hacer sobre-ingeniería desde el principio es la gran responsabilidad que tendrá todo desarrollador...
+Obsesionarnos con modular en las primeras fases de desarrollo nos va a servir de poco y la refactorización y el tiempo en un proyecto, nos irá diciendo que necesidades pueden surgir. Encontrar ese equilibrio entre no dejarnos llevar por la deuda técnica y empezar a hacer sobre-ingeniería desde el principio es la gran responsabilidad que tendrá todo desarrollador...
 
 
 ...Y con esto acabamos, por ahora, con vuex. 
