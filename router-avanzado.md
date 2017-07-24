@@ -2,7 +2,7 @@
 
 Con lo aprendido hasta ahora sobre `vue-router`, podríamos cubrir gran parte de la funcionalidad necesaria para un buen número de aplicaciones.
 
-Sin embargo, cuando nos enfrentamos a aplicaciones más grandes, tener en cuenta otras posibilidades, nos pueden ayudar en términos de reutilización y buenas prácticas.
+Sin embargo, cuando nos enfrentamos a aplicaciones más grandes, tener en cuenta otras posibilidades nos puede ayudar en términos de reutilización y buenas prácticas.
 
 El posts de hoy está dedicado a estudiar todos aquellos conceptos avanzados de vue-router que pueden ayudarnos a mejorar y a darnos mayor versatilidad cuando desarrollamos en un proyecto con vue.
 
@@ -11,13 +11,13 @@ Para conseguir esto, nos centraremos en el anidamiento de rutas, el paso de prop
 
 ## Anidar rutas
 
-Durante esta serie, hemos hecho ejemplos con rutas bastantes simples. Los sistemas de navegación de los ejemplos siempre han sido de una ruta a otra, pero ¿qué ocurre cuando dentro de nuestro sistema existe una navegación entre subrutas?
+Durante esta serie hemos hecho ejemplos con rutas bastantes simples. Los sistemas de navegación de los ejemplos siempre han sido de una ruta a otra pero, ¿qué ocurre cuando dentro de nuestro sistema existe una navegación entre subrutas?
 
 Imaginemos por un momento, que tenemos que desarrollar una aplicación bancaria y que estamos implementando la funcionalidad de transferencias entre cuentas. Nuestra aplicación podría contar, por ejemplo, con un proceso dividido en 3 pantallas:
 
-* Una pantalla para la configurar los datos de la transferencia: En esta pantalla, el usuario indica el importe y el destinatario al que realizar la transferencia.
-* Una pantalla para mostrar el detalle de la transferencia: Que nos puede ser muy útil para mostrar el estado actual la cuenta, el día que se hará la transferencia y el cálculo de las comisiones que conlleva la operación.
-* Y una pantalla de confirmación de la transferencia realizada: Que se le muestra al usuario cuando toda la operación de transferencia fue correctamente.
+* Una pantalla para configurar los datos de la transferencia: En esta pantalla, el usuario indica el importe y el destinatario al que realizar la transferencia.
+* Una pantalla para mostrar el detalle de la transferencia: Nos puede ser muy útil para mostrar el estado actual de la cuenta, el día en que se hará la transferencia y el cálculo de las comisiones que conlleva la operación.
+* Y una pantalla de confirmación de la transferencia realizada: Se le muestra al usuario cuando toda la operación de transferencia fue correctamente.
 
 Para realizar esto, podríamos diseñar 3 vistas que se corresponderían con estas rutas:
 
@@ -29,7 +29,7 @@ Para realizar esto, podríamos diseñar 3 vistas que se corresponderían con est
 
 Como vemos, la propia funcionalidad, me lleva a tener un subenrutado o anidamiento de rutas.
 
-Estos procesos suelen conllevar una interfaz parecida en cada vista  para favorecer la navegación al usuario. Por ejemplo, las 3 vistas van a compartir unas cabeceras y un componente de navegación que nos indique en qué paso de la realización de la transferencia nos encontramos.
+Estos procesos suelen conllevar una interfaz parecida en cada vista para favorecer la navegación al usuario. Por ejemplo, las 3 vistas van a compartir unas cabeceras y un componente de navegación que nos indique en qué paso de la realización de la transferencia nos encontramos.
 
 Para desarrollar esto, podemos hacerlo de 3 maneras diferentes:
 
@@ -88,7 +88,7 @@ const router = new VueRouter({
 });
 ```
  
-Lo que hacemos es incluir un nuevo parámetro  en la ruta llamado children. En este campo, podemos configurar todas las rutas anidadas que necesitemos. En nuestro caso 3.
+Lo que hacemos es incluir un nuevo parámetro en la ruta llamado children. En este campo, podemos configurar todas las rutas anidadas que necesitemos. En nuestro caso 3.
 
 Lo último que hemos hecho es añadir el componente `router-view` en nuestro componente padre `TransferView`. De esta manera vue-router sabe en qué parte tiene que renderizar el componente hijo.
 
@@ -154,7 +154,7 @@ const router = new VueRouter({
  
 Hacemos que el popup del componente no se muestre al principio al navegar a esta ruta. No recibimos parámetros de la ruta, pero si pasamos propiedades al componente.
 
-Puedo pasar también una función. Nos puede ayudar a tomar decisiones sobre  el valor que quiero incluir en la propiedad del componente dependiendo de la ruta. Por ejemplo:
+Puedo pasar también una función. Nos puede ayudar a tomar decisiones sobre el valor que quiero incluir en la propiedad del componente dependiendo de la ruta. Por ejemplo:
 
 ```javascript
 const router = new VueRouter({ 
@@ -266,7 +266,7 @@ location / {
 
 Si queremos que el propio NodeJS nos gestione esto, contamos con un middleware de Express que nos permite configurar este redireccionamiento a nivel de servidor: connect-history-api-fallback.
 
-El problema que seguimos teniendo con esto es que si la ruta no existe, se nos seguirá redirigiendo a index.html no dando información al usuario de que esa ruta no existe. Para solucionar esto, podemos registrar una ruta genérica en vue-router que siempre se ejecutará cuando ninguna otra regla haya conseguido relacionarse:
+El problema que seguimos teniendo con esto es que si la ruta no existe se nos seguirá redirigiendo a index.html no dando información al usuario de que esa ruta no existe. Para solucionar esto podemos registrar una ruta genérica en vue-router que siempre se ejecutará cuando ninguna otra regla haya conseguido relacionarse:
 
 ```javascript
 const router = new VueRouter({ 
