@@ -32,15 +32,15 @@ Lo siguiente es hacer uso de ella. Vayamos desde el terminal a aquella carpeta d
 $ vue list
 ```
 
-Esto nos listará todas las plantillas. En el momento de crear este posts contábamos con 5 maneras:
+Esto nos listará todas las plantillas. En el momento de crear este post contábamos con 5 maneras:
 
 * **browserify**: nos genera una plantilla con todo lo necesario para que el empaquetado de nuestra SPA se haga con browserify.
 * **browserify-simple**: es parecida a la anterior. Empaqueta con browserify, pero la estructura en carpetas será más simple. Nos será útil para crear prototipos.
-* **simple**: Es una plantilla sencilla, muy parecida a la de los ejemplos de post anteriores.
+* **simple**: Es una plantilla sencilla, muy parecida a la de los ejemplos de posts anteriores.
 * **webpack**: igual que la de browserify, pero con el empaquetador webpack.
 * **webpack-simple**: igual que browserify-simple, pero con webpack.
 
-Nosotros nos vamos basar en la plantilla de ẁebpack para empezar nuestro proyecto. Para empezar el proyecto ejecutamos el siguiente comando:
+Nosotros nos vamos a basar en la plantilla de ẁebpack para empezar nuestro proyecto. Para empezar el proyecto ejecutamos el siguiente comando:
 
 ```
 $ vue init webpack my-new-app
@@ -98,9 +98,9 @@ Esta estructura es orientativa y podremos cambiar aquello que no se adecue a nue
 
 ## Formas de escribir el componente
 
-Una vez que tenemos esto, podemos empezar a desarrollar componentes. Si vamos a la carpeta `@/src/components/` tendremos los componentes. Los componentes terminan con la extensión `.vue`.  En este caso de la plantilla, encontraréis un componente llamado `Hello.vue` donde se encuentra todo lo necesario sobre el. Tanto el html, como su css, como su js, se encuentra aquí.
+Una vez que tenemos esto, podemos empezar a desarrollar componentes. Si vamos a la carpeta `@/src/components/` tendremos los componentes. Los componentes terminan con la extensión `.vue`.  En este caso de la plantilla, encontraréis un componente llamado `Hello.vue` donde se encuentra todo lo necesario sobre el. Tanto el html, como su css, como su js, se encuentran aquí.
 
-Es lo que VueJS llamada como componente en un único fichero. El fichero internamente tiene una forma como la siguiente:
+Es lo que VueJS llama como componente en un único fichero. El fichero internamente tiene una forma como la siguiente:
 
  ```html
  <template>
@@ -157,7 +157,7 @@ a {
  
 Encontramos tres etiquetas especiales: `template`, `script` y `style`, delimitan el html, el js y el css de nuestro componente respectivamente. El loader de VueJS es capaz de entender estas etiquetas y de incluir cada porción en sus paquetes correspondientes. Nosotros no tenemos que preocuparnos de ellos.
 
-Esto nos da muchas posibilidad porque nos aísla muy bien. Si el día de mañana yo necesito un componente en otro proyecto, simplemente me tendré que llevar este fichero .vue y el componente seguirá funcionando en teoría igual.
+Esto nos da muchas posibilidades porque nos aísla muy bien. Si el día de mañana yo necesito un componente en otro proyecto, simplemente me tendré que llevar este fichero .vue y el componente seguirá funcionando en teoría igual.
 
 Una buena característica es que el loader de VueJS​ (la pieza encargada de compilar el código en webpack) tiene compatibilidad con otros motores de plantillas como pug, con preprocesadores css como SASS o LESS y con transpiladores como Babel o TypeScript, con lo que no estamos limitados por el framework.
 
@@ -201,10 +201,10 @@ Puede ser un buen método si quieres que varios perfiles trabajen en tus compone
 
 El post de hoy es corto, pero conciso. La forma en cómo organizas tu código es clave a la hora de desarrollar mejor. Saber dónde se encuentra cada cosa hará que ganemos en agilidad y mantenimiento. Aislar los componentes de esta forma puede ayudarnos mucho en el futuro.
 
-La forma en que decidamos organizar internamente un componente, no deja de ser una cuestión de gusto, por lo que, en esa cuestión, no me meteré. Lo importante es que si dentro de un proyecto decides hacerlo de una manera, seas obcecado y siempre lo hagas de esa manera, hará que tu código sea más previsible y aburrido - y ser aburrido en ciertos aspectos es bueno :).
+La forma en que decidamos organizar internamente un componente, no deja de ser una cuestión de gusto, por lo que en esa cuestión no me meteré. Lo importante es que si dentro de un proyecto decides hacerlo de una manera, seas obcecado y siempre lo hagas de esa manera, hará que tu código sea más previsible y aburrido - y ser aburrido en ciertos aspectos es bueno :).
 
 A partir de ahora, los ejemplos de la serie estarán escritos en este sistema de fichero único y sabiendo que usaremos la plantilla que `vue-cli` nos genera por defecto, por lo que puede ser buena idea practicar ahora para poder seguir la serie en el futuro.
 
-Dejaremos por ahora los componente y nos adentraremos durante unas semanas en el uso de vue-router. Otra de las piezas importantes si hemos decidido hacer nuestra próxima SPA con VueJS. Por ahora, esto es todo amigos.
+Dejaremos por ahora los componentes y nos adentraremos durante unas semanas en el uso de vue-router, otra de las piezas importantes si hemos decidido hacer nuestra próxima SPA con VueJS. Por ahora, esto es todo amigos.
 
 Nos leemos :)
