@@ -80,7 +80,7 @@ export function createRouter () {
 }
 ```
 
-Poco nuevo en este código. Se devuelve la instancia en una función factoría y ponemos como modo de enrutado `history` para que se envíen las peticiones a servidor y no sea gestionadas por la parte cliente.
+Poco nuevo en este código. Se devuelve la instancia en una función factoría y ponemos como modo de enrutado `history` para que se envíen las peticiones a servidor y no sean gestionadas por la parte cliente.
 
 Ahora configuramos el `app.js`:
 
@@ -117,12 +117,12 @@ export default context => {
         const { app, router } = createApp(); 
 
         // Registramos la url que nos viene desde cliente
-        // para vue-router decida más tarde si tiene alguna
+        // para que vue-router decida más tarde si tiene alguna
         // ruta registrada
         router.push(context.url) 
 
         // Nos quedamos esperando hasta que las rutas se encuentran 
-        // listas y cargada
+        // listas y cargadas
         router.onReady(() => {
             // Vemos si hay una coincidencia con la ruta enviada 
             const matchedComponents = router.getMatchedComponents();
@@ -241,7 +241,7 @@ export function createApp () {
 }
 ```
 
-Ahora, tenemos que ver en que componentes de vista se necesita cargar datos antes del renderizado. Para conseguir esto, añadimos un nuevo método al componente llamado asyncData.  
+Ahora, tenemos que ver en qué componentes de vista se necesita cargar datos antes del renderizado. Para conseguir esto, añadimos un nuevo método al componente llamado asyncData.  
 
 Recuerda que este método será estático. No podrás hacer uso de propiedad de la instancia (todo aquello que este en this), ya que es un método que será ejecutado antes de la instanciación del componente y del renderizado.
 
@@ -298,7 +298,7 @@ export default context => {
                     return Component.asyncData({ store, route: router.currentRoute }); 
                 } 
             })).then(() => {
-                // LA CLAVE ESTA AQUI, LO EXPLICAMOS MÁS ABAJO 
+                // LA CLAVE ESTA AQUÍ, LO EXPLICAMOS MÁS ABAJO 
                 context.state = store.state; 
                 resolve(app); 
             }).catch(reject); 
@@ -309,7 +309,7 @@ export default context => {
 
 Lo que hacemos es recorrer todos los componentes vista relacionados y ejecutar `asyncData` si existe en el componente.
 
-Guardamos los estados obtenidos en el contexto. De esta forma, vue-server-renderer sabrá obtener los datos y automáticamente serial izará los datos en el HTML para que sean accedidos por el cliente antes del montaje y no se produzca una desinscronización entre DOM real y virtual.
+Guardamos los estados obtenidos en el contexto. De esta forma, vue-server-renderer sabrá obtener los datos y automáticamente serializará los datos en el HTML para que sean accedidos por el cliente antes del montaje y no se produzca una desinscronización entre DOM real y virtual.
 
 Esta serialización se guarda en `window.__INITIAL_STATE__` por lo que tenemos que tocar un poco el fichero `entry-client.js` para que todo funcione como debe:
 
@@ -340,7 +340,7 @@ router.onReady(() => {
         
         // Hacemos lo siguiente para comprobar si ya se ha hecho
         // renderizado en servidor. De esa manera evitamos una
-        // Doble precarga
+        // doble precarga
         let diffed = false; 
         const activated = matched.filter((c, i) => { 
             return diffed || (diffed = (prevMatched[i] !== c)); 
