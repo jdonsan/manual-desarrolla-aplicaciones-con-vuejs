@@ -81,11 +81,11 @@ Expliquemos cada elemento y qué deberemos guardar dentro:
 
 * **layouts**: Componentes de tipo layout que conforman nuestra aplicación. Por lo general, solo se contará con una layout, pero el sistema permite mucha versatilidad en cuanto a layouts y sublayouts se trata.
 
-* **middleware**: son funciones o pequeñas librerías que deben ejecutarse justamente antes o del renderizado de páginas (o grupo de páginas) en servidor.
+* **middleware**: son funciones o pequeñas librerías que deben ejecutarse justamente antes del renderizado de páginas (o grupo de páginas) en servidor.
 
-* **pages**: compuesto por todos aquellos componentes de tipo  página. Todas las pantallas de tu aplicación se encontrarán aquí. la forma en cómo organizamos esta carpeta, supondrá la forma en la que se configurará el vue-router, por tanto hay que mimar mucho su organización.
+* **pages**: compuesto por todos aquellos componentes de tipo  página. Todas las pantallas de tu aplicación se encontrarán aquí. La forma en cómo organizamos esta carpeta, supondrá la forma en la que se configurará el vue-router, por tanto hay que mimar mucho su organización.
 
-* **plugins**: contiene toda aquella funcionalidad que extiende el funcionamiento de Vue. por ejemplo, podemos añadir plugins de filtros, o plugins para la internacionalización de la aplicación (i18n).
+* **plugins**: contiene toda aquella funcionalidad que extiende el funcionamiento de Vue. Por ejemplo, podemos añadir plugins de filtros, o plugins para la internacionalización de la aplicación (i18n).
 
 * **statics**: parecido a assets. Con la diferencia de que aquí se almacenan estáticos que no sean dependencia directa de nuestros componentes o vistas. Los ficheros que se suelen guardar aquí son: el favicon, el robot.txt o el sitemap.xml.
 
