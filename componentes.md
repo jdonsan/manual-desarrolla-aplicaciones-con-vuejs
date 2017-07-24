@@ -142,7 +142,7 @@ Una vez que tenemos esto, hemos conseguido definir tanto las propiedades de entr
 
 Ahora bien, me gustaría poder definir ciertos estados y comportamientos dependiendo del tipo de curso que quiero mostrar. Me gustaría que los cursos de JavaScript tuviesen un estilo y los de CSS otro.
 
-Para hacer esto, podemos extender el componente base `course` y crear dos nuevos componentes a partir de este que se llamen `course-js` y `course-css`. Para hacer esto en VueJS, tenemos que hacer siguiente:
+Para hacer esto, podemos extender el componente base `course` y crear dos nuevos componentes a partir de este que se llamen `course-js` y `course-css`. Para hacer esto en VueJS, tenemos que hacer lo siguiente:
 
 ```javascript
 const course = {
