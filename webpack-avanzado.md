@@ -251,7 +251,7 @@ En nuestro programa hacemos caso de un CSV de datos con usuarios de ejemplo. Com
 
 ### Otros assets
 
-Las fuentes o los HTML estáticos, por poner otros ejemplos, también tienen sus loaders. Podremos hacer con estos ficheros procesos parecidos a las antes mencionados. Es nuestra responsabilidad comprobar que loaders y plugins existen de forma oficial para realizar todas estas transformaciones y tareas.
+Las fuentes o los HTML estáticos, por poner otros ejemplos, también tienen sus loaders. Podremos hacer con estos ficheros procesos parecidos a los antes mencionados. Es nuestra responsabilidad comprobar que loaders y plugins existen de forma oficial para realizar todas estas transformaciones y tareas.
 
 ## Resultado final
 
