@@ -252,7 +252,7 @@ export default new Vuex.Store({
 };
 ```
 
-Las acciones esperan una promesa para ser resueltas, de ahí que hagamos un return de la promesa que devuelve axios. Cuando axios nos devuelve los gists, podemos ejecutar commits con el tipo de mutación que queramos llevar a cabo. (El uso de constante tiene mucho sentido por todas las veces que vamos a usarlas durante nuestro proyecto).
+Las acciones esperan una promesa para ser resueltas, de ahí que hagamos un return de la promesa que devuelve axios. Cuando axios nos devuelve los gists, podemos ejecutar commits con el tipo de mutación que queramos llevar a cabo. (El uso de constantes tiene mucho sentido por todas las veces que vamos a usarlas durante nuestro proyecto).
 
 Me gusta que separen ambos conceptos en la librería. Las acciones son donde me puedo dedicar a meter mi lógica, mis validaciones, mi comunicación con el exterior, y las mutaciones sólo se preocupan de controlar los estados, de manipularlos. Me parece un proceso bastante natural y bien separado en diferentes conceptos y responsabilidades:
 
