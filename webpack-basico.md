@@ -4,7 +4,7 @@ Nos detenemos por un momento en el camino de vue y nos ponemos manos a la obra e
 
 Como pudimos ver en el capítulo donde estudiamos vue-cli, vimos que la plantilla nos generó una serie de ficheros donde ya se encontraba la construcción de nuestra aplicación de una forma mágica, sin que nosotros tuviésemos que desarrollar o crear nada, simplemente ejecutando un comando.
 
-Estos ficheros se encontraban creados con Webpack y hacían todo lo necesario para no tener que mancharnos las manos nosotros. Cómo no vamos a basar el destino de un proyecto en la magia y los fuegos artificiales, es hora de que nos atemos los machos y entendamos qué estaba haciendo vue-cli por nosotros.
+Estos ficheros se encontraban creados con Webpack y hacían todo lo necesario para no tener que mancharnos las manos nosotros. Como no vamos a basar el destino de un proyecto en la magia y los fuegos artificiales, es hora de que nos atemos los machos y entendamos qué estaba haciendo vue-cli por nosotros.
 
 Puede ser que algún día necesitemos incluir algo en la configuración que no viene por defecto y que estos conocimientos nos sean muy útiles. Así que vamos al lío:
 
@@ -52,9 +52,9 @@ Pero lo bueno de Webpack es que no es un simple empaquetador de ficheros al uso.
 
 Con Webpack podemos dejar de lado gestores de tareas como gulp o grunt ya que vamos a poder crear un sinfín de tareas en tiempo de empaquetado. Una de estas tareas es la transformación del código. Dentro de Webpack podemos escribir código en diferentes lenguajes como TypeScript, CoffeScript o ES6 y Webpack se encargará de transpilarlos en JavaScript.
 
-No solo ocurre esto con los ficheros en lenguaje JavaScript. Como deciamos, Webpack trabaja con muchos tipos de ficheros y nos permite escribir ficheros en Jade y ser transformados en HTML al ser utilizados. Podemos escribir nuestros estilos con SASS, Stylus o LESS y Webpack nos devolverá un CSS minificado y optimizado. Lo mismo con las imágenes: Webpack nos permitirá transformar imágenes en cadenas de base64.
+No solo ocurre esto con los ficheros en lenguaje JavaScript. Como decíamos, Webpack trabaja con muchos tipos de ficheros y nos permite escribir ficheros en Jade y ser transformados en HTML al ser utilizados. Podemos escribir nuestros estilos con SASS, Stylus o LESS y Webpack nos devolverá un CSS minificado y optimizado. Lo mismo con las imágenes: Webpack nos permitirá transformar imágenes en cadenas de base64.
 
-Webpack es un sistema muy modularizado por lo que todas estas funcionalidad podrán ser añadidas en cualquier momento.
+Webpack es un sistema muy modularizado por lo que todas estas funcionalidades podrán ser añadidas en cualquier momento.
 
 ### Permite empaquetados parciales
 
@@ -257,11 +257,12 @@ module.exports = config;
 Con este sistema, lo que le estamos diciendo a Webpack es que nos guarde los tres ficheros dentro de `dist` con el nombre que hayamos indicado en `entry`. De esta manera, nos guardará tres ficheros con el siguiente nombre: `home.min.js`, `profile.min.js`, `login.min.js`.
 
 El atributo `output` cuenta con bastantes parámetros más que iremos viendo a lo largo de los posts de manera salteada. Si deseas estudiar un poco más cuales son, los tienes en este listado.
-Los loaders
 
-Esta parte de la configuración nos sirve para indicar las transformaciones que queremos hacer a los ficheros. Los loader se comportan muy parecido a los plugins que existen en gestores de tareas como gulp o grunt.
+### Los loaders
 
-Los loader son en sí partes modularizadas de Webpack por lo que cualquier desarrollador que necesite una transformación de sus ficheros, puede crear uno y engancharlo en su configuración.
+Esta parte de la configuración nos sirve para indicar las transformaciones que queremos hacer a los ficheros. Los loaders se comportan muy parecido a los plugins que existen en gestores de tareas como gulp o grunt.
+
+Los loaders son en sí partes modularizadas de Webpack por lo que cualquier desarrollador que necesite una transformación de sus ficheros, puede crear uno y engancharlo en su configuración.
 
 Por ejemplo, yo quiero indicar en mi configuración de Webpack, que todos los ficheros que tengan la extensión `.ts` tengan que ser transpilados con tsc para que mi código escrito en TypeScript, se convierta en ES5.
 
@@ -301,7 +302,7 @@ Lo que tendremos que hacer siempre es indicar la expresión regular del tipo de 
 
 Si a un fichero le afectan más de una regla porque coincide con la expresión regular, el orden en cómo se encuentren los loaders colocados es importante ya que se ejecutarán por el orden en que se encuentren en el array.
 
-Los loader pueden tener opciones. Es recomendable que cuando tengas una necesidad, compruebes si ya existe el loader. De ser así, observa la documentación y estudia las opciones que te puede dar.
+Los loaders pueden tener opciones. Es recomendable que cuando tengas una necesidad, compruebes si ya existe el loader. De ser así, observa la documentación y estudia las opciones que te puede dar.
 
 ### Los plugins
 
@@ -354,7 +355,7 @@ Y por ahora con lo explicado, podemos trabajar para proyectos que están empezan
 
 ## Conclusiones
 
-Webpack me parece una herramienta muy potente. Te ofrece todo lo necesario para que con muy poco puedes hacer mucho. Es muy modularizable y fácil de extender. Su forma declarativa hace que incluir una nueva transformación, una nueva funcionalidad sea tan sencillo como copiar y pegar la documentación del desarrollador que lo hizo.
+Webpack me parece una herramienta muy potente. Te ofrece todo lo necesario para que con muy poco puedas hacer mucho. Es muy modularizable y fácil de extender. Su forma declarativa hace que incluir una nueva transformación, una nueva funcionalidad sea tan sencillo como copiar y pegar la documentación del desarrollador que lo hizo.
 
 Sin embargo, su mecanismo por medio de configuración me parece personalmente poco intuitivo en ciertas ocasiones. No es difícil aprender y comprender los conceptos básicos, pero cuando se necesita unas configuraciones más complejas, el fichero de configuración llega a ser bastante difícil de manejar. Lo veremos cuando estudiemos los ficheros de construcción que nos genera vue-cli y cómo el potencial que tiene es lastrado por contener una configuración un tanto ilegible.
 
