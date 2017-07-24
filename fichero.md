@@ -76,7 +76,7 @@ Explicamos cada carpeta y fichero a continuación:
 
 * **build**:  en esta carpeta se encuentran todos los scripts encargados de las tareas de construcción de nuestro proyecto en ficheros útiles para el navegador. Se encarga de trabajar con webpack y el resto de loaders (no entro más en webpack, porque además de no tener ni idea ahora mismo, le dedicaremos una serie en este blog en el futuro cuando por fin lo hayamos aprendido, por ahora tendremos que fiarnos de su magia :().
 * **config**: contiene la configuración de entornos de nuestra aplicación.
-* **src**: El código que los desarrolladores tocará. Es todo aquello que se compilará y formará nuestra app. Contiene lo siguiente:
+* **src**: El código que los desarrolladores tocarán. Es todo aquello que se compilará y formará nuestra app. Contiene lo siguiente:
  * **assets**: Aquellos recursos como css, fonts o imágenes.
  * **components**: Todos los componentes que desarrollaremos.
  * **router**: La configuración de rutas y estados por los que puede pasar nuestra aplicación.
