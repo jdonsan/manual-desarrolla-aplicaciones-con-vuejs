@@ -80,7 +80,10 @@ Tu productividad y tu equipo agradecerá que hayas apostado por una tecnología 
 
 Agradezco mucho la ayuda de las siguientes personas que han colaborado a hacer este manual un poco mejor:
 
-* [Rafa García](https://github.com/rafagarcia): Corrector ortográfico y estilístico.
+* Correctores ortográficos y estilísticos:
+
+    * [Rafa García](https://github.com/rafagarcia)
+    * [Raúl Arrieta](https://twitter.com/bolg)
 
 En fin...empecemos :\)
 
