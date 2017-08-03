@@ -68,7 +68,7 @@ Aunque las 5 formas han sido probadas, puede ser que se me hayan pasado aquellos
 
 Estoy disponible en todo momento para que puedas decirme qué te ha parecido el manual y estoy abierto a cualquier comentario sobre cómo mejorarlo.
 
-[Puedes hablar conmigo por twitter](https://twitter.com/jdonsan) o [escribirme algún comentario en mi blog](https://elabismodenull.wordpress.com/tag/vuejs/), o [escribirme directamente un correo electrónico](jose.dongil@gmail.com).
+[Puedes hablar conmigo por twitter](https://twitter.com/jdonsan) o [escribirme algún comentario en mi blog](https://elabismodenull.wordpress.com/tag/vuejs/), o [escribirme directamente un correo electrónico](mailto:jose.dongil@gmail.com).
 
 Te intentaré contestar en la mayor brevedad posible. Lo prometo.
 
