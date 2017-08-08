@@ -26,6 +26,6 @@
   * [Capítulo 17. Introducción a Server-Side Rendering](ssr.md)
   * [Capítulo 18. Configurando Webpack para SSR](ssr-webpack.md)
   * [Capítulo 19. Adaptando tu proyecto a SSR](ssr-proyecto.md)
-* Bloque 7. Otras herramientas
+* [Bloque 7. Otras herramientas](bloque-7-otras-herramientas.md)
   * [Capítulo 20. Aplicaciones universales con Nuxt](nuxt.md)
 

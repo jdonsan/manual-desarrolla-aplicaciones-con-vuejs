@@ -75,7 +75,7 @@ module.exports = config;
 
 Como hicimos en el post anterior, tenemos un punto de entrada en `./src/main.js` y una salida en `./dist/app.min.js`. Incluimos el plugin `HtmlWebpackPlugin`  para que nos inyecte los scripts necesarios para que funcione nuestro `index.html`.
 
-Ahora lo que hacemos es rehusar esa configuración para los dos entornos, de la siguiente manera:
+Ahora lo que hacemos es reusar esa configuración para los dos entornos, de la siguiente manera:
 
 ```javascript
 // Ponemos lo mismo tanto en ./build/webpack.dev.conf.js 
