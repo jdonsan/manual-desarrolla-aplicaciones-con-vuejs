@@ -6,7 +6,6 @@ VueJS no iba a ser menos y basa su funcionamiento en el aislamiento de estados y
 
 Como en casi todos los casos - quizá a excepción de Polymer - sufre de todo aquello bueno y malo de estas soluciones. Para explicar cómo trabajar con componentes en VueJS lo mejor será desarrollar un ejemplo. En este ejemplo vamos a explicar qué son las propiedades, qué son los eventos personalizados y qué son 'slots'. ¿Empezamos?
 
-
 ## El ejemplo
 
 El desarrollo que vamos a hacer es un pequeño 'marketplace' para la venta de cursos online. El usuario va a poder indicar el tiempo en meses que desea tener disponible la plataforma en cada uno de los cursos.
@@ -15,7 +14,7 @@ El desarrollo que vamos a hacer es un pequeño 'marketplace' para la venta de cu
 
 Para ello lo que vamos a crear es un primer componente llamado `course`. Para hacer esto, tenemos que registrar un nuevo componente dentro del framework de la siguiente manera:
 
- ```javascript
+```javascript
  Vue.component('course', {
     data: function () {
         return {
@@ -30,7 +29,7 @@ Para ello lo que vamos a crear es un primer componente llamado `course`. Para ha
     // ... more code
 });
 ```
- 
+
 Con esto ya podremos hacer uso de él en cualquier plantilla en el que necesitemos un ítem curso dentro de nuestra app. Hemos incluido unos datos de inicialización del componente. En este caso datos de la cabecera. Cómo puedes apreciar, en un componente, `data` se define con una función y no con un objeto.
 
 ## Incluyendo propiedades
@@ -70,7 +69,7 @@ Vue.component('course', {
     // ... more code
 });
 ```
- 
+
 Estamos indicando, dentro del atributo `props` del objeto `options`, las propiedades de entrada que queremos que tenga nuestro componente, en nuestro caso son 3: `title`, `subitle` y `description`, al igual que en la función.
 
 Estas propiedades, ahora, pueden ser usadas en su template. Es buena práctica dentro de cualquier componente que indiquemos estas propiedades y que les pongamos validadores.
@@ -79,14 +78,14 @@ En nuestro caso, lo único que estamos diciendo es que las tres propiedades sean
 
 Ahora ya podemos usar, en nuestro HTML, nuestro componente e indicar sus propiedades de entrada de esta forma:
 
- ```html
- <course 
+```html
+<course 
   title="Curso JavaScript" 
   subtitle="Curso Avanzado"
   description="Esto es un nuevo curso para aprender">
 </course>
 ```
- 
+
 Como vemos, es igual que en el caso de la función.
 
 Hay que tener en cuenta que las propiedades son datos que se propagan en una sola dirección, es decir, de padres a hijos. Si yo modifico una propiedad dentro de un componente hijo, ese cambio no se propagará hacia el padre y por tanto no provocará ningún tipo de reacción por parte del sistema.
@@ -117,8 +116,8 @@ Vue.component('course', {
     },
     // ... more code
 });
-``` 
- 
+```
+
 Lo que hacemos es usar el método del componente llamado `$emit` e indicar un 'tag' para el evento personalizado, en este caso `add`.
 
 Ahora, si queremos registrar una función cuando hacemos uso del componente, lo haríamos de la siguiente manera:
@@ -131,7 +130,7 @@ Ahora, si queremos registrar una función cuando hacemos uso del componente, lo 
   @add="addToCart">
 </course>
 ```
- 
+
 Hemos registrado un evento de tipo `@add` que ejecutará la función `addToCart` cada vez que el componente emita un evento `add`.
 
 > [Aunque hablaremos más de eventos en el futuro, aquí tienes más documentación](https://vuejs.org/v2/guide/components.html#Custom-Events).
@@ -144,7 +143,7 @@ Ahora bien, me gustaría poder definir ciertos estados y comportamientos dependi
 
 Para hacer esto, podemos extender el componente base `course` y crear dos nuevos componentes a partir de este que se llamen `course-js` y `course-css`. Para hacer esto en VueJS, tenemos que hacer lo siguiente:
 
-```javascript
+```js
 const course = {
     props: {
         title: { type: String, required: true },
@@ -166,27 +165,27 @@ const course = {
             this.$emit('add', { title: this.title, months: this.months });
         }
     },
-    template: `
-        <div :class="['course', styleClass]">
-            <header class="course-header" v-once>
-                <img :src="header.image" :alt="header.title">
-                <h2>{{ header.title }}</h2>
-            </header>
-            <main class="course-content">
-                <img src="http://lorempixel.com/300/150/" alt="">
-                <section>
-                    <h3>{{ title }}</h3>
-                    <h4>{{ subtitle }}</h4>
-                    <p> {{ description }}</p>
-                </section>
-            </main>
-            <footer  class="course-footer">
-                <label for="meses">MESES</label>
-                <input id="meses" type="number" min="0" max="12" v-model="months" />
-                <button @click="add">AÑADIR</button>
-            </footer>
-        </div>
-    `
+    template: [
+        '<div :class="["course", styleClass]">',
+            '<header class="course-header" v-once>',
+                '<img :src="header.image" :alt="header.title">',
+                '<h2>{{ header.title }}</h2>',
+            '</header>',
+            '<main class="course-content">',
+                '<img src="http://lorempixel.com/300/150/" alt="">',
+                '<section>',
+                    '<h3>{{ title }}</h3>',
+                    '<h4>{{ subtitle }}</h4>',
+                    '<p> {{ description }}</p>',
+                '</section>',
+            '</main>',
+            '<footer  class="course-footer">',
+                '<label for="meses">MESES</label>',
+                '<input id="meses" type="number" min="0" max="12" v-model="months" />',
+                '<button @click="add">AÑADIR</button>',
+            '</footer>',
+        '</div>'
+    ].join('')
 };
 
 Vue.component('course-js', {
@@ -215,7 +214,7 @@ Vue.component('course-css', {
     },
 });
 ```
- 
+
 Lo que hemos hecho es sacar todo el constructor a un objeto llamado course. Este objeto contiene todo lo que nosotros queremos que el componente tenga como base. Lo siguiente es definir dos componentes nuevos llamados `course-js` y `course-css` donde indicamos en el parámetro `mixins` que queremos que hereden.
 
 Por último, indicamos aquellos datos que queremos sobreescribir. Nada más. VueJS se encargará de componer el constructor a nuestro gusto y de generar los componentes que necesitamos. De esta forma podemos reutilizar código y componentes. Ahora podemos declarar nuestros componentes dentro del HTML de la siguiente forma:
@@ -234,7 +233,7 @@ Por último, indicamos aquellos datos que queremos sobreescribir. Nada más. Vue
   @add="addToCart">
 </course-css>
 ```
- 
+
 Ambos componentes tienen la misma firma pero internamente se comportan de diferente manera.
 
 > [En el futuro hablaremos más de mixins. Si necesitas saber más sobre ello, aquí puedes](https://vuejs.org/v2/guide/mixins.html).
@@ -274,7 +273,7 @@ template: `
         </div>
     `
 ```
- 
+
 Y lo vamos a convertir en los siguiente:
 
 ```html
@@ -286,7 +285,7 @@ template: `
       </div>
   `,
 ```
- 
+
 Hemos sacado el header, el content y el footer en diferentes componentes a los que vamos pasando sus diferentes parámetros.
 
 Los constructores de estos componentes los definimos de esta manera:
@@ -341,6 +340,7 @@ const courseFooter = {
     },
 };
 ```
+
 Estos constructores podrían ser usados de forma global, y no estaría mal usado. Sin embargo, para el ejemplo, vamos a registrarlos de forma local en el componente `course` de esta manera:
 
 ```javascript
@@ -354,7 +354,7 @@ const course = {
     // ... more code
 };
 ```
- 
+
 Todos los componentes cuentan con este atributo components para que registremos constructores y puedan ser usados.
 
 Personalmente, creo que pocas veces vamos a hacer uso de un registro local, pero que contemos con ello, creo que es una buena decisión de diseño y nos permite encapsular mucho mejor a la par que modularizar componentes.
@@ -376,7 +376,7 @@ Vue.component('marketplace', {
     `
 });
 ```
- 
+
 Lo que hacemos es definir un 'template' bastante simple donde se va a encapsular HTML dentro de slot. Dentro de un componente podemos indicar todos los slot que necesitemos. Simplemente les tendremos que indicar un nombre para que VueJS sepa diferenciarlos.
 
 Ahora podemos declararlo de esta manera:
@@ -394,7 +394,7 @@ Ahora podemos declararlo de esta manera:
     </component>
 </marketplace>
 ```
- 
+
 Dentro de marketplace definimos nuestro listado de cursos.
 
 Fijaros también en el detalle de que no estamos indicando ni course ni `course-js` ni `course-css`. Hemos indicado la etiqueta component que no se encuentra definida en ninguno de nuestros ficheros.
@@ -493,6 +493,7 @@ body {
     background: #FDD835;
 }
 ```
+
 ```javascript
 const courseHeader = {
     props: {
@@ -647,6 +648,7 @@ const app = new Vue({
     }
 });
 ```
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -683,7 +685,7 @@ const app = new Vue({
 
 </html>
 ```
- 
+
 ## Conclusión
 
 Hemos explicado todo lo que tiene que ver con el corazón de la librería. Controlando y sabiendo cómo funcionan los componentes en VueJS, tendremos mucho recorrido ganado en poder desarrollar aplicaciones del mundo real.
@@ -694,4 +696,5 @@ No te preocupes si el ejemplo te parece bastante enrevesado o sin sentido. Por c
 
 En próximos posts, seguiremos hablando sobre componentes y seguiremos entendiendolos mejor.
 
-Nos leemos :)
+Nos leemos :\)
+
