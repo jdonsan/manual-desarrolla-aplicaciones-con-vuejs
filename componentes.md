@@ -566,7 +566,7 @@ const course = {
         }
     },
     template: [
-        '<div :class="['course', styleClass]">',
+        '<div :class="["course", styleClass]">',
             '<course-header :title="header.title" :image="header.image"></course-header>',
             '<course-content :title="title" :subtitle="subtitle" :description="description"></course-content>',
             '<course-footer :months="months" @add="add"></course-footer>',
