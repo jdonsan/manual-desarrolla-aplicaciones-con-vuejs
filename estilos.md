@@ -14,7 +14,7 @@ Para enlazar una variable a una clase, hacemos uso de la directiva `v-bind:class
 
 Por ejemplo, yo podría hacer esto:
 
- ```html
+```html
  <div :class="player1.winner">
 ```
 
@@ -30,24 +30,24 @@ Podemos enlazar un objeto en un elemento para indicar si una clase se tiene que 
 
 ```html
  <div :class="{ winner: player1.winner }">
-``` 
- 
+```
+
 Cuando la variable `player1.winner` contenga un `true` la clase `winner` se renderizará. Cuando contenga `false` no se incluirá.  De esta manera puedo poner el toggle de las funciones que quiera. Este objeto, me lo puedo llevar a mi parte JavaScript y jugar con él como necesite.
 
 ### Enlazando un array
 
 Puede darse el caso también, que no solo necesite hacer un toggle de clases. Puede que quiera indicar un listado de clases enlazadas. Yo podría hacer lo siguiente:
 
- ```html
+```html
  <div :class="['box', winner]">
 ```
- 
+
 En este caso lo que quiero es que el elemento `div` tenga la clase `box` y lo que contenga internamente la variable `winner`. Con esto se puede jugar bastante y crear híbridos como el siguiente:
 
- ```html
+```html
  <div :class="['box', { winner: player1.winner }]">
 ```
- 
+
 En este caso, hago que `winner` se incluya o no dependiendo del valor de `player1.winner`.
 
 Al igual que pasaba con los objetos, esta estructura de datos puede ser almacenada en JS y ser enlazada directamente.
@@ -58,34 +58,34 @@ Podemos enlazar variables a la definición de un componente que se encuentre en 
 
 Teniendo la definición del siguiente componente:
 
- ```javascript
+```js
  Vue.component('pokemon', {
-    template: `
-        <div class="pokemon">
-            <div class="pokemon-head"></div>
-            <div class="pokemon-body"></div>
-            <div class="pokemon-feet"></div>
-        </div>
-    `
+    template: [
+        '<div class="pokemon">',
+            '<div class="pokemon-head"></div>',
+            '<div class="pokemon-body"></div>',
+            '<div class="pokemon-feet"></div>',
+        '</div>'
+    ].join('')
 });
 ```
- 
+
 Yo podría hacer esto en el template al usarlo:
 
- ```html
- <pokemon :class="player1.pokemon.name"></pokemon>
+```html
+<pokemon :class="player1.pokemon.name"></pokemon>
 ```
- 
+
 El resultado del HTML generado, en este caso, sería el siguiente:
 
- ```html
- <div class="pokemon pikachu">
+```html
+<div class="pokemon pikachu">
     <div class="pokemon-head"></div>
     <div class="pokemon-body"></div>
     <div class="pokemon-feet"></div>
 </div>
 ```
- 
+
 VueJS primero coloca las clases que tenía definido en su plantillas interna y luego incluye las nuestras. De esta manera podremos pisar los estilos que deseemos. Es una buena forma de extender el componente a nivel de estilos.
 
 ## Enlazando estilos
@@ -95,7 +95,7 @@ También podemos enlazar estilos directamente en un elemento. En vez de usar la 
 ```html
 <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
 ```
- 
+
 Hemos incluido un objeto que lleva todas las propiedades de CSS que queramos. Este objeto también podría estar en nuestro JS para jugar con él.
 
 ### Como un array
@@ -105,12 +105,12 @@ Puede que necesitemos extender estilos básicos de manera inline. VueJS ya ha pe
 ```html
 <div v-bind:style="[baseStyles, overridingStyles]">
 ```
- 
+
 Me detengo menos en esta directiva porque creo que es mala práctica incluir estilos en línea, simplemente es bueno que sepamos que existe la posibilidad por si en algún caso en concreto no quedase más remedio de hacer uso de esta técnica.
 
 ### A tener en cuenta
 
-Cuando incluímos un elemento CSS que suele llevar prefijos debido a que no está estandarizado todavía (imaginemos en transform por ejemplo), no debemos preocuparnos, pues VueJS lo tiene en cuenta y el mismo añadirá todos los prefijos necesarios
+Cuando incluímos un elemento CSS que suele llevar prefijos debido a que no está estandarizado todavía \(imaginemos en transform por ejemplo\), no debemos preocuparnos, pues VueJS lo tiene en cuenta y el mismo añadirá todos los prefijos necesarios
 
 ## Todo junto
 
@@ -120,7 +120,7 @@ Hemos creado un pequeño juego que te permite enfrentar en un combate a tu pokem
 
 El ejemplo consta de estos tres ficheros:
 
- ```css
+```css
 .box { display: inline-block; padding: 1rem; margin: 1rem; }
 .box.winner { background: green; }
 
@@ -140,17 +140,18 @@ El ejemplo consta de estos tres ficheros:
 
 .pokemon.pikachu { background: #f6e652; }
 ```
+
 Estas son las clases que dan forma a nuestros cuatro pokemons y las que vamos a ir enlazando de manera dinámica según lo que el usuario haya elegido.
 
- ```javascript
+```javascript
  Vue.component('pokemon', {
-    template: `
-        <div class="pokemon">
-            <div class="pokemon-head"></div>
-            <div class="pokemon-body"></div>
-            <div class="pokemon-feet"></div>
-        </div>
-    `
+    template: [
+        '<div class="pokemon">',
+            '<div class="pokemon-head"></div>',
+            '<div class="pokemon-body"></div>',
+            '<div class="pokemon-feet"></div>',
+        '</div>'
+    ].join('')
 });
 
 const app = new Vue({
@@ -189,9 +190,10 @@ const app = new Vue({
     }
 });
 ```
+
 El código anterior define un componente pokemon con diferentes `divs` para simular la anatomía 'estilo lego' de un pokemon.
 
-La instancia de VueJS define una aplicación que simula la batalla. Lo que hacemos es definir dos jugadores (líneas 14 y 15), un listado de pokemons (líneas de la 16 a la 20) y una tabla de resultados posibles donde x​ e y indican quién ganaría entre los pokemons seleccionados por ambos jugadores (líneas 22 a la 26).
+La instancia de VueJS define una aplicación que simula la batalla. Lo que hacemos es definir dos jugadores \(líneas 14 y 15\), un listado de pokemons \(líneas de la 16 a la 20\) y una tabla de resultados posibles donde x​ e y indican quién ganaría entre los pokemons seleccionados por ambos jugadores \(líneas 22 a la 26\).
 
 Hemos definido dos métodos para simular el combate. El método `fight` obtiene el `id` de ambos jugadores y busca la posición en la tabla de resultados. Dependiendo del resultado dado, se indica el jugador que ha ganado. El método `resetWinner` nos permite reiniciar la partida para empezar una nueva.
 
@@ -238,8 +240,8 @@ La plantilla que permite mostrar todo esta lógica por pantalla es el siguiente:
 </body>
 </html>
 ```
- 
-Hemos definido dos contenedores para todo lo relativo a cada uno de los jugadores (esto en el futuro serán componentes, pero para que el ejemplo quede claro, hemos preferido dejarlo así).
+
+Hemos definido dos contenedores para todo lo relativo a cada uno de los jugadores \(esto en el futuro serán componentes, pero para que el ejemplo quede claro, hemos preferido dejarlo así\).
 
 En la línea 18 podemos ver cómo usamos un enlace de clases por medio de array y de objeto. Combinar ambos métodos nos da mucha versatilidad. Como yo necesito indicar dos clases, uso el array. La primera clase es una fija. No necesito dinamismo en tiempo de JS con lo que indico directamente como un string la clase `box`. La segunda clase está enlazada al modelo del jugador. La clase `winner` se activará cuando tengamos un ganador de la partida.
 
@@ -257,4 +259,5 @@ En el próximo post de la serie, elevaremos el nivel de dificultad y nos centrar
 
 Por el momento es todo.
 
-Nos leemos :)
+Nos leemos :\)
+
