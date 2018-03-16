@@ -296,12 +296,12 @@ const courseHeader = {
         image: { type: String, required: true },
         title: { type: String, required: true }
     },
-    template: `
-        <header class="course-header" v-once>
-            <img :src="image" :alt="title">
-            <h2>{{ title }}</h2>
-        </header>
-    `
+    template: [
+        '<header class="course-header" v-once>',
+            '<img :src="image" :alt="title">',
+            '<h2>{{ title }}</h2>',
+        '</header>'
+    ].join('')
 };
 
 const courseContent = {
