@@ -28,4 +28,4 @@
   * [Capítulo 19. Adaptando tu proyecto a SSR](ssr-proyecto.md)
 * [Bloque 7. Otras herramientas](bloque-7-otras-herramientas.md)
   * [Capítulo 20. Aplicaciones universales con Nuxt](nuxt.md)
-
+* 
