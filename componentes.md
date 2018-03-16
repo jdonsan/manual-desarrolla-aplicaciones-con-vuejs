@@ -290,7 +290,7 @@ Hemos sacado el header, el content y el footer en diferentes componentes a los q
 
 Los constructores de estos componentes los definimos de esta manera:
 
-```javascript
+```js
 const courseHeader = {
     props: {
         image: { type: String, required: true },
@@ -310,29 +310,29 @@ const courseContent = {
         subtitle: { type: String, required: true },
         description: { type: String, required: true }
     },
-    template: `
-        <main class="course-content">
-            <img src="http://lorempixel.com/300/150/" :alt="title">
-            <section>
-                <h3>{{ title }}</h3>
-                <h4>{{ subtitle }}</h4>
-                <p> {{ description }}</p>
-            </section>
-        </main>
-    `
+    template: [
+        '<main class="course-content">',
+            '<img src="http://lorempixel.com/300/150/" :alt="title">',
+            '<section>',
+                '<h3>{{ title }}</h3>',
+                '<h4>{{ subtitle }}</h4>',
+                '<p> {{ description }}</p>',
+            '</section>',
+        '</main>'
+    ].join('')
 };
 
 const courseFooter = {
     props: {
         months: { type: Number, required: true }
     },
-    template: `
-        <footer  class="course-footer">
-            <label for="meses">MESES</label>
-            <input id="meses" type="number" min="0" max="12" v-model="months" />
-            <button @click="add">AÑADIR</button>
-        </footer>
-    `,
+    template: [
+        '<footer  class="course-footer">',
+            '<label for="meses">MESES</label>',
+            '<input id="meses" type="number" min="0" max="12" v-model="months" />',
+            '<button @click="add">AÑADIR</button>',
+        '</footer>'
+    ].join(''),
     methods: {
         add: function () {
             this.$emit('add', this.months );
@@ -369,11 +369,11 @@ Es este:
 
 ```javascript
 Vue.component('marketplace', {
-    template: `
-        <div class="marketplace">
-            <slot></slot>
-        </div>
-    `
+    template: [
+        '<div class="marketplace">'
+            '<slot></slot>'
+        '</div>'
+    ].join('')
 });
 ```
 
@@ -500,12 +500,12 @@ const courseHeader = {
         image: { type: String, required: true },
         title: { type: String, required: true }
     },
-    template: `
-        <header class="course-header" v-once>
+    template: [
+        '<header class="course-header" v-once>'
             <img :src="image" :alt="title">
             <h2>{{ title }}</h2>
         </header>
-    `
+    ].join('')
 };
 
 const courseContent = {
