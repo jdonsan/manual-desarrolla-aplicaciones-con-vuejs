@@ -212,13 +212,13 @@ Si nos damos cuenta hay dos elementos que hemos usado en la plantilla que no hem
 ```javascript
 const app = new Vue({
     el: '#app',
-    template: `
-        <div class="view">
-            <game-header></game-header>
-            <game-add @new="addNewGame"></game-add>
-            <game-list v-bind:games="games"></game-list>
-        </div>
-    `,
+    template: [
+        '<div class="view">',
+            '<game-header></game-header>',
+            '<game-add @new="addNewGame"></game-add>',
+            '<game-list v-bind:games="games"></game-list>',
+        '</div>'
+    ].join(''),
     data: {
         games: [
             { title: 'ME: Andromeda' },
@@ -250,12 +250,12 @@ El siguiente componente tiene un poco más de chicha. Se trata del componente `g
 
 ```javascript
 Vue.component('game-add', {
-    template: `
-        <div>
-            <input type="text" v-model="titleGame" />
-            <button @click="emitNewGame">Añadir</button>
-        </div> 
-    `,
+    template: [
+        '<div>',
+            '<input type="text" v-model="titleGame" />',
+            '<button @click="emitNewGame">Añadir</button>',
+        '</div>' 
+    ].join(''),
     data: function () {
         return {
             titleGame: null
@@ -289,11 +289,11 @@ Los siguientes componentes se encargan de pintar el listado de juegos. Son el co
 ```javascript
 Vue.component('game-list', {
     props: ['games'],
-    template: `
-        <ol>
-            <game-item v-for="item in games" :game="item" :key="item.id"></game-item>
-        </ol>
-    `
+    template: [
+        '<ol>',
+            '<game-item v-for="item in games" :game="item" :key="item.id"></game-item>',
+        '</ol>'
+    ].join('')
 });
 
 Vue.component('game-item', {
@@ -311,12 +311,12 @@ En el siguiente ejemplo podemos ver todo junto:
 
 ```javascript
 Vue.component('game-add', {
-    template: `
-        <div>
-            <input type="text" v-model="titleGame" />
-            <button @click="emitNewGame">Añadir</button>
-        </div> 
-    `,
+    template: [
+        '<div>',
+            '<input type="text" v-model="titleGame" />',
+            '<button @click="emitNewGame">Añadir</button>',
+        '</div>' 
+    ].join(''),
     data: function () {
         return {
             titleGame: null
@@ -334,11 +334,11 @@ Vue.component('game-add', {
 
 Vue.component('game-list', {
     props: ['games'],
-    template: `
-        <ol>
-            <game-item v-for="item in games" :game="item" :key="item.id"></game-item>
-        </ol>
-    `
+    template: [
+        '<ol>',
+            '<game-item v-for="item in games" :game="item" :key="item.id"></game-item>',
+        '</ol>'
+    ].join('')
 });
 
 Vue.component('game-item', {
@@ -352,13 +352,13 @@ Vue.component('game-header', {
 
 const app = new Vue({
     el: '#app',
-    template: `
-        <div class="view">
-            <game-header></game-header>
-            <game-add @new="addNewGame"></game-add>
-            <game-list v-bind:games="games"></game-list>
-        </div>
-    `,
+    template: [
+        '<div class="view">',
+            '<game-header></game-header>',
+            '<game-add @new="addNewGame"></game-add>',
+            '<game-list v-bind:games="games"></game-list>',
+        '</div>'
+    ].join(''),
     data: {
         message: 'Video Games',
         games: [
