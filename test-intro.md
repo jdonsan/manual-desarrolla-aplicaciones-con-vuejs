@@ -176,7 +176,7 @@ $ npm install --save-dev babel-jest
 
 E incluimos un nuevo transformador en Jest:
 
-```
+```js
 { 
     // ... 
     "jest": { 
@@ -202,7 +202,7 @@ Para ello, la gente de Vue ha pensado en cómo hacerlo y han creado una librerí
 
 Para incluir la librería en nuestro proyecto, hacemos lo siguiente:
 
-```
+```bash
 $ npm install --save-dev @vue/test-utils
 ```
 
@@ -224,7 +224,7 @@ Si toda la configuración ha ido bien, ya estaríamos preparados para escribir n
 
 Así que lo primero que hacemos es crear un fichero `hello-name.js` en nuestro proyecto con el siguiente código:
 
-```
+```js
 // ./src/hello-name.js
 export default function (name) {
     return 'Hello ' + name;
