@@ -2,7 +2,7 @@
 
 En el post anterior, explicamos de manera superficial cómo crear pruebas con Jest. Conseguimos configurar el entorno e incluimos todas las librerías necesarias para poder trabajar en un entorno típico de VueJS.
 
-En el post de hoy, entraremos en más detalle de cómo nos va ayudar `vue-test-utils`  a crear test para VueJS, qué elementos de un componente nos interesa probar y qué peculiaridades vamos a tener a la hora de crear tests para nuestras pequeñas vistas.
+En el post de hoy, entraremos en más detalle de cómo nos va ayudar `vue-test-utils`  a crear test para VueJS, qué elementos de un componente nos interesa probar y qué peculiaridades vamos a tener a la hora de crear tests para nuestras pequeñas vistas.
 
 Como hemos dicho hasta ahora, por lo general, un test intentará probar unidades de código como si fuesen cajas negras. Creados unos datos de entrada, nuestro código tiene que devolver unos datos de salida, el cómo lo consiga es un problema de implementación.
 
@@ -16,7 +16,7 @@ Pero bueno... como es mejor verlo que contarlo, empecemos a trabajar con `vue-te
 
 Lo primero que necesitamos es una forma de renderizar en memoria un componente y contar con alguna herramienta que nos permita confirmar que ciertos elementos se encuentran donde deben.
 
-Vale, no contamos con navegador, no podemos renderizar en un entorno real un componente. ¿Cómo lo vamos a hacer? `vue-test-utils` cuenta con dos funcionalidades muy útiles para renderizar un componente en memoria: `mount` y `shallow`.
+Vale, no contamos con navegador, no podemos renderizar en un entorno real un componente. ¿Cómo lo vamos a hacer? `vue-test-utils` cuenta con dos funcionalidades muy útiles para renderizar un componente en memoria: `mount` y `shallow`.
 
 Ahora veremos qué diferencia hay entre estas dos funcionalidades por ahora tenemos que saber que nos permite renderizar componentes VueJS. Pensemos en el siguiente componente de VueJS:
 
@@ -44,7 +44,7 @@ export default {
 
 Este componente lo único que hace es gestionar un contador que el usuario puede ir aumentando. Este componente se caracteriza por no tener datos de entrada \(`props`\) y no tener como dependencia a otros componentes o librerías.
 
-Para poder hacer pruebas sobre este componente, creamos un fichero llamado `counter.spec.js` e incluimos su primer test:
+Para poder hacer pruebas sobre este componente, creamos un fichero llamado `counter.spec.js` e incluimos su primer test:
 
 ```js
 // counter.spec.js
@@ -61,17 +61,17 @@ describe('Component Counter', () => {
 
 Este primer test \(nada útil, pero sí muy didáctico\), lo único que hace es comprobar que el contenido renderizado del componente es el correcto. ¿Cómo hacemos esto?
 
-* Primero importamos la utilidad `mount` que nos permite renderizar componentes en memoria
-* Importamos el componente  \(`Counter`\) a probar.
+* Primero importamos la utilidad `mount` que nos permite renderizar componentes en memoria
+* Importamos el componente  \(`Counter`\) a probar.
 * Creamos una nueva suite para el componente con `describe`.
 * Creamos un caso de uso con `it`.
-* Internamente del caso de uso, empieza el test. Primero montamos y renderizamos el componente `Counter`  con `mount`. Esto nos devuelve un envoltorio o `wrapper` que tiene un montón de métodos que nos permite jugar con facilidad con el elemento renderizado en memoria. Los que hayáis trabajado con jQuery, vais a disfrutar mucho con este envoltorio 
+* Internamente del caso de uso, empieza el test. Primero montamos y renderizamos el componente `Counter`  con `mount`. Esto nos devuelve un envoltorio o `wrapper` que tiene un montón de métodos que nos permite jugar con facilidad con el elemento renderizado en memoria. Los que hayáis trabajado con jQuery, vais a disfrutar mucho con este envoltorio 
   [ya que nos permite hacer pequeñas consultas sobre este DOM renderizado en memoria](https://vue-test-utils.vuejs.org/en/api/wrapper/).
 * Por último esperamos que dentro del html renderizado \(`wrapper.html()`\), exista el contenido indicado en `toContain.`
 
 Fácil ¿no?
 
-Como habéis visto, en el ejemplo hemos usado `mount`. La diferencia entre `mount` y `shallow` es que `mount` te renderiza y monta el componente en su totalidad y `shallow` no, Esto significa que si nuestro componente tuviese en su interior otros componentes hijos, `mount` también te los renderizaría, mientras `shallow` los ignoraría.
+Como habéis visto, en el ejemplo hemos usado `mount`. La diferencia entre `mount` y `shallow` es que `mount` te renderiza y monta el componente en su totalidad y `shallow` no, Esto significa que si nuestro componente tuviese en su interior otros componentes hijos, `mount` también te los renderizaría, mientras `shallow` los ignoraría.
 
 Que exista ambos sistemas tiene sentido. Puede que muchas veces queramos probar un componente de manera aislada, sin contar con sus dependencias \(`shallow`\) para hacer pruebas de ciclo de vida, de entradas y salidas, de gestión de eventos. Renderizar el resto de elementos solo va a aumentar tiempos de ejecución al test y además, arrastrarnos dependencias que no necesitamos.
 
@@ -81,11 +81,11 @@ Saber cuando elegir uno y otro será la clave para el tester.
 
 ## ¿Qué partes deberíamos testear de un componente y cómo?
 
-Un componente de VueJS tiene estas posibles entradas y salida:![](https://elabismodenull.files.wordpress.com/2018/04/captura-de-pantalla-de-2018-04-02-17-55-43.png "Captura de pantalla de 2018-04-02 17-55-43.png")Dependiendo de cómo configuremos un componente \(`props`\), cómo sea la interacción del usuario y cómo sea el ciclo de vida, se darán unas salidas u otras.  Además, hay que pensar que un componente puede tener en su interior otras componentes de manera estática o dinámica \(slots\).
+Un componente de VueJS tiene estas posibles entradas y salida:![](https://elabismodenull.files.wordpress.com/2018/04/captura-de-pantalla-de-2018-04-02-17-55-43.png "Captura de pantalla de 2018-04-02 17-55-43.png")Dependiendo de cómo configuremos un componente \(`props`\), cómo sea la interacción del usuario y cómo sea el ciclo de vida, se darán unas salidas u otras.  Además, hay que pensar que un componente puede tener en su interior otras componentes de manera estática o dinámica \(slots\).
 
 ### Manipulando el estado del componente
 
-Un componente tiene un estado externo o propiedades de configuración llamadas `props` y tiene un estado interno llamado `data`.
+Un componente tiene un estado externo o propiedades de configuración llamadas `props` y tiene un estado interno llamado `data`.
 
 En todo momento un componente montado locálmente cuenta con dos métodos para realizar renderizados reactivos. Estos son los siguientes:
 
@@ -94,7 +94,7 @@ wrapper.setData({ count: 10 })
 wrapper.setProps({ foo: 'bar' })
 ```
 
-También podemos 'mockear' las propiedades de un componente. Tenemos el mismo componente `Counter` de antes, solo que ahora permitimos que se pueda configurar por defecto
+También podemos 'mockear' las propiedades de un componente. Tenemos el mismo componente `Counter` de antes, solo que ahora permitimos que se pueda configurar por defecto
 
 ```js
 <template>
@@ -121,7 +121,7 @@ export default {
 </script>
 ```
 
-Para este componente con la `prop` numérica `count` tengo dos posibles casos de uso: La propiedad al ser opcional, me va a permitir indicarle una propiedad o no. Por tanto hagamos los dos casos de uso:
+Para este componente con la `prop` numérica `count` tengo dos posibles casos de uso: La propiedad al ser opcional, me va a permitir indicarle una propiedad o no. Por tanto hagamos los dos casos de uso:
 
 El primero es sencillo:
 
@@ -139,9 +139,9 @@ describe('Component Counter', () => {
 })
 ```
 
-Lo que hacemos es montar el componente `Counter` sin pasar ninguna propiedad 'mockeada' y comprobar que el texto que hay en el elemento con clase `count` es el valor por defecto \(en este caso 0\).
+Lo que hacemos es montar el componente `Counter` sin pasar ninguna propiedad 'mockeada' y comprobar que el texto que hay en el elemento con clase `count` es el valor por defecto \(en este caso 0\).
 
-El segundo caso es  en el que el desarrollador sí le va a indicar un valor al componente. Lo hacemos así:
+El segundo caso es  en el que el desarrollador sí le va a indicar un valor al componente. Lo hacemos así:
 
 ```js
 // counter.spec.js 
@@ -171,7 +171,7 @@ Estamos tan cerca del usuario, que la mayoría de los cambios de estado los va a
 
 Siguiendo con el componente `Counter`, hagamos un caso de uso dónde el usuario decida incrementar el contador en uno. El test podría ser este:
 
-```
+```js
 //...
 it('button click should increment the count', () => { 
     const wrapper = mount(Counter)
@@ -183,21 +183,21 @@ it('button click should increment the count', () => {
 //...
 ```
 
-Lo que hacemos es comprobar primero que, al instanciarse el componente, el valor sea el esperado por defecto \(0\). Lo siguiente es acceder al botón del componente y luego lanzar un evento `click` por medio del método que tiene el `wrapper` llamado `trigger`.
+Lo que hacemos es comprobar primero que, al instanciarse el componente, el valor sea el esperado por defecto \(0\). Lo siguiente es acceder al botón del componente y luego lanzar un evento `click` por medio del método que tiene el `wrapper` llamado `trigger`.
 
-Esto ejecutará funciones internas \(o no\). El caso esperado es que el valor de `count` se haya incrementado en 1.
+Esto ejecutará funciones internas \(o no\). El caso esperado es que el valor de `count` se haya incrementado en 1.
 
-Con `trigger` podemos lanzar todos los eventos nativos y podemos usar los modificadores de eventos.
+Con `trigger` podemos lanzar todos los eventos nativos y podemos usar los modificadores de eventos.
 
 ### Confirmando eventos personalizados
 
 Cuando un componente hijo quiere transmitir información acciones a un componente padre lo hace por medio de eventos personalizados. ¿Pero cómo confirmo si un componente ha emitido un evento personalizado?
 
-El `wrapper` es nuestro mejor amigo y tiene métodos que nos confirman si estas cosas han ocurrido o no.
+El `wrapper` es nuestro mejor amigo y tiene métodos que nos confirman si estas cosas han ocurrido o no.
 
 Volvemos a tener el componente contador. Solo que en este caso además de incrementar el valor, emite el nuevo valor para que cada padre haga con el valor lo que desee:
 
-```javascript
+```js
 <template>
      <div> 
          <span class="count">{{ count }}</span> 
@@ -225,7 +225,7 @@ export default {
 
 El caso de uso, sería de esta manera:
 
-```javascript
+```js
 import { mount } from '@vue/test-utils'
 import Counter from './Counter'
 
@@ -243,11 +243,11 @@ describe('Component Counter', () => {
 })
 ```
 
-Vuelvo a ejecutar el `click` que es el que provoca la emisión de `increment`. Lo que hacemos luego es comprobar que se ha registrado un evento de tipo `increment` con el método del `wrapper` llamado `emitted`.
+Vuelvo a ejecutar el `click` que es el que provoca la emisión de `increment`. Lo que hacemos luego es comprobar que se ha registrado un evento de tipo `increment` con el método del `wrapper` llamado `emitted`.
 
 ## ¿Cómo testeo un componente que tiene dependencias?
 
-Nos va a pasar que algunos componentes tengas dependencias de otros plugins de VueJS. Imagina que tu componente usa `vuex` o `vue-router`.  Como los componentes se renderizan de manera aislada y fuera del propio framework en una instancia de VueJS local, todas estas dependencias que usa, van a provocar comportamientos inesperados. Son efectos laterales que deberíamos evitar.
+Nos va a pasar que algunos componentes tengas dependencias de otros plugins de VueJS. Imagina que tu componente usa `vuex` o `vue-router`.  Como los componentes se renderizan de manera aislada y fuera del propio framework en una instancia de VueJS local, todas estas dependencias que usa, van a provocar comportamientos inesperados. Son efectos laterales que deberíamos evitar.
 
 Para conseguir que nuestro plugin tenga estas dependencias, contamos con `createLocalVue`. Esta pieza nos permite renderizar y montar nuestro componente bajo una copia local de VueJS donde ya sí podemos incluir plugins.
 
@@ -263,11 +263,11 @@ localVue.use(MyPlugin)
 mount(Component, { localVue })
 ```
 
-Lo único que hacemos es importar `createLocalVue` y nuestro plugin. Creamos una instancia de VueJS y le instalamos el plugin con `localVue.use()`. Lo siguiente es decirle a `mount` o `shallow` que use nuestra instancia local de Vue porque es la que cuenta con las dependencias globales necesarias.
+Lo único que hacemos es importar `createLocalVue` y nuestro plugin. Creamos una instancia de VueJS y le instalamos el plugin con `localVue.use()`. Lo siguiente es decirle a `mount` o `shallow` que use nuestra instancia local de Vue porque es la que cuenta con las dependencias globales necesarias.
 
 Puede que a veces incluir toda una librería global sea matar moscas a cañonazos. Puede darse el caso que en un componente se use algo ínfimo y que no merezca la pena. En este caso podemos inyectar un mock para que se hagan pruebas con él.
 
-Imaginemos que queremos mockear `vue-router` en un componente. Podríamos hacer esto:
+Imaginemos que queremos mockear `vue-router` en un componente. Podríamos hacer esto:
 
 ```js
 import { mount } from '@vue/test-utils'
@@ -288,7 +288,7 @@ mount(Component, {
 
 Cuidado con lo explicado en este apartado ¿vale? Que tengamos esta facilidad no significa que estemos usando bien el framework. Existirán casos donde nuestro componentes estén tan acoplados al proyecto, que hacer esto no suponga un problema. Es decir, un componente muy acoplado al proyecto, que no sea posible reutilizarlo, no tiene problemas a que tenga como dependencias elementos globales del framework.
 
-Ahora bien ¿Qué pasa si necesitamos componentes muy reutilizables y que se puedan usar en varios proyectos? Que tu tengas un plugin instalado en un proyecto, no tiene que significar que en otro sí. Por lo que si queremos usar ese componente, también nos tendremos que llevar el plugin. Abusar de `createLocalVue` y la inyección de plugins puede ser un buen 'Code Smell'.
+Ahora bien ¿Qué pasa si necesitamos componentes muy reutilizables y que se puedan usar en varios proyectos? Que tu tengas un plugin instalado en un proyecto, no tiene que significar que en otro sí. Por lo que si queremos usar ese componente, también nos tendremos que llevar el plugin. Abusar de `createLocalVue` y la inyección de plugins puede ser un buen 'Code Smell'.
 
 Intenta que solo los componentes orquestadores \(también llamados controladores o tipo page\) tengan estas dependencias. Evita que componentes muy visuales puedan realizar uso de piezas tan globales o las estarás acoplando.
 
@@ -298,7 +298,7 @@ Tenlo en cuenta.
 
 Tenemos el siguiente componente:
 
-```javascript
+```js
 <template> 
     <button @click="fetchResults" /> 
 </template> 
@@ -331,7 +331,7 @@ Testear este componente nos va a dar problemas por dos razones:
 
 El primer problema se soluciona de una manera simple: Mockeando la parte de `axios` que nos interesa y que devuelva los datos que deseamos. Para hacer esto, lo vamos a hacer de manera genérica. Jest nos permite mockear métodos de librerías.
 
-Para ello incluimos una carpeta de test que tenga este nombre `__mocks__`. La nomenclatura es la típica de Jest, así que nada que objetar. Lo siguiente que hacemos es incluir el siguiente fichero `axios.js` dentro:
+Para ello incluimos una carpeta de test que tenga este nombre `__mocks__`. La nomenclatura es la típica de Jest, así que nada que objetar. Lo siguiente que hacemos es incluir el siguiente fichero `axios.js` dentro:
 
 ```js
 // ./test/__mocks__/axios.js
@@ -350,7 +350,7 @@ Para indicarle a Jest dentro de una suite que haremos uso del mocks, solo tenemo
 ```js
 import { shallow } from '@vue/test-utils'
 import Foo from'./Foo'
- 
+
 
 jest.mock('axios') 
 
@@ -365,7 +365,7 @@ Usa las propiedades para pasar funciones a su componentes hijos, emite eventos p
 
 ### Las llamadas asíncronas
 
-Vale, ya sabemos que `axios.get` nos devolverá una promesa a nuestro gusto. Pues hagamos su test:
+Vale, ya sabemos que `axios.get` nos devolverá una promesa a nuestro gusto. Pues hagamos su test:
 
 ```js
 import { shallow } from '@vue/test-utils'
@@ -382,9 +382,9 @@ describe('Foo', () => {
 })
 ```
 
-Vaya... el test ha fallado. No hemos gestionado la promesa correctamente y no hemos dado tiempo a que `wrapper.vm.value` tenga el valor correcto.
+Vaya... el test ha fallado. No hemos gestionado la promesa correctamente y no hemos dado tiempo a que `wrapper.vm.value` tenga el valor correcto.
 
-Para esto, `vue-test-utils` ya ha pensado en ello y nos permite esperar hasta que la promesa está resuelta. Veamos:
+Para esto, `vue-test-utils` ya ha pensado en ello y nos permite esperar hasta que la promesa está resuelta. Veamos:
 
 ```js
 import { shallow } from '@vue/test-utils'
@@ -449,13 +449,13 @@ describe('Foo', () => {
 })
 ```
 
-Sin `done`, sin `$nextTick`. Lo que hacemos es una `async function` y esperar a que todos los manejadores se den por terminados. En ese momento es cuando estamos preparado para hacer las confirmaciones.
+Sin `done`, sin `$nextTick`. Lo que hacemos es una `async function` y esperar a que todos los manejadores se den por terminados. En ese momento es cuando estamos preparado para hacer las confirmaciones.
 
 ## Conclusiones
 
 Parece que hemos explicado mucho, pero solo hemos explicado la superficie del testeo de componentes. Sí, sabemos lo principal, pero queda mucho trabajo de cómo inyectar mocks, stubs y demás mecanismos de testing.
 
-¿Qué pasa cuando hay mucho código repetido en una suite? ¿Qué pasa con otros elementos como los `slots` o los `watcher`​? ¿Qué pasa si quiero mockear un CSS o un PNG?  Creo que son temas interesantes que por ahora se van a quedar fuera de este material.
+¿Qué pasa cuando hay mucho código repetido en una suite? ¿Qué pasa con otros elementos como los `slots` o los `watcher`​? ¿Qué pasa si quiero mockear un CSS o un PNG?  Creo que son temas interesantes que por ahora se van a quedar fuera de este material.
 
 Al igual que pasaba con todo el manual, estamos en una serie introductoria, hay mucho trabajo de práctica y profundización que tendremos que hacer después, pero creo que esto es un buen comienzo para conocer `vue-test-utils`.
 
