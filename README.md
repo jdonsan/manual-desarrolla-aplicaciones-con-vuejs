@@ -32,7 +32,7 @@ Estos conceptos, aunque pueden ser referenciados o explicados en algún momento 
 
 ## Estructura
 
-El manual se encuentra compuesto por 7 bloques. Cada bloque se encargará de explicar, de forma progresiva, uno de los grandes elementos del framework.
+El manual se encuentra compuesto por 8 bloques. Cada bloque se encargará de explicar, de forma progresiva, uno de los grandes elementos del framework.
 
 Si eres nuevo en VueJS, te recomiendo que empieces desde el Capítulo 1 a leer y que prosigas para un aprendizaje adecuado. Si ya tienes conocimientos previos sobre VueJS, siéntete libre de viajar por el manual como te plazca.
 

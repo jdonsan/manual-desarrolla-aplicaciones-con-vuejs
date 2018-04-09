@@ -26,5 +26,9 @@
   * [Capítulo 17. Introducción a Server-Side Rendering](ssr.md)
   * [Capítulo 18. Configurando Webpack para SSR](ssr-webpack.md)
   * [Capítulo 19. Adaptando tu proyecto a SSR](ssr-proyecto.md)
-* [Bloque 7. Otras herramientas](bloque-7-otras-herramientas.md)
+* Bloque 7. Otras herramientas
   * [Capítulo 20. Aplicaciones universales con Nuxt](nuxt.md)
+* Bloque 8. Testeando nuestra aplicación con vue-test-utils
+  * [Capítulo 21. Introducción](test-intro.md)
+  * [Capítulo 22. Testeando nuestros componentes](test-componentes.md)
+  * [Capítulo 23. Testeando nuestros stores](test-stores.md)
