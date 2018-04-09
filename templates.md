@@ -126,7 +126,7 @@ En el caso de registrar un evento, tenemos algo parecido. No hace falta que indi
 
 El comportamiento sería el mismo que con v-on.
 
-En este post hemos explicado algunas de las directivas que hay, para entender el concepto, pero la API cuenta con todas estas.
+En este post hemos explicado algunas de [las directivas que hay, para entender el concepto, pero la API cuenta con todas estas](https://vuejs.org/v2/api/#Directives).
 
 ## Las filtros
 
